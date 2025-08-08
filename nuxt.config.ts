@@ -13,6 +13,16 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "motion-v/nuxt",
   ],
+  icon: {
+    mode: "svg",
+    collections: ["heroicons"],
+    customCollections: [
+      {
+        prefix: "svg",
+        dir: "./app/assets/svg",
+      },
+    ],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

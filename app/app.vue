@@ -1,6 +1,17 @@
+<script setup lang="ts">
+import { gsap } from "gsap";
+
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+onBeforeMount(() => {
+  gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger);
+});
+</script>
+
 <template>
-  <div>
+  <NuxtLayout>
     <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

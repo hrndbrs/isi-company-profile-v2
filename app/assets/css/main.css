@@ -1,6 +1,44 @@
 @import "tailwindcss";
 
+@theme {
+  /* Colors */
+
+  --color-foreground: hsl(232, 100%, 97%);
+
+  --color-brand-100: hsl(229, 59%, 53%);
+  --color-brand-200: hsl(228, 61%, 40%);
+  --color-brand-300: hsl(227, 73%, 29%);
+
+  --color-primary-100: hsl(218, 100%, 81%);
+  --color-primary-200: hsl(220, 100%, 70%);
+  --color-primary-300: hsl(230, 100%, 60%);
+
+  --color-secondary-100: hsl(14, 100%, 75%);
+  --color-secondary-200: hsl(17, 100%, 67%);
+  --color-secondary-300: hsl(24, 100%, 56%);
+
+  --color-error-100: hsl(351, 100%, 73%);
+  --color-error-200: hsl(354, 100%, 65%);
+  --color-error-300: hsl(351, 90%, 55%);
+
+  --color-success-100: hsl(168, 100%, 84%);
+  --color-success-200: hsl(154, 100%, 73%);
+  --color-success-300: hsl(144, 92%, 46%);
+
+  /* Typography */
+
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+
+@utility container {
+  @apply mx-auto max-w-6xl;
+}
+
 @layer base {
+  body {
+    @apply font-jakarta bg-neutral-50;
+  }
+
   button {
     cursor: pointer;
   }
