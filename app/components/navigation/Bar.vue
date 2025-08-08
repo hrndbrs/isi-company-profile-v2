@@ -1,0 +1,84 @@
+<script setup lang="ts">
+import gsap from "gsap";
+import { motion } from "motion-v";
+
+const { y } = useWindowScroll();
+const scrolled = computed(() => y.value > 100);
+const mobileMenuIsOpen = ref(false);
+const mobileLinksContainer = useTemplateRef<HTMLElement>("links-container");
+const mobileTriggerBtn = useTemplateRef<HTMLButtonElement>("trigger-btn");
+
+function toggleMobileContainer() {
+  mobileMenuIsOpen.value = !mobileMenuIsOpen.value;
+}
+
+onClickOutside(
+  mobileLinksContainer,
+  () => {
+    mobileMenuIsOpen.value = false;
+  },
+  { ignore: [mobileTriggerBtn] },
+);
+
+watch(mobileMenuIsOpen, (isOpen) => {
+  const menuIconSelector = '#menu [data-id="main"]';
+  const duration = 0.3;
+
+  if (isOpen) {
+    gsap.to(menuIconSelector, {
+      morphSVG: '#menu [data-id="x"]',
+      duration,
+    });
+  } else {
+    gsap.to(menuIconSelector, {
+      morphSVG: '#menu [data-id="bars"]',
+      duration,
+    });
+  }
+});
+</script>
+
+<template>
+  <nav class="fixed top-0 z-[1000] w-dvw hover:bg-neutral-50 transition-all duration-200" :class="{
+    'bg-neutral-50': scrolled,
+    'max-lg:bg-neutral-50': mobileMenuIsOpen,
+  }">
+    <div class="relative px-5 py-3">
+      <div class="container flex items-center justify-between gap-8">
+        <div class="flex-1">
+          <NuxtLink to="/">
+            <span class="lg:text-5xl transition-all duration-200"
+              :class="mobileMenuIsOpen ? 'text-5xl' : 'text-2xl'">LOGO</span>
+          </NuxtLink>
+        </div>
+
+        <div class="hidden flex-[4] justify-between lg:flex">
+          <NavigationItem v-for="item of navLinks" :key="item.label" v-bind="item" />
+        </div>
+
+        <div class="flex-1">
+          <Button class="float-right hidden lg:block">Book Now</Button>
+          <button ref="trigger-btn" class="float-right block lg:hidden" @click="toggleMobileContainer()">
+            <Icon name="svg:menu-btn" id="menu" class="size-6" />
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        <motion.div ref="links-container" v-if="mobileMenuIsOpen"
+          class="absolute bottom-0 left-0 flex w-full translate-y-full flex-col gap-6 py-5 max-sm:px-5 sm:max-lg:px-20 lg:hidden"
+          key="mobile" :initial="{
+            clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+          }" :animate="{
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+          }" :exit="{
+            clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+          }">
+          <NavigationItem v-for="item of navLinks" :key="item.label" v-bind="item" />
+
+          <Button class="float-right">Book Now</Button>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  </nav>
+</template>
