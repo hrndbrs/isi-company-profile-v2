@@ -8,8 +8,11 @@
 - Vue Router `^4.5.1`
 - Vite (via Nuxt)
 
-### Styling
+### Styling & Animations
 - Tailwind CSS `^4.1.11`
+- Iconify Heroicons Icon Pack `1.2.2`
+- GSAP `^3.13.0`
+- motion-v `^1.7.0`
 
 ### Nuxt Modules
 - @nuxt/image `^1.11.0`
@@ -40,13 +43,19 @@ npm run dev
 ### Format code
 
 ```bash
-npm run format
+npm run check
 ```
 
 ### Lint code
 
 ```bash
 npm run lint
+```
+
+### Lint staged files
+
+```bash
+npm run lint:staged
 ```
 
 ### Build for production
@@ -86,13 +95,16 @@ npm run preview
 .
 ├── app/
 │   ├── assets/
-│   │   └── css/
-│   │       └── main.css
+│   │   ├── css/
+│   │   └── svg/
 │   ├── components/
 │   │   └── sections/
+│   │       ├── about/
+│   │       └── shared/
 │   ├── composables/
 │   ├── layouts/
 │   ├── pages/
+│   ├── types/
 │   ├── utils/
 │   └── app.vue
 ├── public/

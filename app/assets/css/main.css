@@ -28,6 +28,8 @@
   /* Typography */
 
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
+
+  --text-title: 7.5rem;
 }
 
 @utility container {

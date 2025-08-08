@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
-
-import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText, MorphSVGPlugin, ScrollTrigger } from "gsap/all";
 
 onBeforeMount(() => {
-  gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger);
+  gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger, SplitText);
 });
 </script>
 
