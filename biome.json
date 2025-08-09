@@ -6,21 +6,44 @@
     "useIgnoreFile": false
   },
   "files": {
-    "includes": [
-      "app/**/*.ts"
-    ],
+    "includes": ["app/**/*.ts", "app/**/*.vue", "nuxt.config.ts", "*.json"],
     "ignoreUnknown": true
   },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
   "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "error"
+      },
+      "suspicious": {
+        "noShadowRestrictedNames": "error",
+        "noExplicitAny": "error"
+      },
+      "style": {
+        "useConst": "error",
+        "useImportType": "error",
+        "noUselessElse": "warn"
+      }
+    },
     "domains": {
       "vue": "all"
     }
   },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always"
+    }
+  },
   "overrides": [
     {
-      "includes": [
-        "app/**/*.vue"
-      ],
+      "includes": ["**/*.vue"],
       "linter": {
         "rules": {
           "style": {

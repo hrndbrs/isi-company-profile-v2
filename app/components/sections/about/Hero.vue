@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { SplitText } from "gsap/all";
 
-let ctx: gsap.Context;
-
 useGSAP((gsap) => {
   const titleSplit = SplitText.create("#heroTitle1", {
     type: "words, chars",
@@ -11,38 +9,36 @@ useGSAP((gsap) => {
     type: "lines",
   });
 
-  ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#heroSection",
-        start: "top bottom",
-      },
-    });
-
-    tl.to("#heroSection", {
-      opacity: 1,
-      duration: 0.05,
-    })
-      .from(
-        titleSplit.chars,
-        {
-          opacity: 0,
-          x: "58%",
-          stagger: 0.05,
-        },
-        "<",
-      )
-      .from(
-        title2Split.lines,
-        {
-          opacity: 0,
-          x: "140px",
-          duration: 1.5,
-          ease: "back.out",
-        },
-        "<=0.08",
-      );
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#heroSection",
+      start: "top bottom",
+    },
   });
+
+  tl.to("#heroSection", {
+    opacity: 1,
+    duration: 0.05,
+  })
+    .from(
+      titleSplit.chars,
+      {
+        opacity: 0,
+        x: "58%",
+        stagger: 0.05,
+      },
+      "<",
+    )
+    .from(
+      title2Split.lines,
+      {
+        opacity: 0,
+        x: "140px",
+        duration: 1.5,
+        ease: "back.out",
+      },
+      "<=0.08",
+    );
 });
 </script>
 

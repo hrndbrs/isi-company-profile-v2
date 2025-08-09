@@ -100,6 +100,7 @@ npm run preview
 │   ├── components/
 │   │   └── sections/
 │   │       ├── about/
+│   │       ├── home/
 │   │       └── shared/
 │   ├── composables/
 │   ├── layouts/
