@@ -13,6 +13,9 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "motion-v/nuxt",
   ],
+  image: {
+    domains: [prod ? "" : "*"],
+  },
   app: {
     head: {
       noscript: [

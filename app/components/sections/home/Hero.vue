@@ -1,72 +1,72 @@
 <script setup lang="ts">
 import { SplitText } from "gsap/all";
 
-const { ctx } = useGSAP((gsap) => {
-  const titleSplit = SplitText.create("#heroTitle", {
-    type: "words",
-  });
-  const descSplit = SplitText.create("#heroDescription", {
-    type: "lines",
-  });
+useGSAP(
+  (gsap) => {
+    const titleSplit = SplitText.create("#heroTitle", {
+      type: "words",
+    });
+    const descSplit = SplitText.create("#heroDescription", {
+      type: "lines",
+    });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#heroSection",
-      start: "top bottom",
-    },
-  });
+    let tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#heroSection",
+          start: "top bottom",
+        },
+      })
+      .to(".text-container", {
+        duration: 0.08,
+        opacity: 1,
+      });
 
-  let current = tl.to(".text-container", {
-    duration: 0.08,
-    opacity: 1,
-  });
+    descSplit.lines.forEach((el, i) => {
+      const leftFadeIn = i % 2 === 0;
 
-  descSplit.lines.forEach((el, i) => {
-    const leftFadeIn = i % 2 === 0;
+      tl = tl.from(
+        el,
+        {
+          opacity: 0,
+          x: leftFadeIn ? "-100px" : "100px",
+        },
+        "<=0.1",
+      );
+    });
 
-    current = current.from(
-      el,
+    tl.from(
+      titleSplit.words,
       {
         opacity: 0,
-        x: leftFadeIn ? "-100px" : "100px",
+        y: "50%",
+        stagger: 0.09,
       },
-      "<=0.1",
+      "<=0.09",
     );
-  });
 
-  current.from(
-    titleSplit.words,
-    {
+    gsap.to(".text-container", {
+      y: "-100%",
       opacity: 0,
-      y: "50%",
-      stagger: 0.09,
-    },
-    "<=0.09",
-  );
-
-  const tl2 = gsap.timeline({
-    defaults: {
       ease: "sine.in",
-    },
-    scrollTrigger: {
-      trigger: "#heroSection",
-      scrub: 2,
-      start: "center 40%",
-      end: "center 20%",
-    },
-  });
-
-  tl2.to(".text-container", {
-    y: "-100%",
-    opacity: 0,
-  });
-});
+      scrollTrigger: {
+        trigger: "#heroSection",
+        scrub: 2,
+        start: "center 40%",
+        end: "center 20%",
+      },
+    });
+  },
+  {
+    scope: "#heroSection",
+  },
+);
 </script>
 
 <template>
   <SectionWrapper
     id="heroSection"
-    class="flex items-center py-24 text-brand-100"
+    class="py-24 text-brand-100"
     :inner-container-props="{
       class: 'gap-28',
     }"

@@ -1,51 +1,56 @@
 <script setup lang="ts">
 import { SplitText } from "gsap/all";
 
-useGSAP((gsap) => {
-  const titleSplit = SplitText.create("#heroTitle1", {
-    type: "words, chars",
-  });
-  const title2Split = SplitText.create("#heroTitle2", {
-    type: "lines",
-  });
+useGSAP(
+  (gsap) => {
+    const titleSplit = SplitText.create("#heroTitle1", {
+      type: "words, chars",
+    });
+    const title2Split = SplitText.create("#heroTitle2", {
+      type: "lines",
+    });
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#heroSection",
-      start: "top bottom",
-    },
-  });
-
-  tl.fromTo(
-    "#heroSection",
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      duration: 0.05,
-    },
-  )
-    .from(
-      titleSplit.chars,
-      {
-        opacity: 0,
-        x: "58%",
-        stagger: 0.05,
-      },
-      "<",
-    )
-    .from(
-      title2Split.lines,
-      {
-        opacity: 0,
-        x: "140px",
-        duration: 1.5,
-        ease: "back.out",
-      },
-      "<=0.08",
-    );
-});
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#heroSection",
+          start: "top bottom",
+        },
+      })
+      .fromTo(
+        "#heroSection",
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.05,
+        },
+      )
+      .from(
+        titleSplit.chars,
+        {
+          opacity: 0,
+          x: "58%",
+          stagger: 0.05,
+        },
+        "<",
+      )
+      .from(
+        title2Split.lines,
+        {
+          opacity: 0,
+          x: "140px",
+          duration: 1.5,
+          ease: "back.out",
+        },
+        "<=0.08",
+      );
+  },
+  {
+    scope: "#heroSection",
+  },
+);
 </script>
 
 <template>
