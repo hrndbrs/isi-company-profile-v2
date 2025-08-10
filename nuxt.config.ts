@@ -13,6 +13,17 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "motion-v/nuxt",
   ],
+  app: {
+    head: {
+      noscript: [
+        {
+          textContent: `
+        <style>main { visibility : visible !important }</style>
+        `,
+        },
+      ],
+    },
+  },
   icon: {
     mode: "svg",
     collections: ["heroicons"],
