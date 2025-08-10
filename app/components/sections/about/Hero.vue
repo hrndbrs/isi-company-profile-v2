@@ -16,10 +16,16 @@ useGSAP((gsap) => {
     },
   });
 
-  tl.to("#heroSection", {
-    opacity: 1,
-    duration: 0.05,
-  })
+  tl.fromTo(
+    "#heroSection",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 0.05,
+    },
+  )
     .from(
       titleSplit.chars,
       {
@@ -45,7 +51,7 @@ useGSAP((gsap) => {
 <template>
   <SectionWrapper
     id="heroSection"
-    class="flex h-dvh items-center text-brand-100 opacity-0"
+    class="flex h-dvh items-center text-brand-100"
   >
     <div class="flex max-w-4xl flex-col gap-3">
       <p class="text-4xl leading-tight">We are</p>

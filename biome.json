@@ -23,7 +23,8 @@
       },
       "suspicious": {
         "noShadowRestrictedNames": "error",
-        "noExplicitAny": "error"
+        "noExplicitAny": "error",
+        "noSuspiciousSemicolonInJsx": "off"
       },
       "style": {
         "useConst": "error",
@@ -36,6 +37,7 @@
     }
   },
   "javascript": {
+    "jsxRuntime": null,
     "formatter": {
       "quoteStyle": "double",
       "semicolons": "always"

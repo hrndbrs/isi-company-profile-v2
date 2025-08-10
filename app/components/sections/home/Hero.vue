@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SplitText } from "gsap/all";
 
-useGSAP((gsap) => {
+const { ctx } = useGSAP((gsap) => {
   const titleSplit = SplitText.create("#heroTitle", {
     type: "words",
   });
@@ -43,6 +43,23 @@ useGSAP((gsap) => {
     },
     "<=0.09",
   );
+
+  const tl2 = gsap.timeline({
+    defaults: {
+      ease: "sine.in",
+    },
+    scrollTrigger: {
+      trigger: "#heroSection",
+      scrub: 2,
+      start: "center 40%",
+      end: "center 20%",
+    },
+  });
+
+  tl2.to(".text-container", {
+    y: "-100%",
+    opacity: 0,
+  });
 });
 </script>
 
@@ -61,7 +78,7 @@ useGSAP((gsap) => {
         ☺️
       </div>
     </div>
-    <div class="text-container flex flex-col gap-4 opacity-0">
+    <div class="text-container flex flex-col gap-4">
       <h1 class="text-title leading-tight font-bold" id="heroTitle">
         Your Perfect Career <span class="font-normal italic">Coach</span>
       </h1>
