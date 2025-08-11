@@ -30,6 +30,23 @@
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
 
   --text-title: 7.5rem;
+
+  /* Sizings */
+
+  --spacing-73: 18.25rem;
+  --spacing-74: 18.5rem;
+  --spacing-75: 18.75rem;
+  --spacing-76: 19rem;
+  --spacing-77: 19.25rem;
+  --spacing-78: 19.5rem;
+  --spacing-79: 19.75rem;
+
+  --spacing-100: 25rem;
+  --spacing-101: 25.25rem;
+  --spacing-102: 25.5rem;
+  --spacing-103: 25.75rem;
+  --spacing-104: 26rem;
+  --spacing-105: 26.25rem;
 }
 
 @utility container {
