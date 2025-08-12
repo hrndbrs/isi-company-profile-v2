@@ -6,4 +6,5 @@
   <SharedCTA />
   <SharedLocation />
   <HomeBlogList />
+  <SharedFAQ />
 </template>

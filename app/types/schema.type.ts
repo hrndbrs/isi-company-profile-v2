@@ -20,3 +20,8 @@ export type Blog = {
   author?: string;
   createdAt: string;
 };
+
+export type FAQ = {
+  question: string;
+  answer: string;
+};

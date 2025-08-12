@@ -105,9 +105,11 @@ npm run preview
 │   ├── composables/
 │   ├── layouts/
 │   ├── pages/
+│   ├── plugins/
 │   ├── types/
 │   ├── utils/
-│   └── app.vue
+│   ├── app.vue
+│   └── router.options.ts
 ├── public/
 ├── biome.json
 ├── nuxt.config.ts

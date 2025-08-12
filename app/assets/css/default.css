@@ -1,0 +1,545 @@
+.html {
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    margin: 1em 0;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1.33em 0;
+    line-height: 1.2;
+  }
+
+  h5 {
+    font-size: 0.83em;
+    font-weight: bold;
+    margin: 1.67em 0;
+    line-height: 1.2;
+  }
+
+  h6 {
+    font-size: 0.67em;
+    font-weight: bold;
+    margin: 2.33em 0;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 1em 0;
+    line-height: 1.4;
+  }
+
+  strong,
+  b {
+    font-weight: bold;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  u {
+    text-decoration: underline;
+  }
+
+  s,
+  strike,
+  del {
+    text-decoration: line-through;
+  }
+
+  sub {
+    font-size: 0.75em;
+    vertical-align: sub;
+    line-height: 0;
+  }
+
+  sup {
+    font-size: 0.75em;
+    vertical-align: super;
+    line-height: 0;
+  }
+
+  small {
+    font-size: 0.83em;
+  }
+
+  mark {
+    background-color: #ffff00;
+    color: #000000;
+    padding: 0.1em 0.2em;
+  }
+
+  a {
+    color: #0066cc;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  a:visited {
+    color: #800080;
+  }
+
+  a:hover {
+    color: #004499;
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid #4285f4;
+    outline-offset: 2px;
+  }
+
+  ul {
+    margin: 1em 0;
+    padding-left: 40px;
+    list-style-type: disc;
+  }
+
+  ol {
+    margin: 1em 0;
+    padding-left: 40px;
+    list-style-type: decimal;
+  }
+
+  li {
+    display: list-item;
+    margin: 0.5em 0;
+    line-height: 1.4;
+  }
+
+  ul ul,
+  ol ol,
+  ul ol,
+  ol ul {
+    margin: 0.5em 0;
+  }
+
+  ul ul {
+    list-style-type: circle;
+  }
+
+  ul ul ul {
+    list-style-type: square;
+  }
+
+  ol ol {
+    list-style-type: lower-alpha;
+  }
+
+  ol ol ol {
+    list-style-type: lower-roman;
+  }
+
+  li[data-checked="true"]:before,
+  li[data-checked="false"]:before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.5em;
+  }
+
+  blockquote {
+    margin: 1em 40px;
+    padding: 0.5em 20px;
+    border-left: 4px solid #cccccc;
+    font-style: italic;
+    background-color: #f9f9f9;
+    color: #666666;
+  }
+
+  blockquote p {
+    margin: 0.5em 0;
+  }
+
+  blockquote blockquote {
+    margin: 0.5em 0;
+    border-left-color: #999999;
+  }
+
+  cite {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #666666;
+  }
+
+  code {
+    font-family:
+      "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "Courier New", monospace;
+    font-size: 0.85em;
+    background-color: #f4f4f4;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    color: #d14;
+  }
+
+  pre {
+    font-family:
+      "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "Courier New", monospace;
+    font-size: 0.85em;
+    line-height: 1.4;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow: auto;
+    white-space: pre;
+    color: #333333;
+  }
+
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  kbd {
+    font-family:
+      "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "Courier New", monospace;
+    font-size: 0.85em;
+    background-color: #f7f7f7;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    box-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.2),
+      inset 0 0 0 2px #ffffff;
+    color: #333333;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 1em 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+  }
+
+  thead {
+    background-color: #f8f9fa;
+  }
+
+  th {
+    font-weight: bold;
+    text-align: left;
+    padding: 0.75em;
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    color: #495057;
+  }
+
+  td {
+    padding: 0.75em;
+    border: 1px solid #dee2e6;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  caption {
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 0.5em;
+    color: #6c757d;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 2em 0;
+    height: 0;
+    box-sizing: content-box;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    vertical-align: middle;
+  }
+
+  figure {
+    margin: 1em 0;
+    text-align: center;
+  }
+
+  figcaption {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #6c757d;
+    text-align: center;
+    margin-top: 0.5em;
+    padding: 0 1em;
+  }
+
+  video,
+  audio {
+    max-width: 100%;
+    height: auto;
+  }
+
+  dl {
+    margin: 1em 0;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-top: 1em;
+  }
+
+  dt:first-child {
+    margin-top: 0;
+  }
+
+  dd {
+    margin: 0.5em 0 1em 2em;
+    line-height: 1.4;
+  }
+
+  address {
+    font-style: italic;
+    margin: 1em 0;
+    line-height: 1.4;
+  }
+
+  abbr,
+  acronym {
+    border-bottom: 1px dotted;
+    cursor: help;
+    text-decoration: none;
+  }
+
+  abbr[title],
+  acronym[title] {
+    border-bottom: 1px dotted #999999;
+  }
+
+  [dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+
+  [dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+  }
+
+  .text-left,
+  [style*="text-align: left"] {
+    text-align: left !important;
+  }
+
+  .text-center,
+  [style*="text-align: center"] {
+    text-align: center !important;
+  }
+
+  .text-right,
+  [style*="text-align: right"] {
+    text-align: right !important;
+  }
+
+  .text-justify,
+  [style*="text-align: justify"] {
+    text-align: justify !important;
+  }
+
+  [style*="font-size: xx-small"],
+  .font-size-1 {
+    font-size: 0.6em;
+  }
+
+  [style*="font-size: x-small"],
+  .font-size-2 {
+    font-size: 0.75em;
+  }
+
+  [style*="font-size: small"],
+  .font-size-3 {
+    font-size: 0.85em;
+  }
+
+  [style*="font-size: medium"],
+  .font-size-4 {
+    font-size: 1em;
+  }
+
+  [style*="font-size: large"],
+  .font-size-5 {
+    font-size: 1.2em;
+  }
+
+  [style*="font-size: x-large"],
+  .font-size-6 {
+    font-size: 1.5em;
+  }
+
+  [style*="font-size: xx-large"],
+  .font-size-7 {
+    font-size: 2em;
+  }
+
+  [style*="color: red"],
+  .text-red {
+    color: #dc3545;
+  }
+
+  [style*="color: blue"],
+  .text-blue {
+    color: #007bff;
+  }
+
+  [style*="color: green"],
+  .text-green {
+    color: #28a745;
+  }
+
+  [style*="color: yellow"],
+  .text-yellow {
+    color: #856404;
+    background-color: #fff3cd;
+  }
+
+  [style*="color: orange"],
+  .text-orange {
+    color: #fd7e14;
+  }
+
+  [style*="color: purple"],
+  .text-purple {
+    color: #6f42c1;
+  }
+
+  [style*="color: gray"],
+  .text-gray {
+    color: #6c757d;
+  }
+
+  [style*="background-color: yellow"],
+  .bg-yellow {
+    background-color: #fff3cd;
+  }
+
+  [style*="background-color: cyan"],
+  .bg-cyan {
+    background-color: #d1ecf1;
+  }
+
+  [style*="background-color: lime"],
+  .bg-lime {
+    background-color: #d4edda;
+  }
+
+  [style*="background-color: pink"],
+  .bg-pink {
+    background-color: #f8d7da;
+  }
+
+  [style*="margin-left"],
+  .indent-1 {
+    margin-left: 2em;
+  }
+
+  [style*="padding-left"],
+  .indent-2 {
+    padding-left: 2em;
+  }
+
+  [style*="line-height: 1"],
+  .line-height-1 {
+    line-height: 1;
+  }
+
+  [style*="line-height: 1.5"],
+  .line-height-1-5 {
+    line-height: 1.5;
+  }
+
+  [style*="line-height: 2"],
+  .line-height-2 {
+    line-height: 2;
+  }
+
+  q {
+    quotes: '"' '"' "'" "'";
+  }
+
+  q:before {
+    content: open-quote;
+  }
+
+  q:after {
+    content: close-quote;
+  }
+
+  .preserve-whitespace {
+    white-space: pre-wrap;
+  }
+
+  @media print {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    blockquote,
+    pre,
+    img,
+    figure {
+      page-break-inside: avoid;
+    }
+
+    ul,
+    ol,
+    dl {
+      page-break-before: avoid;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    a[href]:after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: #666666;
+    }
+  }
+}
