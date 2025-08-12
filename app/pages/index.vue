@@ -4,4 +4,5 @@
   <HomeServices />
   <SharedTestimonial />
   <SharedCTA />
+  <SharedLocation />
 </template>
