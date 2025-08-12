@@ -10,3 +10,13 @@ export type Testimony = {
   after: string;
   image: string;
 };
+
+export type Blog = {
+  slug: string;
+  title: string;
+  content: string;
+  image: string;
+  publishedAt: string;
+  author?: string;
+  createdAt: string;
+};

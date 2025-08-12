@@ -5,4 +5,5 @@
   <SharedTestimonial />
   <SharedCTA />
   <SharedLocation />
+  <HomeBlogList />
 </template>
