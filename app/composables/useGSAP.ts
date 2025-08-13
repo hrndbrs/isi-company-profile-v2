@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-export type Callback = ($gsap: typeof gsap) => void;
+export type Callback = ($gsap: typeof gsap, ctx: gsap.Context) => void;
 export type Scope = HTMLElement | string;
 export type Dependencies = Parameters<typeof watch>[0][];
 export type Options = {
@@ -10,26 +10,18 @@ export type Options = {
 
 export function useGSAP(cb?: Callback, opts?: Dependencies | Options) {
   const { width } = useWindowSize();
-
   const ctx = ref<gsap.Context | null>(null);
-  const createContext = (cb?: Callback, sc?: Scope) => {
-    ctx.value?.revert();
-
-    return gsap.context(() => {
-      cb?.(gsap);
-    }, sc);
-  };
   const contextSafe = (cb: Callback, sc?: Scope) => () => {
     if (!ctx.value) {
-      ctx.value = createContext(cb);
+      ctx.value = createContext(cb, sc);
       return;
     }
-
-    return ctx.value.add(() => cb(gsap), sc);
+    const currentCtx = ctx.value;
+    currentCtx.value.add(() => cb(gsap, currentCtx), sc);
   };
 
-  let deps: Dependencies = [];
-  let scope: Scope = "body";
+  let deps: Dependencies = [],
+    scope: Scope = "body";
 
   if (Array.isArray(opts)) {
     deps = opts;
@@ -40,10 +32,14 @@ export function useGSAP(cb?: Callback, opts?: Dependencies | Options) {
 
   watch([width, ...deps], () => {
     ctx.value = createContext(cb, scope);
+    // ctx.value?.revert();
   });
 
   onMounted(() => {
-    ctx.value = createContext(cb, scope);
+    nextTick(() => {
+      if (cb && ctx.value) return contextSafe(cb, scope)();
+      ctx.value = createContext(cb, scope);
+    });
   });
 
   onBeforeUnmount(() => {
@@ -52,3 +48,7 @@ export function useGSAP(cb?: Callback, opts?: Dependencies | Options) {
 
   return { ctx, contextSafe };
 }
+
+const createContext = (cb?: Callback, sc?: Scope) => {
+  return gsap.context((self) => cb?.(gsap, self), sc);
+};

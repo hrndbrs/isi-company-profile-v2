@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { SplitText } from "gsap/all";
 
-const route = useRoute();
-
 let brandNameSplit: SplitText;
 
 const { ctx } = useGSAP(
@@ -26,7 +24,7 @@ const { ctx } = useGSAP(
       });
     });
   },
-  [() => route.path],
+  { scope: "footer" },
 );
 </script>
 
@@ -39,16 +37,10 @@ const { ctx } = useGSAP(
           <span class="font-normal italic"> Indonesia </span>
         </span>
         <ul class="grid gap-8 text-right">
-          <FooterQuickLink
-            v-for="link of navLinks"
-            :key="link.label"
-            v-bind="link"
-          />
+          <FooterQuickLink v-for="link of navLinks" :key="link.label" v-bind="link" />
         </ul>
       </div>
-      <p
-        class="absolute bottom-8 left-1/2 -translate-x-1/2 leading-tight text-foreground"
-      >
+      <p class="absolute bottom-8 left-1/2 -translate-x-1/2 leading-tight text-foreground">
         Inspirasi Satu Indonesia | 2025
       </p>
     </div>

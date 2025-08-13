@@ -32,13 +32,9 @@ const faqs: FAQ[] = Array(5).fill({
 </script>
 
 <template>
-  <SectionWrapper
-    id="faqSection"
-    class="py-28"
-    :inner-container-props="{
-      class: 'gap-6',
-    }"
-  >
+  <SectionWrapper id="faqSection" class="py-28" :inner-container-props="{
+    class: 'gap-6',
+  }">
     <div class="flex justify-between">
       <div class="section-title text-brand-100">
         <p class="mb-px text-4xl leading-tight font-bold">

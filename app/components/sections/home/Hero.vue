@@ -13,7 +13,7 @@ useGSAP(
     let tl = gsap
       .timeline({
         scrollTrigger: {
-          trigger: "#heroSection",
+          trigger: ".text-container",
           start: "top bottom",
         },
       })
@@ -44,18 +44,6 @@ useGSAP(
       },
       "<=0.09",
     );
-
-    gsap.to(".text-container", {
-      y: "-100%",
-      opacity: 0,
-      ease: "sine.in",
-      scrollTrigger: {
-        trigger: "#heroSection",
-        scrub: 2,
-        start: "center 40%",
-        end: "center 20%",
-      },
-    });
   },
   {
     scope: "#heroSection",
@@ -64,17 +52,11 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="heroSection"
-    class="py-24 text-brand-100"
-    :inner-container-props="{
-      class: 'gap-28',
-    }"
-  >
+  <SectionWrapper id="heroSection" class="py-24 text-brand-100" :inner-container-props="{
+    class: 'gap-28',
+  }">
     <div>
-      <div
-        class="float-right inline-flex size-72 items-center justify-center text-[252px]"
-      >
+      <div class="float-right inline-flex size-72 items-center justify-center text-[252px]">
         ☺️
       </div>
     </div>

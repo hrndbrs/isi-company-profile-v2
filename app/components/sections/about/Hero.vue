@@ -13,12 +13,12 @@ useGSAP(
     gsap
       .timeline({
         scrollTrigger: {
-          trigger: "#heroSection",
+          trigger: "#heroSection > div",
           start: "top bottom",
         },
       })
       .fromTo(
-        "#heroSection",
+        "#heroSection > div",
         {
           opacity: 0,
         },
@@ -54,10 +54,7 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="heroSection"
-    class="flex h-dvh items-center text-brand-100"
-  >
+  <SectionWrapper id="heroSection" class="py-78 text-brand-100">
     <div class="flex max-w-4xl flex-col gap-3">
       <p class="text-4xl leading-tight">We are</p>
       <h1 class="text-title leading-tight">
