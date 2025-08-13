@@ -1,4 +1,4 @@
-<template>
+<template key="home">
   <HomeHero />
   <HomePartners />
   <HomeServices />
