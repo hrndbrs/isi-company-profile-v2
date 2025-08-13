@@ -19,23 +19,33 @@ useGSAP(
       },
     });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".card-container",
-          start: "10% bottom",
+    const cards = Array.from(
+      document.querySelectorAll("#blogListSection .card-container .card"),
+    );
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".card-container",
+        start: "10% bottom",
+      },
+    });
+
+    cards.forEach((card, i) => {
+      const post = i === 0 ? undefined : "<=0.34";
+      tl = tl.from(
+        card,
+        {
+          duration: 0.6,
+          x: `${i * 100}%`,
+          opacity: 0,
         },
-      })
-      .from(".card", {
-        duration: 0.5,
-        y: "150px",
-        stagger: 0.2,
-        opacity: 0,
-      })
-      .from("#seeMoreBlogs", {
-        opacity: 0,
-        duration: 0.24,
-      });
+        post,
+      );
+    });
+    tl.from("#seeMoreBlogs", {
+      opacity: 0,
+      duration: 0.24,
+    });
   },
   {
     scope: "#blogListSection",
@@ -107,6 +117,10 @@ const blogs: Blog[] = Array(4).fill({
 
 .card-container:has(.blog-card:hover) > :not(.blog-card:hover, :has(button)) {
   @apply grayscale-100;
+}
+
+:deep(.card) {
+  @apply bg-neutral-50;
 }
 
 :deep(.card-title),
