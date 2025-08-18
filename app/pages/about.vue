@@ -2,6 +2,7 @@
   <AboutHero />
   <AboutCompanyValue />
   <AboutHistory />
+  <AboutCoreValue />
   <SharedTestimonial />
   <SharedCTA />
   <SharedLocation />
