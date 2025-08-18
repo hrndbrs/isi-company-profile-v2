@@ -32,15 +32,25 @@ const faqs: FAQ[] = Array(5).fill({
 </script>
 
 <template>
-  <SectionWrapper id="faqSection" class="py-28" :inner-container-props="{
-    class: 'gap-6',
-  }">
+  <SectionWrapper
+    id="faqSection"
+    aria-labelledby="faqSectionTitle faqSectionSubtitle"
+    class="py-28"
+    :inner-container-props="{
+      class: 'gap-6',
+    }"
+  >
     <div class="flex justify-between">
       <div class="section-title text-brand-100">
-        <p class="mb-px text-4xl leading-tight font-bold">
+        <p
+          id="faqSectionSubtitle"
+          class="mb-px text-4xl leading-tight font-bold"
+        >
           Frequently Asked Questions
         </p>
-        <h2 class="text-title leading-tight italic">FAQ</h2>
+        <h2 id="faqSectionTitle" class="text-title leading-tight italic">
+          FAQ
+        </h2>
       </div>
 
       <span class="inline-block aspect-square h-full text-[7rem]"> 💡 </span>

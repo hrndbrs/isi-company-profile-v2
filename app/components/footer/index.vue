@@ -36,11 +36,19 @@ const { ctx } = useGSAP(
           Inspirasi Satu
           <span class="font-normal italic"> Indonesia </span>
         </span>
-        <ul class="grid gap-8 text-right">
-          <FooterQuickLink v-for="link of navLinks" :key="link.label" v-bind="link" />
-        </ul>
+        <nav aria-label="Quick Links">
+          <ul class="grid gap-8 text-right">
+            <FooterQuickLink
+              v-for="link of navLinks"
+              :key="link.label"
+              v-bind="link"
+            />
+          </ul>
+        </nav>
       </div>
-      <p class="absolute bottom-8 left-1/2 -translate-x-1/2 leading-tight text-foreground">
+      <p
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 leading-tight text-foreground"
+      >
         Inspirasi Satu Indonesia | 2025
       </p>
     </div>

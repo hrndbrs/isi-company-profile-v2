@@ -121,12 +121,16 @@ const contents: Content[] = [
 <template>
   <SectionWrapper
     id="historySection"
+    aria-label="Company History"
     :inner-container-props="{
       class: 'gap-16',
     }"
   >
     <div class="section-title">
-      <h2 class="line-tight text-title font-bold text-brand-100">
+      <h2
+        id="historySectionTitle"
+        class="line-tight text-title font-bold text-brand-100"
+      >
         Our <em class="font-normal">Journey</em> 🎉
       </h2>
       <p class="line-tight mt-1.5 text-2xl">

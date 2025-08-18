@@ -1,23 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 395.4 393.15">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #253e97;
-      }
-
-      .cls-2 {
-        fill: #1b2e71;
-      }
-
-      .cls-3 {
-        fill: #3d59a7;
-      }
-    </style>
-  </defs>
-  <g>
-    <rect class="cls-3" x="160" y="155" width="288" height="154" transform="translate(41.97 510.53) rotate(-84.1)"/>
-    <rect class="cls-1" x="14.15" y="77.58" width="175" height="308" transform="translate(-21.42 10.64) rotate(-5.42)"/>
-    <rect class="cls-2" x="88" width="217" height="376"/>
-  </g>
+  <path d="M160 155h288v154H160z" style="fill:#3d59a7" transform="rotate(-84.1 303.988 232)"/>
+  <path d="M14.15 77.58h175v308h-175z" style="fill:#253e97" transform="rotate(-5.42 101.683 231.586)"/>
+  <path d="M88 0h217v376H88z" style="fill:#1b2e71"/>
 </svg>

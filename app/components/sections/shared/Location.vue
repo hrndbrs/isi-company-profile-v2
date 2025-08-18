@@ -17,7 +17,7 @@ useGSAP(
 useGSAP(
   (gsap) => {
     const twoCards = Array.from(
-      document.querySelectorAll("#twoCards rect"),
+      document.querySelectorAll("#twoCards path"),
     ) as [HTMLElement, HTMLElement];
 
     twoCards.forEach((card) => {
@@ -79,7 +79,7 @@ useGSAP(
 useGSAP(
   (gsap) => {
     const threeCards = Array.from(
-      document.querySelectorAll("#threeCards rect"),
+      document.querySelectorAll("#threeCards path"),
     ) as [Element, Element, Element];
 
     gsap
@@ -136,10 +136,13 @@ useGSAP(
     :inner-container-props="{
       class: 'gap-56',
     }"
+    aria-labelledby="locationSectionTitle"
   >
     <div class="section-title text-brand-100">
       <p class="text-3xl leading-tight font-semibold">And you can</p>
-      <h2 class="text-title leading-tight italic">Find Us</h2>
+      <h2 id="locationSectionTitle" class="text-title leading-tight italic">
+        Find Us
+      </h2>
     </div>
     <div class="flex justify-around">
       <div class="location-wrapper max-w-72">

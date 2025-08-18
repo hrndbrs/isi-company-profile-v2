@@ -1,7 +1,7 @@
 <template key="home">
   <HomeHero />
-  <HomePartners />
-  <HomeServices />
+  <HomePartner />
+  <HomeService />
   <SharedTestimonial />
   <SharedCTA />
   <SharedLocation />

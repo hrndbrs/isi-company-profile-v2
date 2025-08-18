@@ -44,7 +44,7 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
 </script>
 
 <template>
-  <nav
+  <header
     class="fixed top-0 z-[1000] w-dvw transition-all duration-200 hover:bg-neutral-50"
     :class="{
       'bg-neutral-50': scrolled,
@@ -63,13 +63,16 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
           </NuxtLink>
         </div>
 
-        <div class="hidden flex-[4] justify-between lg:flex">
+        <nav
+          aria-label="Main Navigation"
+          class="hidden flex-[4] justify-between lg:flex"
+        >
           <NavigationItem
             v-for="item of navLinks"
             :key="item.label"
             v-bind="item"
           />
-        </div>
+        </nav>
 
         <div class="flex-1">
           <Button class="float-right hidden lg:block">Book Now</Button>
@@ -84,7 +87,8 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
       </div>
 
       <AnimatePresence>
-        <motion.div
+        <motion.nav
+          aria-label="Main Navigation"
           ref="links-container"
           v-if="mobileMenuIsOpen"
           class="absolute bottom-0 left-0 flex w-full bg-neutral-50 translate-y-full flex-col gap-6 py-5 max-sm:px-5 sm:max-lg:px-20 lg:hidden"
@@ -106,8 +110,8 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
           />
 
           <Button class="float-right">Book Now</Button>
-        </motion.div>
+        </motion.nav>
       </AnimatePresence>
     </div>
-  </nav>
+  </header>
 </template>

@@ -3,7 +3,9 @@ import { SplitText } from "gsap/all";
 
 useGSAP(
   (gsap) => {
-    const titleSplit = SplitText.create("#sectionTitle", { type: "lines" });
+    const titleSplit = SplitText.create("#serviceSectionTitle", {
+      type: "lines",
+    });
 
     gsap
       .timeline({
@@ -28,20 +30,21 @@ useGSAP(
       );
   },
   {
-    scope: "#servicesSection",
+    scope: "#serviceSection",
   },
 );
 </script>
 
 <template>
   <SectionWrapper
-    id="servicesSection"
+    id="serviceSection"
     class="py-32 text-brand-100"
+    aria-label="Services"
     :inner-container-props="{
       class: 'inner-wrapper flex-row gap-24',
     }"
   >
-    <h2 id="sectionTitle" class="flex-1 text-title leading-tight mb-74">
+    <h2 id="serviceSectionTitle" class="flex-1 text-title leading-tight mb-74">
       <span class="font-bold">We are the</span> Expert
     </h2>
     <div class="flex-1 flex flex-col gap-20 mt-103">

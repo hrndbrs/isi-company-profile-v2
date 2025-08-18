@@ -66,6 +66,7 @@ const blogs: Blog[] = Array(4).fill({
   <SectionWrapper
     id="blogListSection"
     class="py-28 text-brand-100"
+    aria-labelledby="blogListSectionTitle"
     :inner-container-props="{
       class: 'gap-16',
     }"
@@ -73,7 +74,10 @@ const blogs: Blog[] = Array(4).fill({
     <div>
       <div class="section-title max-w-xl">
         <p class="text-4xl leading-tight font-semibold">And you can</p>
-        <h2 class="text-title leading-tight font-bold">
+        <h2
+          id="blogListSectionTitle"
+          class="text-title leading-tight font-bold"
+        >
           Read Our <em class="font-normal">Writings</em>
         </h2>
       </div>
@@ -90,24 +94,30 @@ const blogs: Blog[] = Array(4).fill({
         </Button>
       </NuxtLink>
 
-      <NuxtLink
-        :to="`/blogs/${blog.slug}`"
-        v-for="blog in blogs"
+      <article
+        v-for="(blog, i) in blogs"
         :key="blog.slug"
         class="blog-card transition-all duration-200"
+        :aria-labelledby="`blog-${i}`"
       >
-        <Card>
-          <template #illustration>
-            <NuxtImg
-              :src="blog.image"
-              class="aspect-square w-full bg-neutral-300 object-cover"
-            />
-          </template>
-          <template #title>{{ blog.title }}</template>
-          <template #subtitle>{{ blog.publishedAt }}</template>
-          <template #content>{{ blog.content }}</template>
-        </Card>
-      </NuxtLink>
+        <NuxtLink :to="`/blogs/${blog.slug}`">
+          <Card>
+            <template #illustration>
+              <NuxtImg
+                :src="blog.image"
+                class="aspect-square w-full bg-neutral-300 object-cover"
+              />
+            </template>
+            <template #title>
+              <span :id="`blog-${i}`">
+                {{ blog.title }}
+              </span>
+            </template>
+            <template #subtitle>{{ blog.publishedAt }}</template>
+            <template #content>{{ blog.content }}</template>
+          </Card>
+        </NuxtLink>
+      </article>
     </div>
   </SectionWrapper>
 </template>

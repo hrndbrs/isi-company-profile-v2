@@ -54,7 +54,11 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="heroSection" class="py-78 text-brand-100">
+  <SectionWrapper
+    aria-label="About Us Hero"
+    id="heroSection"
+    class="py-78 text-brand-100"
+  >
     <div class="flex max-w-4xl flex-col gap-3">
       <p class="text-4xl leading-tight">We are</p>
       <h1 class="text-title leading-tight">

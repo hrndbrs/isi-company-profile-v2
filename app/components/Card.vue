@@ -14,9 +14,9 @@ const { class: classList } = defineProps<{
   <div :class="cn('card text-brand-300 overflow-clip rounded-2xl', classList)">
     <slot name="illustration" />
     <div v-if="showBodyContainer" class="flex flex-col gap-4 p-3">
-      <h4 v-if="$slots.title" class="card-title">
+      <h3 v-if="$slots.title" class="card-title">
         <slot name="title" />
-      </h4>
+      </h3>
 
       <p v-if="$slots.subtitle" class="card-subtitle">
         <slot name="subtitle" />

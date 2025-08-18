@@ -45,6 +45,7 @@ const testimonies: Testimony[] = Array(5)
     :inner-container-props="{
       class: 'gap-16',
     }"
+    aria-label="Testimonials"
   >
     <div class="text-container">
       <p class="mb-2.5 text-2xl leading-tight">Don’t take it from us</p>

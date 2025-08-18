@@ -3,18 +3,18 @@ import type { Partner } from "~/types/schema.type";
 
 useGSAP(
   (gsap) => {
-    gsap.from("#sectionTitle", {
+    gsap.from("#partnerSectionTitle", {
       duration: 1.6,
       opacity: 0,
       scrollTrigger: {
-        trigger: "#partnersSection",
+        trigger: "#partnerSection",
       },
     });
 
     gsap.to(".mask-element", {
       scale: 0,
       scrollTrigger: {
-        trigger: "#partnersSection",
+        trigger: "#partnerSection",
         start: "center center",
         scrub: 3,
         pin: true,
@@ -22,7 +22,7 @@ useGSAP(
     });
   },
   {
-    scope: ".section-wrapper:has(#partnersSection)",
+    scope: ".section-wrapper:has(#partnerSection)",
   },
 );
 
@@ -38,8 +38,9 @@ const partners: Partner[] = Array(13)
 <template>
   <div class="section-wrapper">
     <SectionWrapper
-      id="partnersSection"
+      id="partnerSection"
       class="relative overflow-clip py-56 @container"
+      aria-label="Partner Companies"
       :inner-container-props="{
         class: 'flex-row justify-between',
       }"
@@ -47,7 +48,10 @@ const partners: Partner[] = Array(13)
       <div
         class="mask-element scale-200 absolute top-1/2 left-1/2 z-10 aspect-square min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-white mix-blend-saturation"
       />
-      <h2 id="sectionTitle" class="flex-1 text-title font-bold text-brand-100">
+      <h2
+        id="partnerSectionTitle"
+        class="flex-1 text-title font-bold text-brand-100"
+      >
         We Help Them Bring <span class="font-normal italic">Colors</span>
       </h2>
       <div class="flex-1 @container flex items-center justify-center">
