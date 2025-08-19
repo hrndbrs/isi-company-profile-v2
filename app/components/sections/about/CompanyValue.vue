@@ -18,25 +18,16 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="companyValueSection"
-    aria-label="Vision Mission"
-    class="py-52 text-brand-100"
+  <SectionWrapper id="companyValueSection" aria-label="Vision Mission" class="py-52 text-brand-200"
     :inner-container-props="{
       class: 'flex-row gap-24',
-    }"
-  >
+    }">
     <div class="flex-1">
-      <NuxtImg
-        src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Naruto_logo.svg"
-        class="size-full object-contain"
-      />
+      <NuxtImg src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Naruto_logo.svg"
+        class="size-full object-contain" />
     </div>
     <div class="section-title max-w-2xl">
-      <h2
-        id="companyValueSectionTitle"
-        class="mb-7 text-7xl leading-tight font-bold"
-      >
+      <h2 id="companyValueSectionTitle" class="mb-7 text-h2">
         Inspirasi Satu <em class="font-normal">Indonesia</em>
       </h2>
       <p class="mb-18">
@@ -76,6 +67,6 @@ useGSAP(
 }
 
 .content h3 {
-  @apply mb-3 text-4xl leading-tight text-secondary-200 italic;
+  @apply mb-3 text-h3 text-secondary-300 italic;
 }
 </style>

@@ -34,20 +34,16 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="ctaSection"
-    aria-label="Contact Us"
-    class="bg-primary-300 py-80 text-foreground"
+  <SectionWrapper id="ctaSection" aria-label="Contact Us" class="bg-primary-500 py-80 text-foreground"
     :inner-container-props="{
       class: 'flex-row',
-    }"
-  >
+    }">
     <div class="flex max-w-3xl flex-col gap-px">
       <div class="overflow-clip">
-        <p class="text-3xl leading-tight font-semibold">We are here</p>
+        <p class="text-h4 font-semibold">We are here</p>
       </div>
-      <h2 id="ctaSectionTitle" class="text-title leading-tight font-bold">
-        To Help You <em class="font-normal text-success-200">Grow</em>
+      <h2 id="ctaSectionTitle" class="text-h1">
+        To Help You <em class="font-normal text-success-300">Grow</em>
       </h2>
       <Button class="self-start">Contact Us</Button>
     </div>

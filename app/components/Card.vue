@@ -11,7 +11,7 @@ const { class: classList } = defineProps<{
 </script>
 
 <template>
-  <div :class="cn('card text-brand-300 overflow-clip rounded-2xl', classList)">
+  <div :class="cn('card text-brand-500 overflow-clip rounded-2xl', classList)">
     <slot name="illustration" />
     <div v-if="showBodyContainer" class="flex flex-col gap-4 p-3">
       <h3 v-if="$slots.title" class="card-title">
@@ -33,14 +33,13 @@ const { class: classList } = defineProps<{
 <style scoped>
 @reference "~/assets/css/main.css";
 
-.card-title,
 .card-subtitle,
 .card-content {
-  @apply leading-tight;
+  @apply leading-compressed;
 }
 
 .card-title {
-  @apply text-2xl font-bold;
+  @apply text-h5 font-bold;
 }
 
 .card-subtitle {

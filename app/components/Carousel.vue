@@ -83,7 +83,7 @@ const handleNext = () => changeIndex(activeIndex.value + 1);
     <div class="flex flex-wrap justify-center gap-8">
       <button
         v-for="(_, index) of items"
-        class="size-4 rounded-full bg-secondary-200 transition-opacity duration-200"
+        class="size-4 rounded-full bg-secondary-300 transition-opacity duration-200"
         :class="{
           'opacity-15 hover:opacity-100': index !== activeIndex,
         }"

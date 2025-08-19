@@ -4,7 +4,7 @@ import { SplitText } from "gsap/all";
 useGSAP(
   (gsap) => {
     const titleSplit = SplitText.create("#heroTitle1", {
-      type: "words, chars",
+      type: "chars",
     });
     const title2Split = SplitText.create("#heroTitle2", {
       type: "lines",
@@ -54,15 +54,11 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    aria-label="About Us Hero"
-    id="heroSection"
-    class="py-78 text-brand-100"
-  >
+  <SectionWrapper aria-label="About Us Hero" id="heroSection" class="py-78 text-brand-200">
     <div class="flex max-w-4xl flex-col gap-3">
-      <p class="text-4xl leading-tight">We are</p>
-      <h1 class="text-title leading-tight">
-        <span id="heroTitle1" class="font-bold"> Inspirasi Satu </span>
+      <p class="text-h3">We are</p>
+      <h1 class="text-h1">
+        <span id="heroTitle1"> Inspirasi Satu </span>
         <span id="heroTitle2" class="font-normal italic">Indonesia</span>
       </h1>
       <p class="text-xl">

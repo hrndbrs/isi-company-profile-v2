@@ -130,27 +130,19 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="locationSection"
-    class="py-44"
-    :inner-container-props="{
-      class: 'gap-56',
-    }"
-    aria-labelledby="locationSectionTitle"
-  >
-    <div class="section-title text-brand-100">
-      <p class="text-3xl leading-tight font-semibold">And you can</p>
-      <h2 id="locationSectionTitle" class="text-title leading-tight italic">
+  <SectionWrapper id="locationSection" class="py-44" :inner-container-props="{
+    class: 'gap-56',
+  }" aria-labelledby="locationSectionTitle">
+    <div class="section-title text-brand-200">
+      <p class="text-h4 font-semibold">And you can</p>
+      <h2 id="locationSectionTitle" class="text-h1 font-normal italic">
         Find Us
       </h2>
     </div>
     <div class="flex justify-around">
       <div class="location-wrapper max-w-72">
-        <Icon
-          id="threeCards"
-          name="svg:three-cards"
-          class="top-1/2 left-1/2 size-100 -translate-x-1/2 -translate-y-3/4"
-        />
+        <Icon id="threeCards" name="svg:three-cards"
+          class="top-1/2 left-1/2 size-100 -translate-x-1/2 -translate-y-3/4" />
         <h3>Head Office</h3>
         <p>
           Menara 165, lt.4, Jl. Let. Jend. T.B Simatupang Kav.1, TB Simatupang,
@@ -158,11 +150,8 @@ useGSAP(
         </p>
       </div>
       <div class="location-wrapper max-w-60">
-        <Icon
-          id="twoCards"
-          name="svg:two-cards"
-          class="top-1/2 left-1/2 h-100 w-75 -translate-x-1/2 -translate-y-3/4"
-        />
+        <Icon id="twoCards" name="svg:two-cards"
+          class="top-1/2 left-1/2 h-100 w-75 -translate-x-1/2 -translate-y-3/4" />
         <h3>Operational Office</h3>
         <p>
           Jl.H.Khair no 59, RT.003 RW.004, Ragunan, Pasar Minggu Jakarta Selatan
@@ -179,7 +168,7 @@ svg {
   overflow: visible;
 }
 
-.section-title > * {
+.section-title>* {
   @apply overflow-clip text-nowrap;
 }
 
@@ -193,7 +182,7 @@ svg {
 }
 
 .location-wrapper h3 {
-  @apply mb-4 text-4xl leading-tight;
+  @apply mb-4 text-h3;
 }
 
 .location-wrapper h3,

@@ -36,18 +36,13 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="serviceSection"
-    class="py-32 text-brand-100"
-    aria-label="Services"
-    :inner-container-props="{
-      class: 'inner-wrapper flex-row gap-24',
-    }"
-  >
-    <h2 id="serviceSectionTitle" class="flex-1 text-title leading-tight mb-74">
-      <span class="font-bold">We are the</span> Expert
+  <SectionWrapper id="serviceSection" class="py-32 text-brand-200" aria-label="Services" :inner-container-props="{
+    class: 'inner-wrapper flex-row gap-24',
+  }">
+    <h2 id="serviceSectionTitle" class="flex-1 text-h1">
+      We are the <span class="font-normal">Expert</span>
     </h2>
-    <div class="flex-1 flex flex-col gap-20 mt-103">
+    <div class="mt-103 flex flex-1 flex-col gap-20">
       <div class="service">
         <h3>
           <strong>Career</strong>
@@ -77,7 +72,7 @@ useGSAP(
 @reference "~/assets/css/main.css";
 
 h3 {
-  @apply text-3xl leading-tight;
+  @apply text-h4;
 }
 
 p {

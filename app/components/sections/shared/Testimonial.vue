@@ -39,37 +39,22 @@ const testimonies: Testimony[] = Array(5)
 </script>
 
 <template>
-  <SectionWrapper
-    id="testimonialSection"
-    class="overflow-clip py-44 text-brand-100"
-    :inner-container-props="{
-      class: 'gap-16',
-    }"
-    aria-label="Testimonials"
-  >
+  <SectionWrapper id="testimonialSection" class="overflow-clip py-44 text-brand-200" :inner-container-props="{
+    class: 'gap-16',
+  }" aria-label="Testimonials">
     <div class="text-container">
-      <p class="mb-2.5 text-2xl leading-tight">Don’t take it from us</p>
-      <h2 class="text-title leading-tight font-bold">
+      <p class="mb-2.5 text-h5">Don’t take it from us</p>
+      <h2 class="text-h1">
         Listen to <br />What They <em class="font-normal"> Say </em>
       </h2>
     </div>
 
-    <Carousel
-      id="testimonialCarousel"
-      :items="testimonies"
-      v-slot="{ item, index, activeIndex }"
-    >
-      <div
-        class="flex flex-1 gap-8 transition-all duration-700"
-        :class="{
-          'opacity-20': index !== activeIndex,
-        }"
-      >
+    <Carousel id="testimonialCarousel" :items="testimonies" v-slot="{ item, index, activeIndex }">
+      <div class="flex flex-1 gap-8 transition-all duration-700" :class="{
+        'opacity-20': index !== activeIndex,
+      }">
         <div class="flex w-52 shrink-0 flex-col gap-4">
-          <NuxtImg
-            :src="item.image"
-            class="size-16 rounded-full object-cover"
-          />
+          <NuxtImg :src="item.image" class="size-16 rounded-full object-cover" />
           <div>
             <strong class="line-clamp-1 break-words">
               {{ item.name }}
@@ -82,13 +67,13 @@ const testimonies: Testimony[] = Array(5)
         <div class="flex flex-col gap-8">
           <div class="flex-1">
             <strong>I was</strong>
-            <p class="line line-clamp-4 break-words">
+            <p class="line-clamp-4 break-words">
               {{ item.before }}
             </p>
           </div>
           <div class="flex-1">
             <strong>Now</strong>
-            <p class="line line-clamp-4 break-words">
+            <p class="line-clamp-4 break-words">
               {{ item.after }}
             </p>
           </div>
@@ -102,10 +87,10 @@ const testimonies: Testimony[] = Array(5)
 @reference "~/assets/css/main.css";
 
 #testimonialCarousel strong {
-  @apply text-2xl;
+  @apply text-h5;
 }
 
 #testimonialCarousel p {
-  @apply mt-1 text-neutral-900;
+  @apply mt-1 leading-compact text-neutral-900;
 }
 </style>

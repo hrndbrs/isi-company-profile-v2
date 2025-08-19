@@ -37,32 +37,19 @@ const partners: Partner[] = Array(13)
 
 <template>
   <div class="section-wrapper">
-    <SectionWrapper
-      id="partnerSection"
-      class="relative overflow-clip py-56 @container"
-      aria-label="Partner Companies"
+    <SectionWrapper id="partnerSection" class="@container relative overflow-clip py-56" aria-label="Partner Companies"
       :inner-container-props="{
         class: 'flex-row justify-between',
-      }"
-    >
+      }">
       <div
-        class="mask-element scale-200 absolute top-1/2 left-1/2 z-10 aspect-square min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-white mix-blend-saturation"
-      />
-      <h2
-        id="partnerSectionTitle"
-        class="flex-1 text-title font-bold text-brand-100"
-      >
-        We Help Them Bring <span class="font-normal italic">Colors</span>
+        class="mask-element absolute top-1/2 left-1/2 z-10 aspect-square min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-200 rounded-full bg-white mix-blend-saturation" />
+      <h2 id="partnerSectionTitle" class="flex-1 text-h1 text-brand-200">
+        We Help Them Bring <em class="font-normal">Colors</em>
       </h2>
-      <div class="flex-1 @container flex items-center justify-center">
-        <div class="grid @sm:grid-cols-4 gap-8">
-          <NuxtImg
-            v-for="partner in partners"
-            :src="partner.image"
-            :alt="partner.name"
-            :key="partner.name"
-            class="max-w-28 aspect-video object-contain"
-          />
+      <div class="@container flex flex-1 items-center justify-center">
+        <div class="grid gap-8 @sm:grid-cols-4">
+          <NuxtImg v-for="partner in partners" :src="partner.image" :alt="partner.name" :key="partner.name"
+            class="aspect-video max-w-28 object-contain" />
         </div>
       </div>
     </SectionWrapper>

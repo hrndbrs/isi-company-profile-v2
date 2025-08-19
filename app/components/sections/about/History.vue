@@ -119,51 +119,34 @@ const contents: Content[] = [
 </script>
 
 <template>
-  <SectionWrapper
-    id="historySection"
-    aria-label="Company History"
-    :inner-container-props="{
-      class: 'gap-16',
-    }"
-  >
+  <SectionWrapper id="historySection" aria-label="Company History" :inner-container-props="{
+    class: 'gap-16',
+  }">
     <div class="section-title">
-      <h2
-        id="historySectionTitle"
-        class="line-tight text-title font-bold text-brand-100"
-      >
+      <h2 id="historySectionTitle" class="text-h1 text-brand-200">
         Our <em class="font-normal">Journey</em> 🎉
       </h2>
-      <p class="line-tight mt-1.5 text-2xl">
-        Get to know more about us and our milestones
-      </p>
+      <p class="mt-1.5 text-h5">Get to know more about us and our milestones</p>
     </div>
 
     <div class="timeline table">
       <div class="table-row" v-for="c of contents" :key="c.year">
-        <div class="table-cell pr-5">
-          <p
-            class="text-right text-3xl leading-tight font-bold text-secondary-200"
-          >
+        <dt class="table-cell pr-5">
+          <time :datetime="c.year" class="text-right text-h4 font-bold text-secondary-300">
             {{ c.year }}
-          </p>
-        </div>
-        <div class="table-cell">
-          <div class="relative flex flex-col gap-8 pl-10">
-            <span
-              class="line absolute top-0 left-0 inline-block h-full w-2 bg-primary-100"
-            />
-            <div
-              class="text-xl leading-tight"
-              v-for="a of c.activities"
-              :key="a.title"
-            >
-              <strong class="text-brand-100">
+          </time>
+        </dt>
+        <dd class="table-cell">
+          <ul class="relative flex flex-col gap-8 pl-10">
+            <span class="line absolute top-0 left-0 inline-block h-full w-2 bg-primary-200" />
+            <li class="text-h6" v-for="a of c.activities" :key="a.title">
+              <strong class="text-brand-200">
                 {{ a.title }}
               </strong>
               <p class="mt-2">{{ a.description }}</p>
-            </div>
-          </div>
-        </div>
+            </li>
+          </ul>
+        </dd>
       </div>
     </div>
   </SectionWrapper>

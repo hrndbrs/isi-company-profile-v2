@@ -52,23 +52,16 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="heroSection"
-    class="py-24 text-brand-100"
-    :inner-container-props="{
-      class: 'gap-28',
-    }"
-    aria-label="Hero"
-  >
+  <SectionWrapper id="heroSection" class="py-24 text-brand-200" :inner-container-props="{
+    class: 'gap-28',
+  }" aria-label="Hero">
     <div>
-      <div
-        class="float-right inline-flex size-72 items-center justify-center text-[252px]"
-      >
+      <div class="float-right inline-flex size-72 items-center justify-center text-[252px]">
         ☺️
       </div>
     </div>
     <div class="text-container flex flex-col gap-4">
-      <h1 class="text-title leading-tight font-bold" id="heroTitle">
+      <h1 class="text-h1" id="heroTitle">
         Your Perfect Career <span class="font-normal italic">Coach</span>
       </h1>
       <p class="text-xl" id="heroDescription">

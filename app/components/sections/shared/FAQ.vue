@@ -11,14 +11,18 @@ useGSAP(
         start: "top bottom",
       },
     });
-    gsap.from(".faq-container li", {
-      opacity: 0,
-      y: "150px",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: ".faq-container",
-        start: "top bottom",
-      },
+
+    const faqs = Array.from(document.querySelectorAll(".faq-container > *"));
+
+    faqs.forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        y: "150px",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+        },
+      });
     });
   },
   { scope: "#faqSection" },
@@ -32,38 +36,29 @@ const faqs: FAQ[] = Array(5).fill({
 </script>
 
 <template>
-  <SectionWrapper
-    id="faqSection"
-    aria-labelledby="faqSectionTitle faqSectionSubtitle"
-    class="py-28"
+  <SectionWrapper id="faqSection" aria-labelledby="faqSectionTitle faqSectionSubtitle" class="py-28"
     :inner-container-props="{
       class: 'gap-6',
-    }"
-  >
+    }">
     <div class="flex justify-between">
-      <div class="section-title text-brand-100">
-        <p
-          id="faqSectionSubtitle"
-          class="mb-px text-4xl leading-tight font-bold"
-        >
+      <div class="section-title text-brand-200">
+        <p id="faqSectionSubtitle" class="mb-px text-h3 font-bold">
           Frequently Asked Questions
         </p>
-        <h2 id="faqSectionTitle" class="text-title leading-tight italic">
-          FAQ
-        </h2>
+        <h2 id="faqSectionTitle" class="text-h1 font-normal italic">FAQ</h2>
       </div>
 
       <span class="inline-block aspect-square h-full text-[7rem]"> 💡 </span>
     </div>
 
-    <ul class="faq-container flex flex-col gap-8 text-xl">
-      <li v-for="(faq, i) in faqs" :key="faq.question">
-        <div class="flex font-bold text-secondary-200">
+    <dl class="faq-container flex flex-col gap-8 text-h6">
+      <div v-for="(faq, i) in faqs" :key="faq.question">
+        <dt class="flex font-bold text-secondary-300">
           <span class="inline-block">{{ i + 1 }}.</span>
           <p class="ml-2">{{ faq.question }}</p>
-        </div>
-        <div class="html" v-dompurify-html="faq.answer" />
-      </li>
-    </ul>
+        </dt>
+        <dd class="html" v-dompurify-html="faq.answer" />
+      </div>
+    </dl>
   </SectionWrapper>
 </template>
