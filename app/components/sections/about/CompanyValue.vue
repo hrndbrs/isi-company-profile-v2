@@ -18,15 +18,21 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="companyValueSection" aria-label="Vision Mission" class="py-52 text-brand-200"
+  <SectionWrapper
+    id="companyValueSection"
+    aria-label="Vision Mission"
+    class="py-36 text-brand-200 lg:py-52"
     :inner-container-props="{
-      class: 'flex-row gap-24',
-    }">
-    <div class="flex-1">
-      <NuxtImg src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Naruto_logo.svg"
-        class="size-full object-contain" />
+      class: 'lg:flex-row gap-24',
+    }"
+  >
+    <div class="flex-1 max-lg:max-h-105">
+      <NuxtImg
+        src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Naruto_logo.svg"
+        class="size-full object-contain max-lg:max-h-105"
+      />
     </div>
-    <div class="section-title max-w-2xl">
+    <div class="section-title lg:max-w-2xl">
       <h2 id="companyValueSectionTitle" class="mb-7 text-h2">
         Inspirasi Satu <em class="font-normal">Indonesia</em>
       </h2>

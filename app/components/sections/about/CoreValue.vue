@@ -55,9 +55,14 @@ const values = [
 </script>
 
 <template>
-  <SectionWrapper id="coreValueSection" aria-labelledby="coreValueSectionTitle" class="py-28" :inner-container-props="{
-    class: '@container',
-  }">
+  <SectionWrapper
+    id="coreValueSection"
+    aria-labelledby="coreValueSectionTitle"
+    class="py-28"
+    :inner-container-props="{
+      class: '@container',
+    }"
+  >
     <div class="section-title text-brand-200">
       <p class="text-h3">Our</p>
       <h2 id="coreValueSectionTitle" class="text-h1">
@@ -65,8 +70,12 @@ const values = [
       </h2>
     </div>
 
-    <ul class="grid grid-cols-4 gap-5">
-      <li class="core-value" v-for="v of values" :key="v.title">
+    <ul class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <li
+        class="core-value mx-auto flex max-w-96 flex-col items-center"
+        v-for="v of values"
+        :key="v.title"
+      >
         <Icon :name="v.icon" class="mb-6 size-73" />
         <div>
           <h3 class="mb-1.5 text-h5 text-brand-500">
