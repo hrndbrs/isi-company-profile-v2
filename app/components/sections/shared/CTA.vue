@@ -34,7 +34,7 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="ctaSection" aria-label="Contact Us" class="bg-primary-500 py-80 text-foreground"
+  <SectionWrapper id="ctaSection" aria-label="Contact Us" class="bg-primary-500 py-44 text-foreground md:py-80"
     :inner-container-props="{
       class: 'flex-row',
     }">

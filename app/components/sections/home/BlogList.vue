@@ -12,39 +12,23 @@ useGSAP(
       opacity: 0,
       duration: 0.55,
       stagger: 0.11,
-      x: "30%",
+      translateX: "30%",
       scrollTrigger: {
         trigger: ".section-title",
         start: "top bottom",
       },
     });
 
-    const cards = Array.from(
-      document.querySelectorAll("#blogListSection .card-container .card"),
-    );
+    gsap.from("#seeMoreBlogs", {
+      scale: 0,
+      duration: 1,
+      yoyo: true,
+      ease: "elastic.out",
 
-    let tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".card-container",
+        trigger: "#seeMoreBlogs",
         start: "10% bottom",
       },
-    });
-
-    cards.forEach((card, i) => {
-      const post = i === 0 ? undefined : "<=0.34";
-      tl = tl.from(
-        card,
-        {
-          duration: 0.6,
-          x: `${i * 100}%`,
-          opacity: 0,
-        },
-        post,
-      );
-    });
-    tl.from("#seeMoreBlogs", {
-      opacity: 0,
-      duration: 0.24,
     });
   },
   {
@@ -63,45 +47,63 @@ const blogs: Blog[] = Array(4).fill({
 </script>
 
 <template>
-  <SectionWrapper id="blogListSection" class="py-28" aria-labelledby="blogListSectionTitle" :inner-container-props="{
-    class: 'gap-16',
-  }">
-    <div>
-      <div class="section-title max-w-xl text-brand-200">
-        <p class="text-h3 font-semibold">And you can</p>
-        <h2 id="blogListSectionTitle" class="text-h1">
-          Read Our <em class="font-normal">Writings</em>
-        </h2>
-      </div>
+  <SectionWrapper
+    id="blogListSection"
+    class="py-28"
+    aria-labelledby="blogListSectionTitle"
+    :inner-container-props="{
+      class: 'gap-16',
+    }"
+  >
+    <div class="section-title max-w-xl text-brand-200 max-sm:overflow-clip">
+      <p class="text-h3 font-semibold">And you can</p>
+      <h2 id="blogListSectionTitle" class="text-h1">
+        Read Our <em class="font-normal">Writings</em>
+      </h2>
     </div>
 
-    <div class="card-container relative grid grid-cols-4 gap-4">
-      <NuxtLink id="seeMoreBlogs" to="/blogs"
-        class="absolute top-1/2 right-0 z-[2] w-full max-w-36 translate-x-1/2 -translate-y-1/2">
-        <Button class="aspect-square w-full rounded-full text-h6">
-          Find More
-        </Button>
-      </NuxtLink>
+    <div class="relative">
+      <div class="card-container flex gap-4 overflow-x-auto">
+        <article
+          v-for="(blog, i) in blogs"
+          :key="blog.slug"
+          class="blog-card transition-all duration-200"
+          :aria-labelledby="`blog-${i}`"
+        >
+          <NuxtLink :to="`/blogs/${blog.slug}`">
+            <Card
+              class="transition-color bg-neutral-50 duration-200 hover:bg-primary-500 hover:text-neutral-50"
+            >
+              <template #illustration>
+                <NuxtImg
+                  :src="blog.image"
+                  class="aspect-square w-full bg-neutral-300 object-cover"
+                />
+              </template>
+              <template #title>
+                <span :id="`blog-${i}`">
+                  {{ blog.title }}
+                </span>
+              </template>
+              <template #subtitle>{{ blog.publishedAt }}</template>
+              <template #content>
+                <div v-dompurify-html="blog.content" />
+              </template>
+            </Card>
+          </NuxtLink>
+        </article>
+      </div>
 
-      <article v-for="(blog, i) in blogs" :key="blog.slug" class="blog-card transition-all duration-200"
-        :aria-labelledby="`blog-${i}`">
-        <NuxtLink :to="`/blogs/${blog.slug}`">
-          <Card>
-            <template #illustration>
-              <NuxtImg :src="blog.image" class="aspect-square w-full bg-neutral-300 object-cover" />
-            </template>
-            <template #title>
-              <span :id="`blog-${i}`">
-                {{ blog.title }}
-              </span>
-            </template>
-            <template #subtitle>{{ blog.publishedAt }}</template>
-            <template #content>
-              <div v-dompurify-html="blog.content" />
-            </template>
-          </Card>
+      <nav
+        aria-label="See blog list"
+        class="top-1/2 right-0 z-[2] flex justify-center max-1.5xl:mt-11 max-1.5xl:w-full 1.5xl:absolute 1.5xl:translate-x-1/2 1.5xl:-translate-y-1/2"
+      >
+        <NuxtLink id="seeMoreBlogs" to="/blogs">
+          <Button class="aspect-square w-36 rounded-full text-h6">
+            Find More
+          </Button>
         </NuxtLink>
-      </article>
+      </nav>
     </div>
   </SectionWrapper>
 </template>
@@ -109,12 +111,8 @@ const blogs: Blog[] = Array(4).fill({
 <style scoped>
 @reference "~/assets/css/main.css";
 
-.card-container:has(.blog-card:hover)> :not(.blog-card:hover, :has(button)) {
+.card-container:has(.blog-card:hover) > :not(.blog-card:hover) {
   @apply grayscale-100;
-}
-
-:deep(.card) {
-  @apply bg-neutral-50;
 }
 
 :deep(.card-title),

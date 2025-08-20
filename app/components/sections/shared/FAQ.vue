@@ -36,11 +36,15 @@ const faqs: FAQ[] = Array(5).fill({
 </script>
 
 <template>
-  <SectionWrapper id="faqSection" aria-labelledby="faqSectionTitle faqSectionSubtitle" class="py-28"
+  <SectionWrapper
+    id="faqSection"
+    aria-labelledby="faqSectionTitle faqSectionSubtitle"
+    class="py-28"
     :inner-container-props="{
-      class: 'gap-6',
-    }">
-    <div class="flex justify-between">
+      class: 'gap-3 md:gap-6',
+    }"
+  >
+    <div class="flex flex-col justify-between sm:flex-row">
       <div class="section-title text-brand-200">
         <p id="faqSectionSubtitle" class="mb-px text-h3 font-bold">
           Frequently Asked Questions
@@ -48,7 +52,9 @@ const faqs: FAQ[] = Array(5).fill({
         <h2 id="faqSectionTitle" class="text-h1 font-normal italic">FAQ</h2>
       </div>
 
-      <span class="inline-block aspect-square h-full text-[7rem]"> 💡 </span>
+      <span class="inline-block h-full self-end text-[5rem] sm:text-[7rem]">
+        💡
+      </span>
     </div>
 
     <dl class="faq-container flex flex-col gap-8 text-h6">
@@ -57,7 +63,7 @@ const faqs: FAQ[] = Array(5).fill({
           <span class="inline-block">{{ i + 1 }}.</span>
           <p class="ml-2">{{ faq.question }}</p>
         </dt>
-        <dd class="prose" v-dompurify-html="faq.answer" />
+        <dd class="prose mt-2 max-w-[unset]" v-dompurify-html="faq.answer" />
       </div>
     </dl>
   </SectionWrapper>

@@ -130,32 +130,50 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="locationSection" class="py-44" :inner-container-props="{
-    class: 'gap-56',
-  }" aria-labelledby="locationSectionTitle">
+  <SectionWrapper
+    id="locationSection"
+    class="py-25 md:py-44"
+    :inner-container-props="{
+      class: 'md:gap-56 gap-14',
+    }"
+    aria-labelledby="locationSectionTitle"
+  >
     <div class="section-title text-brand-200">
       <p class="text-h4 font-semibold">And you can</p>
       <h2 id="locationSectionTitle" class="text-h1 font-normal italic">
         Find Us
       </h2>
     </div>
-    <div class="flex justify-around">
-      <div class="location-wrapper max-w-72">
-        <Icon id="threeCards" name="svg:three-cards"
-          class="top-1/2 left-1/2 size-100 -translate-x-1/2 -translate-y-3/4" />
-        <h3>Head Office</h3>
-        <p>
-          Menara 165, lt.4, Jl. Let. Jend. T.B Simatupang Kav.1, TB Simatupang,
-          Jakarta Selatan
-        </p>
+    <div
+      class="flex flex-col items-center max-md:gap-16 md:flex-row md:justify-around"
+    >
+      <div class="location-wrapper md:max-w-72">
+        <Icon
+          id="threeCards"
+          name="svg:three-cards"
+          class="size-80 sm:size-100"
+        />
+        <div class="location">
+          <h3>Head Office</h3>
+          <p>
+            Menara 165, lt.4, Jl. Let. Jend. T.B Simatupang Kav.1, TB
+            Simatupang, Jakarta Selatan
+          </p>
+        </div>
       </div>
-      <div class="location-wrapper max-w-60">
-        <Icon id="twoCards" name="svg:two-cards"
-          class="top-1/2 left-1/2 h-100 w-75 -translate-x-1/2 -translate-y-3/4" />
-        <h3>Operational Office</h3>
-        <p>
-          Jl.H.Khair no 59, RT.003 RW.004, Ragunan, Pasar Minggu Jakarta Selatan
-        </p>
+      <div class="location-wrapper md:max-w-60">
+        <Icon
+          id="twoCards"
+          name="svg:two-cards"
+          class="h-96 w-72 sm:h-100 sm:w-75"
+        />
+        <div class="location">
+          <h3>Operational Office</h3>
+          <p>
+            Jl.H.Khair no 59, RT.003 RW.004, Ragunan, Pasar Minggu Jakarta
+            Selatan
+          </p>
+        </div>
       </div>
     </div>
   </SectionWrapper>
@@ -168,21 +186,27 @@ svg {
   overflow: visible;
 }
 
-.section-title>* {
+.section-title > * {
   @apply overflow-clip text-nowrap;
 }
 
 .location-wrapper {
-  @apply relative pb-36 text-foreground;
+  @apply relative text-foreground md:pb-36;
 }
 
 .location-wrapper svg {
-  @apply absolute;
+  @apply md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-3/4;
+
   z-index: -2;
 }
 
 .location-wrapper h3 {
   @apply mb-4 text-h3;
+}
+
+.location {
+  @apply max-md:absolute max-md:w-full max-md:px-12;
+  @apply max-md:top-1/2 max-md:left-1/2 max-md:-translate-x-1/2 max-md:-translate-y-1/4;
 }
 
 .location-wrapper h3,

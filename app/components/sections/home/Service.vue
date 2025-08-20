@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
 import { SplitText } from "gsap/all";
+
+const { md } = useBreakpoints(breakpointsTailwind);
 
 useGSAP(
   (gsap) => {
@@ -16,8 +19,9 @@ useGSAP(
       })
       .from(titleSplit.lines, {
         opacity: 0,
-        y: "70%",
         stagger: 0.1,
+        y: md.value ? "70%" : undefined,
+        x: md.value ? undefined : "-100%px",
       })
       .from(
         ".service",
@@ -37,12 +41,12 @@ useGSAP(
 
 <template>
   <SectionWrapper id="serviceSection" class="py-32 text-brand-200" aria-label="Services" :inner-container-props="{
-    class: 'inner-wrapper flex-row gap-24',
+    class: 'inner-wrapper md:flex-row gap-24',
   }">
     <h2 id="serviceSectionTitle" class="flex-1 text-h1">
       We are the <span class="font-normal">Expert</span>
     </h2>
-    <div class="mt-103 flex flex-1 flex-col gap-20">
+    <div class="flex flex-1 flex-col gap-20 md:mt-36 lg:mt-103">
       <div class="service">
         <h3>
           <strong>Career</strong>

@@ -28,3 +28,11 @@ const { label, ...props } = defineProps<NavLink>();
     </NuxtLink>
   </li>
 </template>
+
+<style scoped>
+@reference "~/assets/css/main.css";
+
+.router-link-exact-active {
+  @apply text-foreground;
+}
+</style>

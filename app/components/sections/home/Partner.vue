@@ -26,7 +26,7 @@ useGSAP(
   },
 );
 
-const partners: Partner[] = Array(13)
+const partners: Partner[] = Array(16)
   .fill(null)
   .map((_, i) => ({
     name: `partner-${i}`,
@@ -39,7 +39,7 @@ const partners: Partner[] = Array(13)
   <div class="section-wrapper">
     <SectionWrapper id="partnerSection" class="@container relative overflow-clip py-56" aria-label="Partner Companies"
       :inner-container-props="{
-        class: 'flex-row justify-between',
+        class: 'lg:flex-row justify-between lg:gap-26 gap-12',
       }">
       <div
         class="mask-element absolute top-1/2 left-1/2 z-10 aspect-square min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-200 rounded-full bg-white mix-blend-saturation" />
@@ -47,9 +47,9 @@ const partners: Partner[] = Array(13)
         We Help Them Bring <em class="font-normal">Colors</em>
       </h2>
       <div class="@container flex flex-1 items-center justify-center">
-        <div class="grid gap-8 @sm:grid-cols-4">
+        <div class="flex max-w-md flex-wrap justify-center gap-3 @lg:max-w-lg @lg:gap-8">
           <NuxtImg v-for="partner in partners" :src="partner.image" :alt="partner.name" :key="partner.name"
-            class="aspect-video max-w-28 object-contain" />
+            sizes="72px sm:116px" class="aspect-video max-w-18 flex-1 shrink-0 object-contain @md:max-w-24" />
         </div>
       </div>
     </SectionWrapper>

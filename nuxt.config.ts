@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   ],
   image: {
     domains: [prod ? "" : "*"],
+    format: ["webp"],
   },
   app: {
     head: {

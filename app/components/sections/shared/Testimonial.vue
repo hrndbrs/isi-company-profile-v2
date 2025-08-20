@@ -50,7 +50,7 @@ const testimonies: Testimony[] = Array(5)
     </div>
 
     <Carousel id="testimonialCarousel" :items="testimonies" v-slot="{ item, index, activeIndex }">
-      <div class="flex flex-1 gap-8 transition-all duration-700" :class="{
+      <div class="flex flex-1 flex-col gap-8 transition-all duration-700 sm:flex-row" :class="{
         'opacity-20': index !== activeIndex,
       }">
         <div class="flex w-52 shrink-0 flex-col gap-4">
@@ -64,7 +64,7 @@ const testimonies: Testimony[] = Array(5)
             </p>
           </div>
         </div>
-        <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-3 sm:gap-8">
           <div class="flex-1">
             <strong>I was</strong>
             <p class="line-clamp-4 break-words">
