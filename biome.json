@@ -6,12 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "includes": [
-      "app/**/*.ts",
-      "app/**/*.vue",
-      "nuxt.config.ts",
-      "*.json"
-    ],
+    "includes": ["app/**/*.ts", "app/**/*.vue", "nuxt.config.ts", "*.json"],
     "ignoreUnknown": true
   },
   "formatter": {
@@ -50,9 +45,7 @@
   },
   "overrides": [
     {
-      "includes": [
-        "**/*.vue"
-      ],
+      "includes": ["**/*.vue"],
       "linter": {
         "rules": {
           "style": {

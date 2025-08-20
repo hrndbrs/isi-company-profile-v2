@@ -10,3 +10,9 @@ export type NavLink = { label: string } & (
       items: NavLink[];
     }
 );
+
+export type ServiceActivity = {
+  icon: string;
+  title: string;
+  description: string;
+};
