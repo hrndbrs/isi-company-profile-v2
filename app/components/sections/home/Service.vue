@@ -76,6 +76,6 @@ h3 {
 }
 
 p {
-  @apply mt-2;
+  @apply mt-2 text-h6;
 }
 </style>

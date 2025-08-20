@@ -31,8 +31,8 @@ export function useGSAP(cb?: Callback, opts?: Dependencies | Options) {
   }
 
   watch([width, ...deps], () => {
+    ctx.value?.revert();
     ctx.value = createContext(cb, scope);
-    // ctx.value?.revert();
   });
 
   onMounted(() => {

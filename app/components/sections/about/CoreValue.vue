@@ -72,7 +72,7 @@ const values = [
           <h3 class="mb-1.5 text-h5 text-brand-500">
             {{ v.title }}
           </h3>
-          <p>
+          <p class="text-h6">
             {{ v.description }}
           </p>
         </div>

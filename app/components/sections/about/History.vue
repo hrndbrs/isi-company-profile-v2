@@ -132,7 +132,7 @@ const contents: Content[] = [
     <div class="timeline table">
       <div class="table-row" v-for="c of contents" :key="c.year">
         <dt class="table-cell pr-5">
-          <time :datetime="c.year" class="text-right text-h4 font-bold text-secondary-300">
+          <time :datetime="c.year" class="block text-right text-h4 font-bold text-secondary-300">
             {{ c.year }}
           </time>
         </dt>
