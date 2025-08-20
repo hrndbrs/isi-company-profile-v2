@@ -2,18 +2,17 @@
   --font-jakarta: "Plus Jakarta Sans", sans-serif;
 
   --text-title: 7.5rem;
-  --text-title-mobile: 4.5rem;
 
   --leading-compressed: 1.2;
   --leading-compact: 1.42;
 }
 
 @utility text-h1 {
-  @apply text-title-mobile lg:text-title leading-compressed font-bold;
+  @apply text-7xl lg:text-title leading-compressed font-bold;
 }
 
 @utility text-h2 {
-  @apply text-title-mobile lg:text-7xl leading-compressed font-bold;
+  @apply text-7xl leading-compressed font-bold;
 }
 
 @utility text-h3 {

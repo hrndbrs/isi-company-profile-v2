@@ -42,7 +42,7 @@ useGSAP(
   <SectionWrapper
     id="coachingHeroSection"
     aria-label="Coaching Service Hero"
-    class="py-72"
+    class="py-72 max-md:pb-14"
     :inner-container-props="{
       class: 'text-brand-200 gap-3',
     }"
