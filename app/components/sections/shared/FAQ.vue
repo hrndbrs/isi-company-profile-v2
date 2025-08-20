@@ -57,7 +57,7 @@ const faqs: FAQ[] = Array(5).fill({
           <span class="inline-block">{{ i + 1 }}.</span>
           <p class="ml-2">{{ faq.question }}</p>
         </dt>
-        <dd class="html" v-dompurify-html="faq.answer" />
+        <dd class="prose" v-dompurify-html="faq.answer" />
       </div>
     </dl>
   </SectionWrapper>

@@ -63,12 +63,11 @@ const blogs: Blog[] = Array(4).fill({
 </script>
 
 <template>
-  <SectionWrapper id="blogListSection" class="py-28 text-brand-200" aria-labelledby="blogListSectionTitle"
-    :inner-container-props="{
-      class: 'gap-16',
-    }">
+  <SectionWrapper id="blogListSection" class="py-28" aria-labelledby="blogListSectionTitle" :inner-container-props="{
+    class: 'gap-16',
+  }">
     <div>
-      <div class="section-title max-w-xl">
+      <div class="section-title max-w-xl text-brand-200">
         <p class="text-h3 font-semibold">And you can</p>
         <h2 id="blogListSectionTitle" class="text-h1">
           Read Our <em class="font-normal">Writings</em>
@@ -97,7 +96,9 @@ const blogs: Blog[] = Array(4).fill({
               </span>
             </template>
             <template #subtitle>{{ blog.publishedAt }}</template>
-            <template #content>{{ blog.content }}</template>
+            <template #content>
+              <div v-dompurify-html="blog.content" />
+            </template>
           </Card>
         </NuxtLink>
       </article>

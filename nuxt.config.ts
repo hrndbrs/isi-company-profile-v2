@@ -48,5 +48,5 @@ export default defineNuxtConfig({
       path: "~/components/sections",
     },
   ],
-  css: ["~/assets/css/main.css", "~/assets/css/default.css"],
+  css: ["~/assets/css/main.css"],
 });

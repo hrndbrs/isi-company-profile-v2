@@ -22,9 +22,9 @@ const { class: classList } = defineProps<{
         <slot name="subtitle" />
       </p>
 
-      <p v-if="$slots.content" class="card-content">
+      <div v-if="$slots.content" class="card-content">
         <slot name="content" />
-      </p>
+      </div>
     </div>
     <slot />
   </div>
