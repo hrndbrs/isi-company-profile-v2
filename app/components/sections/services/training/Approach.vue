@@ -49,41 +49,39 @@ useGSAP(
     });
   },
   {
-    scope: "#coachingApproachSection",
+    scope: "#trainingApproachSection",
   },
 );
 
 const activities: ServiceActivity[] = [
   {
+    icon: "svg:five-dots",
+    title: "Skill Assessment",
+    description: "Identify your current skill level and areas for improvement.",
+  },
+  {
+    icon: "svg:summertime-sadness",
+    title: "Workshops",
+    description: "Participate in tailored workshops with real-world scenarios.",
+  },
+  {
+    icon: "svg:butterfly",
+    title: "Exercise",
+    description: "Apply learned skills through interactive activities.",
+  },
+  {
     icon: "svg:keyhole",
-    title: "Private Coach",
+    title: "Join the Community",
     description:
-      "Discuss your life goals and challenges through our one-on-one sessions.",
-  },
-  {
-    icon: "svg:soft-star",
-    title: "Personalized Plan",
-    description: "Receive a customized coaching plan with actionable steps.",
-  },
-  {
-    icon: "svg:soft-flower",
-    title: "Ongoing Support",
-    description:
-      "We are your friends! We will help you track progress and make adjustments.",
-  },
-  {
-    icon: "svg:hourglass",
-    title: "Resource Access",
-    description:
-      "Lifetime access to career development materials and resources.",
+      "Join a supportive community for continuous growth and networking.",
   },
 ];
 </script>
 
 <template>
   <SectionWrapper
-    id="coachingApproachSection"
-    aria-label="How Coaching Works"
+    id="trainingApproachSection"
+    aria-label="How Training Works"
     class="py-52 text-brand-200"
     :inner-container-props="{
       class: 'gap-14',
@@ -91,7 +89,7 @@ const activities: ServiceActivity[] = [
   >
     <div class="section-title">
       <p class="mb-3 text-h3">So...</p>
-      <h2 id="coachingApproachSectionTitle" class="text-h1">
+      <h2 id="trainingApproachSectionTitle" class="text-h1">
         How does it <em class="font-normal">work</em>?
       </h2>
     </div>
