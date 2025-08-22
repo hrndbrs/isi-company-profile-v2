@@ -1,12 +1,3 @@
-import { SectionWrapper, NuxtLayout, Button } from '../.nuxt/components';
-<script setup lang="ts">
-import type { NuxtError } from "#app";
-
-const { error } = defineProps({
-  error: Object as () => NuxtError,
-});
-</script>
-
 <template>
   <NuxtLayout name="default">
     <SectionWrapper
