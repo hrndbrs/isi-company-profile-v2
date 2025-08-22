@@ -103,7 +103,7 @@ const activities: ServiceActivity[] = [
         <div class="mb-16 overflow-auto">
           <Icon :name="a.icon" class="float-right size-8" />
         </div>
-        <h3 class="text-h5 font-bold text-brand-300">
+        <h3 class="text-h5 font-bold">
           {{ a.title }}
         </h3>
         <p class="mt-1.5 leading-compressed">{{ a.description }}</p>

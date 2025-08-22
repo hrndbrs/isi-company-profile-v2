@@ -49,41 +49,42 @@ useGSAP(
     });
   },
   {
-    scope: "#coachingApproachSection",
+    scope: "#trainingApproachSection",
   },
 );
 
 const activities: ServiceActivity[] = [
   {
-    icon: "svg:keyhole",
-    title: "Private Coach",
+    icon: "svg:five-dots",
+    title: "Assessment & Consultation",
     description:
-      "Discuss your life goals and challenges through our one-on-one sessions.",
+      "Let’s start by understanding your team’s unique challenges and goals through a comprehensive needs assessment.",
   },
   {
     icon: "svg:soft-star",
-    title: "Personalized Plan",
-    description: "Receive a customized coaching plan with actionable steps.",
+    title: "Get Personalized Program",
+    description:
+      "Step 2! We will develop tailored coaching and training programs that align with your team’s unique objectives.",
+  },
+  {
+    icon: "svg:butterfly",
+    title: "Let’s Have Fun! Let’s Try!",
+    description:
+      "Step 3! Our expert coaches and trainers deliver interactive and practical  the programs through a combination of workshops, seminars, and one-on-one sessions.",
   },
   {
     icon: "svg:soft-flower",
-    title: "Ongoing Support",
+    title: "Get Positive Support",
     description:
-      "We are your friends! We will help you track progress and make adjustments.",
-  },
-  {
-    icon: "svg:hourglass",
-    title: "Resource Access",
-    description:
-      "Lifetime access to career development materials and resources.",
+      "It doesn’t end there! We can provide continuous support and follow-up to reinforce the learning and help your team integrate new skills into their daily work. ",
   },
 ];
 </script>
 
 <template>
   <SectionWrapper
-    id="coachingApproachSection"
-    aria-label="How Coaching Works"
+    id="trainingApproachSection"
+    aria-label="How Training Works"
     class="py-52 text-brand-200"
     :inner-container-props="{
       class: 'gap-14',
@@ -91,24 +92,24 @@ const activities: ServiceActivity[] = [
   >
     <div class="section-title">
       <p class="mb-3 text-h3">So...</p>
-      <h2 id="coachingApproachSectionTitle" class="text-h1">
+      <h2 id="trainingApproachSectionTitle" class="text-h1">
         How does it <em class="font-normal">work</em>?
       </h2>
     </div>
 
-    <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       <li
-        class="min-h-80 rounded-2xl bg-foreground p-4 max-w-96 mx-auto"
+        class="mx-auto max-w-96 rounded-2xl bg-foreground p-4 min-h-80"
         v-for="(a, i) in activities"
         :key="`activity-${i}`"
       >
-        <div class="mb-16 overflow-auto">
-          <Icon :name="a.icon" class="float-right size-8" />
+        <Icon :name="a.icon" class="float-right size-8" />
+        <div class="py-9.5 h-full flex flex-col justify-center">
+          <h3 class="text-h5 font-bold">
+            {{ a.title }}
+          </h3>
+          <p class="mt-1.5 leading-compressed">{{ a.description }}</p>
         </div>
-        <h3 class="text-h5 font-bold">
-          {{ a.title }}
-        </h3>
-        <p class="mt-1.5 leading-compressed">{{ a.description }}</p>
       </li>
     </ul>
   </SectionWrapper>
