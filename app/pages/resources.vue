@@ -1,4 +1,3 @@
-import { SectionWrapper, NuxtImg } from '../../.nuxt/components';
 <script setup lang="ts">
 type MyObject = {
   title: string;
