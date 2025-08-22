@@ -1,5 +1,6 @@
 <template>
   <CorporateHero />
+  <CorporateAbout />
   <SharedTestimonial />
   <SharedCTA />
   <SharedLocation />
