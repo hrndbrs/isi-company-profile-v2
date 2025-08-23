@@ -20,4 +20,6 @@
   --color-success-200: hsl(168, 100%, 84%);
   --color-success-300: hsl(154, 100%, 73%);
   --color-success-500: hsl(144, 92%, 46%);
+
+  --color-natural-border: hsl(240, 4%, 46%);
 }
