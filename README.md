@@ -84,7 +84,6 @@ npm run preview
 | Blog List          	| /blogs              	|
 | Blog Detail        	| /blogs/[slug]       	|
 | Resource List      	| /resources          	|
-| Resource Detail    	| /resources/[slug]    	|
 | Not Found          	| /*                  	|
 
 ---
