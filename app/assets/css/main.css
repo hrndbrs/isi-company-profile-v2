@@ -16,6 +16,10 @@
   }
 }
 
+@utility prose {
+  max-width: unset;
+}
+
 @utility container {
   @apply mx-auto max-w-6xl;
 }
