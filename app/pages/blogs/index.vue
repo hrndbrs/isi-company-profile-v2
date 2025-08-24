@@ -5,7 +5,7 @@ onMounted(() => {
     setTimeout(() => {
       card.style.opacity = "1";
       card.style.translate = "0 0";
-    }, index * 200); // stagger animation by index
+    }, index * 100);
   });
 });
 
@@ -46,18 +46,17 @@ const arr: MyObject[] = Array(8).fill({
   <SectionWrapper
     id="blogListSection"
     class="text-brand-200 gap-3 break-words my-23"
-    style="visibility: visible"
+    aria-label="Blog list"
   >
-    <h3 class="text-h3">Our Writings</h3>
+    <h3 class="text-h3 mb-3">Our Writings</h3>
     <h1 class="italic text-h1 font-normal">Blogs</h1>
 
-    <!-- blogs List -->
-    <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-7 gap-x-4">
+    <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-11 gap-x-4">
       <article
-        v-for="(blog, i) in arr"
+        v-for="blog in arr"
         :key="blog.title"
-        class="inline-block sm:max-w-68 opacity-0 translate-y-14 transition-all duration-200"
-        :aria-labelledby="`blog-${i}`"
+        class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
+        :aria-labelledby="blog.title"
       >
         <NuxtLink :to="`/blogs/${blog.slug}`" target="_blank">
           <Card

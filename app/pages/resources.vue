@@ -1,4 +1,14 @@
 <script setup lang="ts">
+onMounted(() => {
+  const cards = document.querySelectorAll("article");
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.style.opacity = "1";
+      card.style.translate = "0 0";
+    }, index * 100);
+  });
+});
+
 type MyObject = {
   title: string;
   createdAt: string;
@@ -24,16 +34,17 @@ const arr: MyObject[] = Array(8).fill({
   <SectionWrapper
     class="text-brand-200 gap-3 break-words my-23"
     style="visibility: visible"
+    aria-label="Free resource list"
   >
-    <h3 class="text-h3">Free</h3>
+    <h3 class="text-h3 mb-2">Free</h3>
     <h1 class="italic text-h1 font-normal">Resources</h1>
 
-    <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-7 gap-x-4">
+    <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-11 gap-x-4">
       <article
-        v-for="(resource, i) in arr"
+        v-for="resource in arr"
         :key="resource.title"
-        class="sm:max-w-68 transition-all duration-200"
-        :aria-labelledby="`resource-${i}`"
+        class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
+        :aria-labelledby="resource.title"
       >
         <a :href="resource.file.url" target="_blank">
           <Card
@@ -61,6 +72,7 @@ const arr: MyObject[] = Array(8).fill({
 
 <style scoped>
 @reference "~/assets/css/main.css";
+
 :deep(.card-title) {
   @apply line-clamp-1 break-words;
 }
