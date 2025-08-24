@@ -2,6 +2,7 @@
   <ResilienceAcademyHero />
   <ResilienceAcademyAbout />
   <ResilienceAcademyBuildingBlock />
+  <ResilienceAcademyCoreValue />
   <SharedTestimonial />
   <SharedCTA />
   <SharedLocation />

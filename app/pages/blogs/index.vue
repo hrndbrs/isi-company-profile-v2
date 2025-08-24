@@ -58,7 +58,7 @@ const arr: MyObject[] = Array(8).fill({
         class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
         :aria-labelledby="blog.title"
       >
-        <NuxtLink :to="`/blogs/${blog.slug}`" target="_blank">
+        <NuxtLink :to="`/blogs/${blog.slug}`">
           <Card
             class="transition-color bg-neutral-50 duration-200 hover:bg-primary-500 hover:text-neutral-50"
           >
