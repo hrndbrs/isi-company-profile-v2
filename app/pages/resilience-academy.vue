@@ -1,5 +1,6 @@
 <template>
   <ResilienceAcademyHero />
+  <ResilienceAcademyAbout />
   <SharedTestimonial />
   <SharedCTA />
   <SharedLocation />

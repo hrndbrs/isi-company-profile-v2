@@ -21,5 +21,6 @@
   --color-success-300: hsl(154, 100%, 73%);
   --color-success-500: hsl(144, 92%, 46%);
 
+  --color-natural-500: hsla(0, 0%, 20%, 1);
   --color-natural-border: hsl(240, 4%, 46%);
 }
