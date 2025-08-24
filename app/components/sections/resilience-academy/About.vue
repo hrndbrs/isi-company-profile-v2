@@ -28,7 +28,7 @@ useGSAP(
   >
     <span class="self-end text-[140px] md:text-[268px]">🎯</span>
     <h2
-      class="text-h2 font-bold text-brand-200"
+      class="text-h2 font-bold text-brand-200 break-words"
       id="resilienceAcademyAboutSectionTitle"
     >
       We are on a <em class="font-normal">mission!</em> <br />
