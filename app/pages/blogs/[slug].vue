@@ -170,18 +170,11 @@ const publishedAt = getLocalTime(dummy.publishedAt);
 </script>
 
 <template>
-  <SectionWrapper
-    class="mt-23 mb-40 text-neutral-900"
-    :inner-container-props="{
-      class: 'max-w-[996px]',
-    }"
-  >
+  <SectionWrapper class="mt-23 mb-40 text-neutral-900" :inner-container-props="{
+    class: 'max-w-[996px]',
+  }">
     <figure>
-      <NuxtImg
-        :src="dummy.image"
-        class="w-full min-h-96 max-h-96 object-cover"
-        :alt="dummy.title"
-      />
+      <NuxtImg :src="dummy.image" class="max-h-96 min-h-96 w-full object-cover" :alt="dummy.title" />
       <figcaption class="sr-only">
         Featured image for the article: {{ dummy.title }}
       </figcaption>
@@ -190,7 +183,7 @@ const publishedAt = getLocalTime(dummy.publishedAt);
     <article class="mt-6" itemscope itemtype="https://schema.org/Article">
       <div class="flex flex-col gap-3 text-brand-500">
         <h1 class="text-h3 font-bold">{{ dummy.title }}</h1>
-        <div class="grid grid-cols-2 grid-rows-2 w-fit gap-x-56">
+        <div class="grid w-fit grid-cols-2 grid-rows-2 gap-x-56">
           <span>Written by</span>
           <span>Posted</span>
           <address class="not-italic" itemprop="author">Budi</address>
@@ -200,13 +193,10 @@ const publishedAt = getLocalTime(dummy.publishedAt);
         </div>
       </div>
 
-      <div class="prose mt-6" v-dompurify-html="dummy.content" />
+      <div class="prose mt-6" v-sanitize-html="dummy.content" />
     </article>
 
-    <nav
-      class="flex justify-between mt-6 py-8"
-      aria-label="Blog post navigation"
-    >
+    <nav class="mt-6 flex justify-between py-8" aria-label="Blog post navigation">
       <NuxtLink to="#" class="text-left" rel="prev">
         <Icon name="heroicons:chevron-left" />
         <div>
@@ -231,7 +221,7 @@ const publishedAt = getLocalTime(dummy.publishedAt);
 @reference "~/assets/css/main.css";
 
 a {
-  @apply inline-flex gap-2 items-center;
+  @apply inline-flex items-center gap-2;
 
   svg {
     @apply size-9 text-brand-500;

@@ -1,14 +1,4 @@
 <script setup lang="ts">
-onMounted(() => {
-  const cards = document.querySelectorAll("article");
-  cards.forEach((card, index) => {
-    setTimeout(() => {
-      card.style.opacity = "1";
-      card.style.translate = "0 0";
-    }, index * 100);
-  });
-});
-
 type Image = {
   url: string;
   width?: number;
@@ -45,16 +35,17 @@ const arr: MyObject[] = Array(8).fill({
 <template>
   <SectionWrapper
     id="blogListSection"
-    class="text-brand-200 gap-3 break-words my-23"
+    class="gap-3 break-words pt-32 pb-12"
     aria-label="Blog list"
   >
-    <h3 class="text-h3 mb-3">Our Writings</h3>
-    <h1 class="italic text-h1 font-normal">Blogs</h1>
+    <header class="text-brand-200">
+      <h3 class="text-h3 mb-3">Our Writings</h3>
+      <h1 class="italic text-h1 font-normal">Blogs</h1>
+    </header>
 
-    <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-11 gap-x-4">
+    <ListContainer :items="arr" v-slot="{ item: blog }" :page-count="10">
       <article
-        v-for="blog in arr"
-        :key="blog.title"
+        :key="blog.id"
         class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
         :aria-labelledby="blog.title"
       >
@@ -73,11 +64,11 @@ const arr: MyObject[] = Array(8).fill({
             </template>
             <template #subtitle>{{ blog.createdAt }}</template>
             <template #content>
-              <div v-dompurify-html="blog.content" />
+              <div v-sanitize-html="blog.content" />
             </template>
           </Card>
         </NuxtLink>
       </article>
-    </div>
+    </ListContainer>
   </SectionWrapper>
 </template>

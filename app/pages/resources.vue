@@ -32,16 +32,17 @@ const arr: MyObject[] = Array(8).fill({
 
 <template>
   <SectionWrapper
-    class="text-brand-200 gap-3 break-words my-23"
+    class="gap-3 break-words my-23"
     style="visibility: visible"
     aria-label="Free resource list"
   >
-    <h3 class="text-h3 mb-2">Free</h3>
-    <h1 class="italic text-h1 font-normal">Resources</h1>
+    <header class="text-brand-200">
+      <h3 class="text-h3 mb-2">Free</h3>
+      <h1 class="italic text-h1 font-normal">Resources</h1>
+    </header>
 
-    <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-11 gap-x-4">
+    <ListContainer :items="arr" :page-count="3" v-slot="{ item: resource }">
       <article
-        v-for="resource in arr"
         :key="resource.title"
         class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
         :aria-labelledby="resource.title"
@@ -61,12 +62,12 @@ const arr: MyObject[] = Array(8).fill({
             </template>
             <template #subtitle>{{ resource.createdAt }}</template>
             <template #content>
-              <div v-dompurify-html="resource.description" />
+              <div v-sanitize-html="resource.description" />
             </template>
           </Card>
         </a>
       </article>
-    </div>
+    </ListContainer>
   </SectionWrapper>
 </template>
 

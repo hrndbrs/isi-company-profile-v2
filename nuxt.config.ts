@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
     "@vueuse/nuxt",
     "motion-v/nuxt",
+    "@radya/nuxt-dompurify",
   ],
   image: {
     domains: [prod ? "" : "*"],

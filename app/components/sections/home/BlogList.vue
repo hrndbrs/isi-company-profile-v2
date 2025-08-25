@@ -87,7 +87,7 @@ const blogs: Blog[] = Array(4).fill({
               </template>
               <template #subtitle>{{ blog.publishedAt }}</template>
               <template #content>
-                <div v-dompurify-html="blog.content" />
+                <div v-sanitize-html="blog.content" />
               </template>
             </Card>
           </NuxtLink>

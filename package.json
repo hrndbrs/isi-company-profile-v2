@@ -16,17 +16,16 @@
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^1.15.0",
     "@nuxt/image": "^1.11.0",
+    "@radya/nuxt-dompurify": "^1.0.5",
     "@tailwindcss/vite": "^4.1.11",
     "@vueuse/nuxt": "^13.6.0",
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",
-    "isomorphic-dompurify": "^2.26.0",
     "motion-v": "^1.7.0",
     "nuxt": "^4.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "vue": "^3.5.18",
-    "vue-dompurify-html": "^5.3.0",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
