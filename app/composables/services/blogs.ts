@@ -13,3 +13,12 @@ export async function useBlogList(page: Ref<number>) {
 
   return { blogs: data, ...props };
 }
+
+export async function useBlogDetail(slug: string) {
+  const { data, ...props } = await useStrapi<Blog>(`/blogs/${slug}`, {
+    query: {
+      "populate[0]": "image",
+    },
+  });
+  return { blog: data, ...props };
+}
