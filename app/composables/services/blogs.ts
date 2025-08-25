@@ -1,8 +1,8 @@
 import type { Blog } from "~/types/schema.type";
 import { useStrapi } from "./strapi";
 
-export function useBlogList(page: Ref<number>) {
-  const { data, ...props } = useStrapi<Blog[]>("/blogs", {
+export async function useBlogList(page: Ref<number>) {
+  const { data, ...props } = await useStrapi<Blog[]>("/blogs", {
     query: {
       "populate[0]": "image",
       "pagination[page]": page,
