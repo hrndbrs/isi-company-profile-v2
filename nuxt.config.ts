@@ -14,6 +14,12 @@ export default defineNuxtConfig({
     "motion-v/nuxt",
     "@radya/nuxt-dompurify",
   ],
+  runtimeConfig: {
+    public: {
+      apiToken: process.env.STRAPI_TOKEN,
+      apiUrl: process.env.STRAPI_URL,
+    },
+  },
   image: {
     domains: [prod ? "" : "*"],
     format: ["webp"],
