@@ -1,13 +1,11 @@
 <script setup lang="ts">
-onMounted(() => {
-  const cards = document.querySelectorAll("article");
-  cards.forEach((card, index) => {
-    setTimeout(() => {
-      card.style.opacity = "1";
-      card.style.translate = "0 0";
-    }, index * 100);
-  });
+const route = useRoute();
+const page = computed(() => {
+  const p = route.query.page;
+  return p ? +p : 1;
 });
+
+const { resources } = await useResourceList(page);
 
 type MyObject = {
   title: string;
@@ -41,7 +39,11 @@ const arr: MyObject[] = Array(8).fill({
       <h1 class="italic text-h1 font-normal">Resources</h1>
     </header>
 
-    <ListContainer :items="arr" :page-count="3" v-slot="{ item: resource }">
+    <ListContainer
+      :items="resources.data"
+      :page-count="resources.meta.pagination.pageCount"
+      v-slot="{ item: resource }"
+    >
       <article
         :key="resource.title"
         class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
@@ -53,7 +55,7 @@ const arr: MyObject[] = Array(8).fill({
           >
             <template #illustration>
               <NuxtImg
-                :src="resource.image"
+                :src="resource.image.url"
                 class="h-64 w-full bg-neutral-300 object-cover"
               />
             </template>

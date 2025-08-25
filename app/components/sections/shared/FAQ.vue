@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { FAQ } from "~/types/schema.type";
 
+const { faqList } = await useFAQS();
+
 useGSAP(
   (gsap) => {
     gsap.from(".section-title", {
@@ -25,7 +27,7 @@ useGSAP(
       });
     });
   },
-  { scope: "#faqSection" },
+  { scope: "#faqSection" }
 );
 
 const faqs: FAQ[] = Array(5).fill({
@@ -58,7 +60,7 @@ const faqs: FAQ[] = Array(5).fill({
     </div>
 
     <dl class="faq-container flex flex-col gap-8 text-h6">
-      <div v-for="(faq, i) in faqs" :key="faq.question">
+      <div v-for="(faq, i) in faqList.data" :key="faq.question">
         <dt class="flex font-bold text-secondary-300">
           <span class="inline-block">{{ i + 1 }}.</span>
           <p class="ml-2">{{ faq.question }}</p>
