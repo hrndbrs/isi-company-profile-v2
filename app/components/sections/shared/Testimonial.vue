@@ -57,6 +57,7 @@ useGSAP(
           <NuxtImg
             :src="item.image.url"
             class="size-16 rounded-full object-cover"
+            lazy
           />
           <div>
             <strong class="line-clamp-1 break-words">

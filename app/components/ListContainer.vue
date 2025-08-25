@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-wrap justify-center gap-y-4 sm:gap-y-6 mt-11 gap-x-4">
+  <div class="mt-11 flex flex-wrap justify-center gap-x-4 gap-y-4 sm:gap-y-6">
     <AnimatePresence>
       <motion.div
         v-for="(item, i) in items"
@@ -26,7 +26,7 @@ defineProps<{
     </AnimatePresence>
   </div>
 
-  <Pagination :page-count class="justify-center mt-14" />
+  <Pagination :page-count class="mt-14 justify-center" />
 </template>
 
 <style scoped>
@@ -37,7 +37,7 @@ defineProps<{
 }
 
 :deep(.pagination-item) {
-  @apply bg-foreground rounded-full text-brand-200;
+  @apply rounded-full bg-foreground text-brand-200;
 
   &.active {
     @apply bg-brand-200 text-foreground;

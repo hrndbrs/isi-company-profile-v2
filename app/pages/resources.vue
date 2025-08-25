@@ -5,48 +5,33 @@ const page = computed(() => {
   return p ? +p : 1;
 });
 
-const { resources } = await useResourceList(page);
-
-type MyObject = {
-  title: string;
-  createdAt: string;
-  description: string;
-  image: string;
-  file: {
-    url: string;
-  };
-};
-
-const arr: MyObject[] = Array(8).fill({
-  title: "Title f sdfsdf sdf sdf sdf sdf sd",
-  file: { url: "https://google.com" },
-  createdAt: "21-05-2004",
-  image:
-    "https://i.pinimg.com/736x/f6/f5/0d/f6f50d5f97407b67d8bddc20056b9917.jpg",
-  description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-});
+const { resources, pending } = await useResourceList(page);
 </script>
 
 <template>
   <SectionWrapper
-    class="gap-3 break-words my-23"
+    class="my-23 gap-3 break-words"
     style="visibility: visible"
     aria-label="Free resource list"
   >
     <header class="text-brand-200">
-      <h3 class="text-h3 mb-2">Free</h3>
-      <h1 class="italic text-h1 font-normal">Resources</h1>
+      <h3 class="mb-2 text-h3">Free</h3>
+      <h1 class="text-h1 font-normal italic">Resources</h1>
     </header>
 
+    <LoadingListContainer
+      v-if="pending"
+      loading-text="Preparing materials for you…"
+    />
     <ListContainer
+      v-else
       :items="resources.data"
       :page-count="resources.meta.pagination.pageCount"
       v-slot="{ item: resource }"
     >
       <article
         :key="resource.title"
-        class="inline-block sm:max-w-68 opacity-0 translate-y-8 transition-all duration-200"
+        class="inline-block translate-y-8 opacity-0 transition-all duration-200 sm:max-w-68"
         :aria-labelledby="resource.title"
       >
         <a :href="resource.file.url" target="_blank">

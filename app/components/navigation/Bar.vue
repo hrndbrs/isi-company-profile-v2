@@ -55,11 +55,13 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
       <div class="container flex items-center justify-between gap-8">
         <div class="flex-1">
           <NuxtLink to="/">
-            <span
-              class="transition-all duration-200 lg:text-5xl"
-              :class="mobileMenuIsOpen ? 'text-5xl' : 'text-2xl'"
-              >LOGO</span
-            >
+            <NuxtImg
+              src="/assets/images/isi-logo.svg"
+              class="transition-all duration-200 h-12"
+              sizes="200px"
+              alt="Inspirasi Satu Indonesia"
+              :class="mobileMenuIsOpen ? 'h-16' : 'h-12'"
+            />
           </NuxtLink>
         </div>
 

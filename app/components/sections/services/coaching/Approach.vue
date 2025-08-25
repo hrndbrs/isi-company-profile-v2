@@ -35,7 +35,7 @@ useGSAP(
           opacity: 0,
           stagger: 0.2,
         },
-        "-=0.6"
+        "-=0.6",
       );
 
     gsap.from("li", {
@@ -50,7 +50,7 @@ useGSAP(
   },
   {
     scope: "#coachingApproachSection",
-  }
+  },
 );
 
 const activities: ServiceActivity[] = [

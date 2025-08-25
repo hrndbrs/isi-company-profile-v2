@@ -28,7 +28,9 @@ useGSAP(
   >
     <div class="flex-1 max-lg:max-h-105">
       <NuxtImg
-        src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Naruto_logo.svg"
+        src="/assets/images/isi-icon.svg"
+        format="webp"
+        sizes="291px lg:415px"
         class="size-full object-contain max-lg:max-h-105"
       />
     </div>

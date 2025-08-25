@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <NavigationBar />
+  <NavigationBar />
+  <NuxtErrorBoundary>
     <main class="invisible">
       <slot />
     </main>
-    <Footer />
-  </div>
+
+    <template #error>
+      <ErrorView />
+    </template>
+  </NuxtErrorBoundary>
+  <Footer />
 </template>

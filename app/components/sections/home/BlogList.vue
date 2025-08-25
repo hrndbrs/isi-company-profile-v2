@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from "@vueuse/core";
 import { SplitText } from "gsap/all";
-import type { Blog } from "~/types/schema.type";
 
 const { md } = useBreakpoints(breakpointsTailwind);
 const lottieSize = computed(() => (md.value ? 242 : 94));
@@ -40,14 +39,7 @@ useGSAP(
   },
 );
 
-const blogs: Blog[] = Array(4).fill({
-  title: "Blog withaverylongname",
-  slug: "test",
-  content:
-    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam vero vel laboriosam amet? Pariatur fugiat error officia temporibus mollitia explicabo doloribus voluptatum blanditiis aliquam! Officia quia eius consequatur beatae porro?",
-  publishedAt: "14 May 2025",
-  image: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Naruto_logo.svg",
-});
+const { blogs } = await useBlogLatest();
 </script>
 
 <template>
@@ -60,7 +52,7 @@ const blogs: Blog[] = Array(4).fill({
     }"
   >
     <header
-      class="section-title text-brand-200 relative md:flex justify-between items-center"
+      class="section-title relative items-center justify-between text-brand-200 md:flex"
     >
       <div class="max-w-xl max-sm:overflow-clip max-sm:pb-0.5">
         <p class="text-h3 font-semibold">And you can</p>
@@ -70,7 +62,7 @@ const blogs: Blog[] = Array(4).fill({
       </div>
 
       <Lottie
-        class="md:static absolute bottom-0 right-3 max-md:translate-y-5/6 z-10"
+        class="absolute right-3 bottom-0 z-10 max-md:translate-y-5/6 md:static"
         animation-link="/assets/lotties/pencil.json"
         :width="lottieSize"
         :height="lottieSize"
@@ -80,9 +72,9 @@ const blogs: Blog[] = Array(4).fill({
     <div class="relative">
       <div class="card-container flex gap-4 overflow-x-auto">
         <article
-          v-for="(blog, i) in blogs"
+          v-for="(blog, i) in blogs.data"
           :key="blog.slug"
-          class="blog-card transition-all duration-200"
+          class="blog-card transition-all duration-200 w-68"
           :aria-labelledby="`blog-${i}`"
         >
           <NuxtLink :to="`/blogs/${blog.slug}`">
@@ -91,7 +83,7 @@ const blogs: Blog[] = Array(4).fill({
             >
               <template #illustration>
                 <NuxtImg
-                  :src="blog.image"
+                  :src="blog.image.url"
                   class="aspect-square w-full bg-neutral-300 object-cover"
                 />
               </template>
@@ -102,7 +94,7 @@ const blogs: Blog[] = Array(4).fill({
               </template>
               <template #subtitle>{{ blog.publishedAt }}</template>
               <template #content>
-                <div v-sanitize-html="blog.content" />
+                <div v-sanitize-html="stripStyleAttr(blog.content)" />
               </template>
             </Card>
           </NuxtLink>
