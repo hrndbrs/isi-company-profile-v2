@@ -4,5 +4,5 @@ import { useStrapi } from "./strapi";
 export async function useFAQS() {
   const { data, ...props } = await useStrapi<FAQ[]>("/faqs");
 
-  return { faqList: data, ...props };
+  return { faqs: data, ...props };
 }

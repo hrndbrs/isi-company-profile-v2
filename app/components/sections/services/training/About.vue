@@ -25,19 +25,15 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="trainingAboutSection"
-    class="py-32 lg:py-64"
-    aria-label="About Training Service"
+  <SectionWrapper id="trainingAboutSection" class="py-32 lg:py-64" aria-label="About Training Service"
     :inner-container-props="{
       class: 'lg:flex-row justify-between items-center gap-14 lg:gap-28',
-    }"
-  >
+    }">
     <div>
-      <span class="text-[300px]">🚀</span>
+      <Lottie animation-link="/assets/lotties/rocket.json" class="max-w-xs" />
     </div>
 
-    <div class="max-w-2xl text-brand-200">
+    <div class="lg:max-w-2xl text-brand-200">
       <h2 id="trainingAboutSectionTitle" class="text-h2">
         You can always become a <em class="font-normal">better</em> you!
       </h2>

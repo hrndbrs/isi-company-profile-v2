@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
+
+const { md } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (md.value ? 203 : 141));
+
 type BuildingBlock = {
   title: string;
   description: string;
@@ -66,10 +71,11 @@ const buildingBlocks: BuildingBlock[] = [
         <p>{{ b.description }}</p>
       </li>
     </ul>
-    <span
-      class="md:absolute right-0 inline-block bottom-0 md:text-[203px] text-[141px] md:translate-y-3/4 self-end"
-    >
-      ⚙️
-    </span>
+    <Lottie
+      class="md:absolute right-0 bottom-0 md:translate-y-3/4 self-end"
+      animation-link="/assets/lotties/gear.json"
+      :width="lottieSize"
+      :height="lottieSize"
+    />
   </SectionWrapper>
 </template>

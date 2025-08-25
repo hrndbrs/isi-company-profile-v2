@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
+
 type Content = {
   year: string;
   activities: {
@@ -6,6 +8,9 @@ type Content = {
     description: string;
   }[];
 };
+
+const { lg } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (lg.value ? 150 : 82));
 
 useGSAP(
   (gsap) => {
@@ -123,10 +128,10 @@ const contents: Content[] = [
     id="historySection"
     aria-label="Company History"
     :inner-container-props="{
-      class: 'gap-16',
+      class: 'md:gap-16 gap-25',
     }"
   >
-    <div class="section-title">
+    <div class="section-title relative">
       <div class="flex-col max-sm:flex">
         <h2
           id="historySectionTitle"
@@ -134,6 +139,12 @@ const contents: Content[] = [
         >
           Our <em class="font-normal">Journey</em>
         </h2>
+        <Lottie
+          animation-link="/assets/lotties/popper.json"
+          :width="lottieSize"
+          :height="lottieSize"
+          class="max-sm:absolute right-0 bottom-0 max-sm:translate-y-3/4"
+        />
       </div>
       <p class="mt-1.5 text-h5">Get to know more about us and our milestones</p>
     </div>

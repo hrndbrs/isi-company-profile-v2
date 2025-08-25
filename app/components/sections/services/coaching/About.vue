@@ -28,7 +28,7 @@ useGSAP(
     }"
   >
     <div>
-      <span class="text-[300px]"> 🌞 </span>
+      <Lottie animation-link="/assets/lotties/sun.json" class="max-w-xs" />
     </div>
 
     <div class="text-brand-200">

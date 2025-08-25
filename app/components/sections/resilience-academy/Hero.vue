@@ -67,7 +67,13 @@ useGSAP(
       class: 'items-center',
     }"
   >
-    <span id="graduationCap" class="z-10 mb-1.5 text-[64px]"> 🎓 </span>
+    <Lottie
+      id="graduationCap"
+      animation-link="/assets/lotties/graduation-cap.json"
+      class="z-10 mb-1.5"
+      :height="64"
+      :width="64"
+    />
     <h1
       id="resilienceAcademyHeroSectionTitle"
       class="text-center text-h1 font-bold text-brand-200"

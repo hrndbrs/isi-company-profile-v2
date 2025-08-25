@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
+
+const { md } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (md.value ? 268 : 140));
+
 useGSAP(
   (gsap) => {
     const selectors = ["h2", "h2 ~ *"];
@@ -26,7 +31,12 @@ useGSAP(
     class="pt-5 pb-48 md:py-23"
     aria-label="About Resilience Academy"
   >
-    <span class="self-end text-[140px] md:text-[268px]">🎯</span>
+    <Lottie
+      class="self-end"
+      animation-link="/assets/lotties/target.json"
+      :width="lottieSize"
+      :height="lottieSize"
+    />
     <h2
       class="text-h2 font-bold text-brand-200 break-words"
       id="resilienceAcademyAboutSectionTitle"

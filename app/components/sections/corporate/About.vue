@@ -46,10 +46,10 @@ useGSAP(
     }"
   >
     <div>
-      <span class="text-[300px]">💪🏻</span>
+      <Lottie animation-link="/assets/lotties/muscle.json" class="max-w-xs" />
     </div>
 
-    <div class="max-w-2xl text-brand-200">
+    <div class="lg:max-w-2xl text-brand-200">
       <div class="mb-16">
         <h2 id="corporateAboutSectionTitle" class="text-h2">
           We are here to help you <em class="font-normal">grow!</em>

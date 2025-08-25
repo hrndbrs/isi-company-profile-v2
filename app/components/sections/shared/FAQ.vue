@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from "@vueuse/core";
-import type { FAQ } from "~/types/schema.type";
 
 const { md } = useBreakpoints(breakpointsTailwind);
 const lottieSize = computed(() => (md.value ? 181 : 81));
 
-const { faqList } = await useFAQS();
+const { faqs } = await useFAQS();
 
 useGSAP(
   (gsap) => {
@@ -31,14 +30,8 @@ useGSAP(
       });
     });
   },
-  { scope: "#faqSection" }
+  { scope: "#faqSection" },
 );
-
-const faqs: FAQ[] = Array(5).fill({
-  question: "Question",
-  answer:
-    "<p>FAQ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque autem earum maiores molestiae minima aliquid deserunt hic dolor quasi, quo similique rerum eaque natus, magni unde exercitationem debitis iure voluptatibus.</p>",
-});
 </script>
 
 <template>
@@ -67,7 +60,7 @@ const faqs: FAQ[] = Array(5).fill({
     </div>
 
     <dl class="faq-container flex flex-col gap-8 text-h6">
-      <div v-for="(faq, i) in faqList.data" :key="faq.question">
+      <div v-for="(faq, i) in faqs.data" :key="faq.question">
         <dt class="flex font-bold text-secondary-300">
           <span class="inline-block">{{ i + 1 }}.</span>
           <p class="ml-2">{{ faq.question }}</p>
