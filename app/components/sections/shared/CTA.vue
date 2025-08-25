@@ -34,18 +34,25 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="ctaSection" aria-label="Contact Us" class="bg-primary-500 py-44 text-foreground md:py-80"
+  <SectionWrapper
+    id="ctaSection"
+    aria-label="Contact Us"
+    class="bg-primary-500 py-44 text-foreground sm:py-80"
     :inner-container-props="{
-      class: 'flex-row',
-    }">
-    <div class="flex max-w-3xl flex-col gap-px">
+      class: 'sm:flex-row sm:gap-25 gap-28',
+    }"
+  >
+    <div class="flex max-w-3xl flex-col gap-px w-full">
       <div class="overflow-clip">
         <p class="text-h4 font-semibold">We are here</p>
       </div>
       <h2 id="ctaSectionTitle" class="text-h1">
         To Help You <em class="font-normal text-success-300">Grow</em>
       </h2>
-      <Button class="self-start">Contact Us</Button>
+      <ButtonWithWave class="self-start">Contact Us</ButtonWithWave>
+    </div>
+    <div>
+      <Lottie animation-link="/assets/lotties/plant.json" />
     </div>
   </SectionWrapper>
 </template>

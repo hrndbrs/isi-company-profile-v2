@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
 import type { FAQ } from "~/types/schema.type";
+
+const { md } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (md.value ? 181 : 81));
 
 const { faqList } = await useFAQS();
 
@@ -54,9 +58,12 @@ const faqs: FAQ[] = Array(5).fill({
         <h2 id="faqSectionTitle" class="text-h1 font-normal italic">FAQ</h2>
       </div>
 
-      <span class="inline-block h-full self-end text-[5rem] sm:text-[7rem]">
-        💡
-      </span>
+      <Lottie
+        class="h-full self-end"
+        animation-link="/assets/lotties/lightbulb.json"
+        :width="lottieSize"
+        :height="lottieSize"
+      />
     </div>
 
     <dl class="faq-container flex flex-col gap-8 text-h6">

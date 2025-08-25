@@ -2,7 +2,14 @@
 import { breakpointsTailwind } from "@vueuse/core";
 import { SplitText } from "gsap/all";
 
-const { md } = useBreakpoints(breakpointsTailwind);
+const { md, lg } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => {
+  const height = lg.value ? 110 : 76;
+  return {
+    width: height * 1.25,
+    height,
+  };
+});
 
 useGSAP(
   (gsap) => {
@@ -40,11 +47,21 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="serviceSection" class="py-32 text-brand-200" aria-label="Services" :inner-container-props="{
-    class: 'inner-wrapper md:flex-row gap-24',
-  }">
+  <SectionWrapper
+    id="serviceSection"
+    class="py-32 text-brand-200"
+    aria-label="Services"
+    :inner-container-props="{
+      class: 'inner-wrapper md:flex-row gap-20',
+    }"
+  >
     <h2 id="serviceSectionTitle" class="flex-1 text-h1">
       We are the <span class="font-normal">Expert</span>
+      <Lottie
+        animation-link="/assets/lotties/sparkles.json"
+        :width="lottieSize.width"
+        :height="lottieSize.height"
+      />
     </h2>
     <div class="flex flex-1 flex-col gap-20 md:mt-36 lg:mt-103">
       <div class="service">

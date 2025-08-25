@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
 import { SplitText } from "gsap/all";
+
+const { lg } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (lg.value ? 252 : 144));
 
 useGSAP(
   (gsap) => {
@@ -52,12 +56,24 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper id="heroSection" class="min-h-dvh py-24 text-brand-200" :inner-container-props="{
-    class: 'lg:gap-28 gap-12 justify-center h-full',
-  }" aria-label="Hero">
+  <SectionWrapper
+    id="heroSection"
+    class="min-h-dvh py-24 text-brand-200"
+    :inner-container-props="{
+      class: 'lg:gap-28 gap-12 justify-center h-full',
+    }"
+    aria-label="Hero"
+  >
     <div>
-      <div class="float-right inline-flex size-36 items-center justify-center text-[144px] lg:size-72 lg:text-[252px]">
-        ☺️
+      <div
+        class="float-right inline-flex size-36 items-center justify-center text-[144px] lg:size-72 lg:text-[252px]"
+      >
+        <Lottie
+          animationLink="/assets/lotties/grinning.json"
+          :height="lottieSize"
+          :width="lottieSize"
+          class="rotate-12"
+        />
       </div>
     </div>
     <div class="text-container flex flex-col gap-4">
@@ -70,7 +86,7 @@ useGSAP(
         organizations in Indonesia to embrace change and achieve their fullest
         potential.
       </p>
-      <Button class="self-start"> Join Now </Button>
+      <ButtonWithWave class="self-start"> Join Now </ButtonWithWave>
     </div>
   </SectionWrapper>
 </template>

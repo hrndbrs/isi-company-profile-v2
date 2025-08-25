@@ -75,7 +75,9 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
         </nav>
 
         <div class="flex-1">
-          <Button class="float-right hidden lg:block">Book Now</Button>
+          <ButtonWithWave class="float-right hidden lg:inline-flex">
+            Book Now
+          </ButtonWithWave>
           <button
             ref="trigger-btn"
             class="float-right block lg:hidden"
@@ -91,7 +93,7 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
           aria-label="Main Navigation"
           ref="links-container"
           v-if="mobileMenuIsOpen"
-          class="absolute bottom-0 left-0 flex w-full bg-neutral-50 translate-y-full flex-col gap-6 py-5 max-sm:px-5 sm:max-lg:px-20 lg:hidden"
+          class="absolute bottom-0 left-0 flex w-full translate-y-full flex-col gap-6 bg-neutral-50 py-5 max-sm:px-5 sm:max-lg:px-20 lg:hidden"
           key="mobile"
           :initial="{
             clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
@@ -109,7 +111,7 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
             v-bind="item"
           />
 
-          <Button class="float-right">Book Now</Button>
+          <ButtonWithWave class="float-right">Book Now</ButtonWithWave>
         </motion.nav>
       </AnimatePresence>
     </div>

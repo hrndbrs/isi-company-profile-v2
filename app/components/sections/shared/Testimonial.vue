@@ -22,7 +22,7 @@ useGSAP(
   },
   {
     scope: "#testimonialSection",
-  }
+  },
 );
 </script>
 
@@ -70,15 +70,17 @@ useGSAP(
         <div class="flex flex-col gap-3 sm:gap-8">
           <div class="flex-1">
             <strong>I was</strong>
-            <p class="line-clamp-4 break-words">
-              {{ item.before }}
-            </p>
+            <div
+              class="line-clamp-4 break-words content"
+              v-sanitize-html="item.before"
+            />
           </div>
           <div class="flex-1">
             <strong>Now</strong>
-            <p class="line-clamp-4 break-words">
-              {{ item.after }}
-            </p>
+            <div
+              class="line-clamp-4 break-words content"
+              v-sanitize-html="item.after"
+            />
           </div>
         </div>
       </div>
@@ -93,7 +95,8 @@ useGSAP(
   @apply text-h5;
 }
 
-#testimonialCarousel p {
+#testimonialCarousel p,
+.content {
   @apply mt-1 leading-compact text-neutral-900;
 }
 </style>

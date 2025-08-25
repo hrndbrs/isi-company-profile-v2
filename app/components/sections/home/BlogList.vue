@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { breakpointsTailwind } from "@vueuse/core";
 import { SplitText } from "gsap/all";
 import type { Blog } from "~/types/schema.type";
+
+const { md } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (md.value ? 242 : 94));
 
 useGSAP(
   (gsap) => {
@@ -55,12 +59,23 @@ const blogs: Blog[] = Array(4).fill({
       class: 'gap-16',
     }"
   >
-    <div class="section-title max-w-xl text-brand-200 max-sm:overflow-clip">
-      <p class="text-h3 font-semibold">And you can</p>
-      <h2 id="blogListSectionTitle" class="text-h1">
-        Read Our <em class="font-normal">Writings</em>
-      </h2>
-    </div>
+    <header
+      class="section-title text-brand-200 relative md:flex justify-between items-center"
+    >
+      <div class="max-w-xl max-sm:overflow-clip max-sm:pb-0.5">
+        <p class="text-h3 font-semibold">And you can</p>
+        <h2 id="blogListSectionTitle" class="text-h1">
+          Read Our <em class="font-normal">Writings</em>
+        </h2>
+      </div>
+
+      <Lottie
+        class="md:static absolute bottom-0 right-3 max-md:translate-y-5/6 z-10"
+        animation-link="/assets/lotties/pencil.json"
+        :width="lottieSize"
+        :height="lottieSize"
+      />
+    </header>
 
     <div class="relative">
       <div class="card-container flex gap-4 overflow-x-auto">

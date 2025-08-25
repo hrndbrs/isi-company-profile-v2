@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import type { Partner } from "~/types/schema.type";
+import { breakpointsTailwind } from "@vueuse/core";
+
+const { lg } = useBreakpoints(breakpointsTailwind);
+const lottieSize = computed(() => (lg.value ? 132 : 68));
 
 const { partners } = await usePartners();
 
@@ -25,7 +28,7 @@ useGSAP(
   },
   {
     scope: ".section-wrapper:has(#partnerSection)",
-  }
+  },
 );
 </script>
 
@@ -44,6 +47,11 @@ useGSAP(
       />
       <h2 id="partnerSectionTitle" class="flex-1 text-h1 text-brand-200">
         We Help Them Bring <em class="font-normal">Colors</em>
+        <Lottie
+          animation-link="/assets/lotties/rainbow.json"
+          :width="lottieSize"
+          :height="lottieSize"
+        />
       </h2>
       <div class="@container flex flex-1 items-center justify-center">
         <div
