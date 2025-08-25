@@ -35,7 +35,7 @@ useGSAP(
           opacity: 0,
           stagger: 0.2,
         },
-        "-=0.6",
+        "-=0.6"
       );
 
     gsap.from("li", {
@@ -50,7 +50,7 @@ useGSAP(
   },
   {
     scope: "#trainingApproachSection",
-  },
+  }
 );
 
 const activities: ServiceActivity[] = [
@@ -99,7 +99,7 @@ const activities: ServiceActivity[] = [
 
     <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       <li
-        class="mx-auto max-w-96 rounded-2xl bg-foreground p-4 min-h-80"
+        class="mx-auto max-w-96 rounded-2xl hover:bg-primary-500 hover:text-foreground bg-foreground p-4 min-h-80"
         v-for="(a, i) in activities"
         :key="`activity-${i}`"
       >
