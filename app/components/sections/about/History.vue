@@ -65,49 +65,53 @@ useGSAP(
 
 const contents: Content[] = [
   {
-    year: "2005 - 2015",
+    year: "2020",
     activities: [
       {
-        title: "Major Partnership",
-        description: "Partnered with a leading tech company.",
-      },
-      {
-        title: "New Product Line",
-        description: "Introduced a new range of consumer devices.",
-      },
-    ],
-  },
-  {
-    year: "2014",
-    activities: [
-      { title: "IPO", description: "Went public on the stock exchange." },
-      {
-        title: "Cloud Platform Launch",
-        description: "Rolled out our cloud services platform.",
-      },
-    ],
-  },
-  {
-    year: "2015 - 2019",
-    activities: [
-      { title: "Acquisition", description: "Acquired a major competitor." },
-      {
-        title: "AI Research Lab",
+        title: "Head Office Opening",
         description:
-          "Opened a dedicated artificial intelligence research facility.",
+          "Opened the Head office at Menara 165, lt.4, Jl. Let. Jend. T.B Simatupang Kav.1, TB Simatupang, Jakarta Selatan.",
+      },
+      {
+        title: "1st Online One-On-One",
+        description:
+          "Launched personal coaching for one-on-one online sessions.",
+      },
+      {
+        title: "Askrindo Corporate Training",
+        description: "Conducted offline training for Askrindo.",
       },
     ],
   },
   {
-    year: "2020 - 2022",
+    year: "2021",
     activities: [
       {
-        title: "Remote Work Transition",
-        description: "Moved the company to fully remote operations.",
+        title: "IFG Corporate Training",
+        description: "Initiated online training for IFG.",
+      },
+    ],
+  },
+  {
+    year: "2022",
+    activities: [
+      {
+        title: "Politama Solo Training",
+        description: "Held online corporate training for Politama Solo.",
       },
       {
-        title: "Record Revenue",
-        description: "Achieved the highest annual revenue in company history.",
+        title: "Rindam Jaya",
+        description: "Held offline training for Rindam Jaya.",
+      },
+      {
+        title: "BPHN–Kemenkumham Head Office Offline Training",
+        description:
+          "Conducted offline training for intermediate legal counsellors at the BPHN Head office.",
+      },
+      {
+        title: "Operation Office Open",
+        description:
+          "Opened the operational office at Jl.H.Khair no 59, RT.003 RW.004, Ragunan, Pasar Minggu Jakarta Selatan.",
       },
     ],
   },
@@ -115,8 +119,26 @@ const contents: Content[] = [
     year: "2023",
     activities: [
       {
-        title: "Sustainability Initiative",
-        description: "Launched a global sustainability program.",
+        title: "+30 Coaches",
+        description: "Recruited over 30 coaches.",
+      },
+      {
+        title: "Danamon Corporate Training",
+        description: "Delivered training sessions for Danamon.",
+      },
+      {
+        title: "BPHN–Kemenkumham",
+        description:
+          "Delivered offline training for legal counselors representing BPHN from all over Indonesia.",
+      },
+    ],
+  },
+  {
+    year: "2021 – 2024",
+    activities: [
+      {
+        title: "Long Running Partnership",
+        description: "With TechConnect!",
       },
     ],
   },
@@ -169,6 +191,31 @@ const contents: Content[] = [
                 {{ a.title }}
               </strong>
               <p class="mt-2">{{ a.description }}</p>
+            </li>
+          </ul>
+        </dd>
+      </div>
+      <div class="table-row" key="latest">
+        <dt class="table-cell pr-5">
+          <time
+            datetime="2024"
+            class="block text-right text-h4 font-bold text-secondary-300"
+          >
+            2024
+          </time>
+        </dt>
+        <dd class="table-cell">
+          <ul class="relative flex flex-col gap-8 pl-10">
+            <span
+              class="line absolute top-0 left-0 inline-block h-full w-2 bg-primary-200"
+            />
+            <li class="text-h6">
+              <h3 class="text-brand-200 font-bold text-[2rem]/compressed">
+                Achieved over
+                <span class="text-secondary-500">1,000+ hours </span> of
+                coaching
+              </h3>
+              <p class="mt-2">With more to come!</p>
             </li>
           </ul>
         </dd>
