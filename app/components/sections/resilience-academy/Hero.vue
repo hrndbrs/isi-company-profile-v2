@@ -85,7 +85,7 @@ useGSAP(
         Here to prepare the next generation to face future challenges with
         confidence and adaptability
       </p>
-      <Button class="mt-1.5">Join Discord</Button>
+      <ButtonWithWave class="mt-1.5">Join Discord</ButtonWithWave>
     </div>
   </SectionWrapper>
 </template>

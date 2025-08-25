@@ -40,6 +40,6 @@ useGSAP(
       Boost your communication, leadership, teamwork, and emotional intelligence
       through our interactive workshops designed for real-world application.
     </p>
-    <Button class="self-start"> Start Here </Button>
+    <ButtonWithWave class="self-start"> Start Here </ButtonWithWave>
   </SectionWrapper>
 </template>
