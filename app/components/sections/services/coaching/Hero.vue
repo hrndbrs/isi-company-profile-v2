@@ -56,6 +56,6 @@ useGSAP(
       Discover your path, set clear goals, and achieve growth with personalized
       coaching sessions designed to help you succeed.
     </p>
-    <ButtonWithWave class="self-start"> Start Here </ButtonWithWave>
+    <ButtonWhatsapp class="self-start"> Start Here </ButtonWhatsapp>
   </SectionWrapper>
 </template>

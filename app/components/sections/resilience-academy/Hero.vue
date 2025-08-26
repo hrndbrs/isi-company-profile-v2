@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { SplitText } from "gsap/all";
 
+const { urls } = useExternalNavigation();
+
 useGSAP(
   (gsap) => {
     const titleSplit = SplitText.create("#resilienceAcademyHeroSectionTitle", {
@@ -59,25 +61,13 @@ useGSAP(
 </script>
 
 <template>
-  <SectionWrapper
-    id="resilienceAcademyHeroSection"
-    class="py-67 lg:py-68"
-    aria-label="Resilience Academy Hero"
+  <SectionWrapper id="resilienceAcademyHeroSection" class="py-67 lg:py-68" aria-label="Resilience Academy Hero"
     :inner-container-props="{
       class: 'items-center',
-    }"
-  >
-    <Lottie
-      id="graduationCap"
-      animation-link="/assets/lotties/graduation-cap.json"
-      class="z-10 mb-1.5"
-      :height="64"
-      :width="64"
-    />
-    <h1
-      id="resilienceAcademyHeroSectionTitle"
-      class="text-center text-h1 font-bold text-brand-200"
-    >
+    }">
+    <Lottie id="graduationCap" animation-link="/assets/lotties/graduation-cap.json" class="z-10 mb-1.5" :height="64"
+      :width="64" />
+    <h1 id="resilienceAcademyHeroSectionTitle" class="text-center text-h1 font-bold text-brand-200">
       Resilience <em class="font-normal text-error-300">Academy</em>
     </h1>
     <div class="additional flex flex-col items-center">
@@ -85,7 +75,9 @@ useGSAP(
         Here to prepare the next generation to face future challenges with
         confidence and adaptability
       </p>
-      <ButtonWithWave class="mt-1.5">Join Discord</ButtonWithWave>
+      <a :href="urls.discordGroupInvite" target="_blank" class="mt-1.5">
+        <ButtonWithWave>Join Discord</ButtonWithWave>
+      </a>
     </div>
   </SectionWrapper>
 </template>

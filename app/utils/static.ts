@@ -1,6 +1,8 @@
 import type { NavLink } from "~/types/static.type";
 
-export const navLinks: NavLink[] = [
+export const CAMPAIGN_ID_STORAGE_KEY = "campaign_id";
+
+export const NAV_LINKS: NavLink[] = [
   {
     type: "link",
     label: "About Us",

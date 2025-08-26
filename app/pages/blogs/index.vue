@@ -21,7 +21,7 @@ const { blogs, pending } = await useBlogList(page);
 
     <LoadingListContainer
       v-if="pending"
-      loading-text="Preparing your reading list…"
+      loading-text="Warming up your reading list…"
     />
     <ListContainer
       v-else

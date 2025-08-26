@@ -13,16 +13,27 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "motion-v/nuxt",
     "@radya/nuxt-dompurify",
+    "nuxt-gtag",
   ],
   runtimeConfig: {
     public: {
       apiToken: process.env.STRAPI_TOKEN,
       apiUrl: process.env.STRAPI_URL,
+      whatsapp: process.env.ISI_WHATSAPP_NUMBER,
+      discordGroup: process.env.ISI_DISCORD_GROUP,
+      dashboardUrl: process.env.ISI_DASHBOARD_URL,
     },
+  },
+  gtag: {
+    enabled: prod,
+    id: process.env.GTAG_ID,
   },
   image: {
     domains: [prod ? "" : "*"],
     format: ["webp"],
+  },
+  routeRules: {
+    "/blogs/**": { isr: prod ? 60 * 60 * 24 * 7 : false },
   },
   app: {
     head: {

@@ -57,6 +57,6 @@ useGSAP(
       Enhance your team’s performance with personalized coaching and training
       solutions designed to foster leadership and team colaborations.
     </p>
-    <ButtonWithWave class="self-start"> Start Here </ButtonWithWave>
+    <ButtonWhatsapp class="self-start"> Start Here </ButtonWhatsapp>
   </SectionWrapper>
 </template>

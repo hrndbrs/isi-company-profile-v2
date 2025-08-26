@@ -2,12 +2,14 @@
 import gsap from "gsap";
 import { motion } from "motion-v";
 
-const route = useRoute();
 const { y } = useWindowScroll();
-const scrolled = computed(() => y.value > 100);
-const mobileMenuIsOpen = ref(false);
+const { toDashboard } = useExternalNavigation();
+const route = useRoute();
 const mobileLinksContainer = useTemplateRef<HTMLElement>("links-container");
 const mobileTriggerBtn = useTemplateRef<HTMLButtonElement>("trigger-btn");
+
+const scrolled = computed(() => y.value > 100);
+const mobileMenuIsOpen = ref(false);
 
 function toggleMobileContainer(value?: boolean) {
   if (typeof value !== "undefined") {
@@ -57,7 +59,7 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
           <NuxtLink to="/">
             <NuxtImg
               src="/assets/images/isi-logo.svg"
-              class="transition-all duration-200 h-12"
+              class="h-12 transition-all duration-200"
               sizes="200px"
               alt="Inspirasi Satu Indonesia"
               :class="mobileMenuIsOpen ? 'h-16' : 'h-12'"
@@ -70,14 +72,17 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
           class="hidden flex-[4] justify-between lg:flex"
         >
           <NavigationItem
-            v-for="item of navLinks"
+            v-for="item of NAV_LINKS"
             :key="item.label"
             v-bind="item"
           />
         </nav>
 
         <div class="flex-1">
-          <ButtonWithWave class="float-right hidden lg:inline-flex">
+          <ButtonWithWave
+            @click="toDashboard()"
+            class="float-right hidden lg:inline-flex"
+          >
             Book Now
           </ButtonWithWave>
           <button
@@ -108,12 +113,14 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
           }"
         >
           <NavigationItem
-            v-for="item of navLinks"
+            v-for="item of NAV_LINKS"
             :key="item.label"
             v-bind="item"
           />
 
-          <ButtonWithWave class="float-right">Book Now</ButtonWithWave>
+          <ButtonWithWave @click="toDashboard()" class="float-right"
+            >Book Now</ButtonWithWave
+          >
         </motion.nav>
       </AnimatePresence>
     </div>

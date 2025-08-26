@@ -26,7 +26,7 @@ useGSAP(
 <template>
   <SectionWrapper
     id="trainingHeroSection"
-    class="max-md:pb-14 py-64 text-brand-200"
+    class="py-64 text-brand-200 max-md:pb-14"
     aria-label="Training Service Hero"
     :inner-container-props="{
       class: 'gap-3',
@@ -40,6 +40,6 @@ useGSAP(
       Boost your communication, leadership, teamwork, and emotional intelligence
       through our interactive workshops designed for real-world application.
     </p>
-    <ButtonWithWave class="self-start"> Start Here </ButtonWithWave>
+    <ButtonWhatsapp class="self-start"> Start Here </ButtonWhatsapp>
   </SectionWrapper>
 </template>

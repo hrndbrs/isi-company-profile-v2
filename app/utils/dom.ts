@@ -1,3 +1,6 @@
+import { gsap } from "gsap";
+import { MorphSVGPlugin, ScrollTrigger, SplitText } from "gsap/all";
+
 export function transformH1ToH2(html: string): string {
   return html
     .replace(/<h1(\s[^>]*)?>/gi, "<h2$1>")
@@ -7,4 +10,15 @@ export function transformH1ToH2(html: string): string {
 export function stripStyleAttr(html: string): string {
   const styleRegex = /\s+style\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]*)/gi;
   return html.replace(styleRegex, "");
+}
+
+export function registerGSAPPlugin() {
+  gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger, SplitText);
+}
+
+export function preventFOUC() {
+  const main = document.querySelector("main");
+  if (!main) return;
+
+  main.style.visibility = "visible";
 }

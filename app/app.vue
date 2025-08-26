@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
-import { MorphSVGPlugin, ScrollTrigger, SplitText } from "gsap/all";
+const route = useRoute();
 
 onBeforeMount(() => {
-  gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger, SplitText);
+  registerGSAPPlugin();
+  setCampaignId(route.query[CAMPAIGN_ID_STORAGE_KEY] as string);
 });
 
 onMounted(() => {
-  // Prevent FOUC
-  const main = document.querySelector("main");
-  if (!main) return;
-
-  main.style.visibility = "visible";
+  preventFOUC();
 });
+
+watch(
+  () => route.query,
+  () => {
+    setCampaignId(route.query[CAMPAIGN_ID_STORAGE_KEY] as string);
+  },
+);
 </script>
 
 <template>
@@ -20,4 +23,5 @@ onMounted(() => {
     <NuxtRouteAnnouncer />
     <NuxtPage />
   </NuxtLayout>
+  <LoadingPageIndicator />
 </template>

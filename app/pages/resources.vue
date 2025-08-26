@@ -10,7 +10,7 @@ const { resources, pending } = await useResourceList(page);
 
 <template>
   <SectionWrapper
-    class="my-23 gap-3 break-words"
+    class="gap-3 py-32 break-words"
     style="visibility: visible"
     aria-label="Free resource list"
   >

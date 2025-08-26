@@ -42,14 +42,14 @@ useGSAP(
       class: 'sm:flex-row sm:gap-25 gap-28',
     }"
   >
-    <div class="flex max-w-3xl flex-col gap-px w-full">
+    <div class="flex w-full max-w-3xl flex-col gap-px">
       <div class="overflow-clip">
         <p class="text-h4 font-semibold">We are here</p>
       </div>
       <h2 id="ctaSectionTitle" class="text-h1">
         To Help You <em class="font-normal text-success-300">Grow</em>
       </h2>
-      <ButtonWithWave class="self-start">Contact Us</ButtonWithWave>
+      <ButtonWhatsapp class="self-start">Contact Us</ButtonWhatsapp>
     </div>
     <div>
       <Lottie animation-link="/assets/lotties/plant.json" />

@@ -3,6 +3,7 @@ import { breakpointsTailwind } from "@vueuse/core";
 import { SplitText } from "gsap/all";
 
 const { lg } = useBreakpoints(breakpointsTailwind);
+const { toDashboard } = useExternalNavigation();
 const lottieSize = computed(() => (lg.value ? 252 : 144));
 
 useGSAP(
@@ -86,7 +87,9 @@ useGSAP(
         organizations in Indonesia to embrace change and achieve their fullest
         potential.
       </p>
-      <ButtonWithWave class="self-start"> Join Now </ButtonWithWave>
+      <ButtonWithWave @click="toDashboard()" class="self-start">
+        Join Now
+      </ButtonWithWave>
     </div>
   </SectionWrapper>
 </template>
