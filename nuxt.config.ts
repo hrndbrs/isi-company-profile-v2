@@ -24,12 +24,21 @@ export default defineNuxtConfig({
       dashboardUrl: process.env.ISI_DASHBOARD_URL,
     },
   },
+  nitro: {
+    compressPublicAssets: true,
+    publicAssets: [
+      {
+        dir: "~/public/assets/lotties",
+        maxAge: 60 * 60 * 24 * 365,
+      },
+    ],
+  },
   gtag: {
     enabled: prod,
     id: process.env.GTAG_ID,
   },
   image: {
-    domains: [prod ? "" : "*"],
+    domains: [prod ? String(process.env.STRAPI_CDN) : "*"],
     format: ["webp"],
   },
   routeRules: {
@@ -37,14 +46,30 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      noscript: [
-        {
-          textContent: `
-        <style>main { visibility : visible !important }</style>
-        `,
-        },
-      ],
+      htmlAttrs: {
+        lang: "en",
+      },
     },
+  },
+  fonts: {
+    families: [
+      {
+        name: "Plus Jakarta Sans",
+        provider: "google",
+        preload: true,
+        weights: [400, 500, 600, 700],
+        styles: ["normal", "italic"],
+        subsets: [
+          "cyrillic-ext",
+          "cyrillic",
+          "greek-ext",
+          "greek",
+          "vietnamese",
+          "latin-ext",
+          "latin",
+        ],
+      },
+    ],
   },
   icon: {
     mode: "svg",

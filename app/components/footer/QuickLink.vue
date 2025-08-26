@@ -8,9 +8,7 @@ const { label, ...props } = defineProps<NavLink>();
   <li>
     <template v-if="props.type === 'group'">
       <ul class="mt-3 grid gap-4">
-        {{
-          label
-        }}
+        <li>{{ label }}</li>
         <FooterQuickLink
           v-for="item of props.items"
           :key="item.label"

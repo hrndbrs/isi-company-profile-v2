@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { SplitText } from "gsap/all";
-
 useGSAP(
-  (gsap) => {
-    const titleSplit = SplitText.create("p, #trainingHeroSectionTitle", {
-      type: "lines",
-    });
-
-    gsap.from(titleSplit.lines, {
-      opacity: 0,
-      translateX: "-10%",
-      stagger: 0.15,
-      scrollTrigger: {
-        trigger: titleSplit.lines,
-        start: "top bottom",
-      },
-    });
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create("p, #trainingHeroSectionTitle", {
+        type: "lines",
+        onSplit: (titleSplit) => {
+          gsap.from(titleSplit.lines, {
+            opacity: 0,
+            translateX: "-10%",
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: titleSplit.lines,
+              start: "top bottom",
+            },
+          });
+        },
+      });
+    }, self);
   },
   {
     scope: "#trainingHeroSection",
@@ -32,11 +33,11 @@ useGSAP(
       class: 'gap-3',
     }"
   >
-    <p class="text-h3 font-bold">Let’s Become Better!</p>
+    <p class="text-h3 font-bold" role="text">Let’s Become Better!</p>
     <h1 id="trainingHeroSectionTitle" class="text-h1">
       Soft-skill Training <em class="font-normal">Sessions</em>
     </h1>
-    <p class="text-xl">
+    <p class="text-xl" role="text">
       Boost your communication, leadership, teamwork, and emotional intelligence
       through our interactive workshops designed for real-world application.
     </p>

@@ -1,38 +1,40 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from "@vueuse/core";
-import { SplitText } from "gsap/all";
 
 const { md } = useBreakpoints(breakpointsTailwind);
 const lottieSize = computed(() => (md.value ? 242 : 94));
 
 useGSAP(
-  (gsap) => {
-    const titleSplit = SplitText.create(".section-title h2", {
-      type: "lines",
-    });
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create(".section-title h2", {
+        type: "lines",
+        onSplit: (titleSplit) => {
+          gsap.from([".section-title p", ...titleSplit.lines], {
+            opacity: 0,
+            duration: 0.55,
+            stagger: 0.11,
+            translateX: "30%",
+            scrollTrigger: {
+              trigger: ".section-title",
+              start: "top bottom",
+            },
+          });
 
-    gsap.from([".section-title p", ...titleSplit.lines], {
-      opacity: 0,
-      duration: 0.55,
-      stagger: 0.11,
-      translateX: "30%",
-      scrollTrigger: {
-        trigger: ".section-title",
-        start: "top bottom",
-      },
-    });
+          gsap.from("#seeMoreBlogs", {
+            scale: 0,
+            duration: 1,
+            yoyo: true,
+            ease: "elastic.out",
 
-    gsap.from("#seeMoreBlogs", {
-      scale: 0,
-      duration: 1,
-      yoyo: true,
-      ease: "elastic.out",
-
-      scrollTrigger: {
-        trigger: "#seeMoreBlogs",
-        start: "10% bottom",
-      },
-    });
+            scrollTrigger: {
+              trigger: "#seeMoreBlogs",
+              start: "10% bottom",
+            },
+          });
+        },
+      });
+    }, self);
   },
   {
     scope: "#blogListSection",
@@ -74,8 +76,8 @@ const { blogs } = await useBlogLatest();
         <article
           v-for="(blog, i) in blogs.data"
           :key="blog.slug"
-          class="blog-card transition-all duration-200 w-68"
-          :aria-labelledby="`blog-${i}`"
+          class="blog-card w-68 transition-all duration-200"
+          :aria-label="blog.title"
         >
           <NuxtLink :to="`/blogs/${blog.slug}`">
             <Card
@@ -84,7 +86,12 @@ const { blogs } = await useBlogLatest();
               <template #illustration>
                 <NuxtImg
                   :src="blog.image.url"
+                  sizes="100vw sm:272px"
+                  width="600"
+                  height="256"
+                  format="webp"
                   class="aspect-square w-full bg-neutral-300 object-cover"
+                  :alt="blog.title"
                 />
               </template>
               <template #title>
@@ -94,7 +101,9 @@ const { blogs } = await useBlogLatest();
               </template>
               <template #subtitle>{{ blog.publishedAt }}</template>
               <template #content>
-                <div v-sanitize-html="stripStyleAttr(blog.content)" />
+                <ClientOnly>
+                  <div v-sanitize-html="stripStyleAttr(blog.content)" />
+                </ClientOnly>
               </template>
             </Card>
           </NuxtLink>

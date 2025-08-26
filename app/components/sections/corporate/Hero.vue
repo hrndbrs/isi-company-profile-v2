@@ -1,32 +1,33 @@
 <script setup lang="ts">
-import { SplitText } from "gsap/all";
-
 useGSAP(
-  (gsap) => {
-    const titleSplit = SplitText.create("#corporateHeroSectionTitle span", {
-      type: "chars",
-    });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#corporateHeroSectionTitle",
-          start: "top bottom",
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create("#corporateHeroSectionTitle span", {
+        type: "chars",
+        onSplit: (titleSplit) => {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: "#corporateHeroSectionTitle",
+                start: "top bottom",
+              },
+            })
+            .from(titleSplit.chars, {
+              opacity: 0,
+              y: "-30%",
+              stagger: 0.08,
+            })
+            .from(
+              "#corporateHeroSectionTitle em",
+              {
+                opacity: 0,
+                x: "30px",
+              },
+              "-=0.5",
+            );
         },
-      })
-      .from(titleSplit.chars, {
-        opacity: 0,
-        y: "-30%",
-        stagger: 0.08,
-      })
-      .from(
-        "#corporateHeroSectionTitle em",
-        {
-          opacity: 0,
-          x: "30px",
-        },
-        "-=0.5",
-      );
+      });
+    }, self);
   },
   {
     scope: "#corporateHeroSection",
@@ -43,10 +44,10 @@ useGSAP(
     }"
     aria-label="Corporate Hero"
   >
-    <p class="text-h3">
+    <h3 class="text-h3">
       Inspirasi Satu Indonesia <br />
       for Business
-    </p>
+    </h3>
 
     <h1 id="corporateHeroSectionTitle" class="text-h1">
       Drive <span class="text-nowrap">Success,</span><br />

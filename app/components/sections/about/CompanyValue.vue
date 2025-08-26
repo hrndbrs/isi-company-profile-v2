@@ -31,7 +31,10 @@ useGSAP(
         src="/assets/images/isi-icon.svg"
         format="webp"
         sizes="291px lg:415px"
+        width="415"
+        height="600"
         class="size-full object-contain max-lg:max-h-105"
+        alt="Inspirasi Satu Indonesia"
       />
     </div>
     <div class="section-title lg:max-w-2xl">

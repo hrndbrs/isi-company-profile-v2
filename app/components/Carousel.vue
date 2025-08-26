@@ -35,7 +35,11 @@ const handleNext = () => changeIndex(activeIndex.value + 1);
 <template>
   <div :data-id="carouselId" class="relative flex flex-col gap-16">
     <slot name="arrowPrev" :handlePrev="handlePrev">
-      <button class="carousel-arrow left-0" @click="handlePrev()">
+      <button
+        class="carousel-arrow left-0"
+        @click="handlePrev()"
+        aria-label="Previous slide"
+      >
         <Icon
           name="heroicons:chevron-left-solid"
           class="size-8 text-neutral-900"
@@ -44,7 +48,11 @@ const handleNext = () => changeIndex(activeIndex.value + 1);
     </slot>
 
     <slot name="arrowNext" :handleNext="handleNext">
-      <button class="carousel-arrow right-0" @click="handleNext()">
+      <button
+        class="carousel-arrow right-0"
+        @click="handleNext()"
+        aria-label="Next slide"
+      >
         <Icon
           name="heroicons:chevron-right-solid"
           class="size-8 text-neutral-900"
@@ -89,6 +97,7 @@ const handleNext = () => changeIndex(activeIndex.value + 1);
         }"
         :key="`carousel-indicator-${carouselId}-${index}`"
         @click="changeIndex(index)"
+        :aria-label="`Go to slide ${index + 1}`"
       ></button>
     </div>
   </div>

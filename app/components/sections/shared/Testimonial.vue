@@ -1,24 +1,25 @@
 <script setup lang="ts">
-import { SplitText } from "gsap/all";
-
 const { testimonies } = await useTestimonial();
 
 useGSAP(
-  (gsap) => {
-    const textSplit = SplitText.create(".text-container", {
-      type: "lines",
-    });
-
-    gsap.from(textSplit.lines, {
-      opacity: 0,
-      y: "-50%",
-      duration: 0.6,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: ".text-container",
-        start: "top bottom",
-      },
-    });
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create(".text-container", {
+        type: "lines",
+        onSplit: (textSplit) => {
+          gsap.from(textSplit.lines, {
+            opacity: 0,
+            y: "-50%",
+            duration: 0.6,
+            stagger: 0.2,
+            scrollTrigger: {
+              trigger: ".text-container",
+              start: "top bottom",
+            },
+          });
+        },
+      });
+    }, self);
   },
   {
     scope: "#testimonialSection",
@@ -35,8 +36,8 @@ useGSAP(
     }"
     aria-label="Testimonials"
   >
-    <div class="text-container">
-      <p class="mb-2.5 text-h5">Don’t take it from us</p>
+    <div class="text-container" role="text">
+      <h3 class="mb-2.5 text-h5">Don’t take it from us</h3>
       <h2 class="text-h1">
         Listen to <br />What They <em class="font-normal"> Say </em>
       </h2>
@@ -56,7 +57,12 @@ useGSAP(
         <div class="flex w-52 shrink-0 flex-col gap-4">
           <NuxtImg
             :src="item.image.url"
+            sizes="64px"
+            width="64"
+            height="64"
+            format="webp"
             class="size-16 rounded-full object-cover"
+            :alt="item.name"
             lazy
           />
           <div>
@@ -72,14 +78,14 @@ useGSAP(
           <div class="flex-1">
             <strong>I was</strong>
             <div
-              class="line-clamp-4 break-words content"
+              class="content line-clamp-4 break-words"
               v-sanitize-html="item.before"
             />
           </div>
           <div class="flex-1">
             <strong>Now</strong>
             <div
-              class="line-clamp-4 break-words content"
+              class="content line-clamp-4 break-words"
               v-sanitize-html="item.after"
             />
           </div>

@@ -1,7 +1,7 @@
 <template>
   <NavigationBar />
   <NuxtErrorBoundary>
-    <main class="invisible">
+    <main>
       <slot />
     </main>
 

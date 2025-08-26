@@ -1,55 +1,58 @@
 <script setup lang="ts">
-import { SplitText } from "gsap/all";
 import type { ServiceActivity } from "~/types/static.type";
 
 useGSAP(
-  (gsap) => {
-    const subtitleSplit = SplitText.create(".section-title p", {
-      type: "chars",
-    });
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create(".section-title p", {
+        type: "chars",
+        onSplit: (subtitleSplit) => {
+          SplitText.create(".section-title h2", {
+            type: "words",
+            onSplit: (titleSplit) => {
+              gsap.set(subtitleSplit.chars, {
+                transformOrigin: "left",
+              });
 
-    const titleSplit = SplitText.create(".section-title h2", {
-      type: "words",
-    });
+              gsap
+                .timeline({
+                  scrollTrigger: {
+                    trigger: ".section-title",
+                    start: "top bottom",
+                  },
+                })
+                .from(subtitleSplit.chars, {
+                  opacity: 0,
+                  scale: 0,
+                  duration: 0.3,
+                  stagger: 0.15,
+                })
+                .from(
+                  titleSplit.words,
+                  {
+                    opacity: 0,
+                    stagger: 0.2,
+                  },
+                  "-=0.6",
+                );
 
-    gsap.set(subtitleSplit.chars, {
-      transformOrigin: "left",
-    });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-title",
-          start: "top bottom",
+              gsap.from("li", {
+                y: "50%",
+                opacity: 0,
+                stagger: 0.2,
+                scrollTrigger: {
+                  trigger: "ul",
+                  start: "top bottom",
+                },
+              });
+            },
+          });
         },
-      })
-      .from(subtitleSplit.chars, {
-        opacity: 0,
-        scale: 0,
-        duration: 0.3,
-        stagger: 0.15,
-      })
-      .from(
-        titleSplit.words,
-        {
-          opacity: 0,
-          stagger: 0.2,
-        },
-        "-=0.6",
-      );
-
-    gsap.from("li", {
-      y: "50%",
-      opacity: 0,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: "ul",
-        start: "top bottom",
-      },
-    });
+      });
+    }, self);
   },
   {
-    scope: "#trainingApproachSection",
+    scope: "#corporateApproachSection",
   },
 );
 
@@ -83,28 +86,28 @@ const activities: ServiceActivity[] = [
 
 <template>
   <SectionWrapper
-    id="trainingApproachSection"
-    aria-label="How Training Works"
+    id="corporateApproachSection"
+    aria-label="How Corporate Works"
     class="py-52 text-brand-200"
     :inner-container-props="{
       class: 'gap-14',
     }"
   >
     <div class="section-title">
-      <p class="mb-3 text-h3">So...</p>
-      <h2 id="trainingApproachSectionTitle" class="text-h1">
+      <h3 class="mb-3 text-h3">So...</h3>
+      <h2 id="corporateApproachSectionTitle" class="text-h1">
         How does it <em class="font-normal">work</em>?
       </h2>
     </div>
 
     <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       <li
-        class="mx-auto max-w-96 rounded-2xl hover:bg-primary-500 hover:text-foreground bg-foreground p-4 min-h-80"
+        class="mx-auto min-h-80 max-w-96 rounded-2xl bg-foreground p-4 hover:bg-primary-500 hover:text-foreground"
         v-for="(a, i) in activities"
         :key="`activity-${i}`"
       >
         <Icon :name="a.icon" class="float-right size-8" />
-        <div class="py-9.5 h-full flex flex-col justify-center">
+        <div class="flex h-full flex-col justify-center py-9.5">
           <h3 class="text-h5 font-bold">
             {{ a.title }}
           </h3>

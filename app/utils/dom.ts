@@ -16,9 +16,11 @@ export function registerGSAPPlugin() {
   gsap.registerPlugin(MorphSVGPlugin, ScrollTrigger, SplitText);
 }
 
-export function preventFOUC() {
-  const main = document.querySelector("main");
-  if (!main) return;
-
-  main.style.visibility = "visible";
-}
+export const splitText = (
+  callback: (s: typeof SplitText) => void,
+  ctx?: gsap.Context,
+) => {
+  document.fonts.ready.then(() => {
+    ctx ? ctx.add(() => callback(SplitText)) : callback(SplitText);
+  });
+};

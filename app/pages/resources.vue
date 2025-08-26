@@ -41,7 +41,12 @@ const { resources, pending } = await useResourceList(page);
             <template #illustration>
               <NuxtImg
                 :src="resource.image.url"
+                sizes="100vw sm:272px"
+                width="600"
+                format="webp"
+                height="256"
                 class="h-64 w-full bg-neutral-300 object-cover"
+                :alt="resource.title"
               />
             </template>
             <template #title>
@@ -49,7 +54,9 @@ const { resources, pending } = await useResourceList(page);
             </template>
             <template #subtitle>{{ resource.createdAt }}</template>
             <template #content>
-              <div v-sanitize-html="resource.description" />
+              <ClientOnly>
+                <div v-sanitize-html="resource.description" />
+              </ClientOnly>
             </template>
           </Card>
         </a>

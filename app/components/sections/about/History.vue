@@ -165,14 +165,14 @@ const contents: Content[] = [
           animation-link="/assets/lotties/popper.json"
           :width="lottieSize"
           :height="lottieSize"
-          class="max-sm:absolute right-0 bottom-0 max-sm:translate-y-3/4"
+          class="right-0 bottom-0 max-sm:absolute max-sm:translate-y-3/4"
         />
       </div>
       <p class="mt-1.5 text-h5">Get to know more about us and our milestones</p>
     </div>
 
     <div class="timeline table">
-      <div class="table-row" v-for="c of contents" :key="c.year">
+      <dl class="table-row" v-for="c of contents" :key="c.year">
         <dt class="table-cell pr-5">
           <time
             :datetime="c.year"
@@ -182,20 +182,23 @@ const contents: Content[] = [
           </time>
         </dt>
         <dd class="table-cell">
-          <ul class="relative flex flex-col gap-8 pl-10">
+          <div class="relative">
             <span
               class="line absolute top-0 left-0 inline-block h-full w-2 bg-primary-200"
             />
-            <li class="text-h6" v-for="a of c.activities" :key="a.title">
-              <strong class="text-brand-200">
-                {{ a.title }}
-              </strong>
-              <p class="mt-2">{{ a.description }}</p>
-            </li>
-          </ul>
+            <ul class="flex flex-col gap-8 pl-10">
+              <li class="text-h6" v-for="a of c.activities" :key="a.title">
+                <strong class="text-brand-200">
+                  {{ a.title }}
+                </strong>
+                <p class="mt-2">{{ a.description }}</p>
+              </li>
+            </ul>
+          </div>
         </dd>
-      </div>
-      <div class="table-row" key="latest">
+      </dl>
+
+      <dl class="table-row" key="latest">
         <dt class="table-cell pr-5">
           <time
             datetime="2024"
@@ -205,21 +208,23 @@ const contents: Content[] = [
           </time>
         </dt>
         <dd class="table-cell">
-          <ul class="relative flex flex-col gap-8 pl-10">
+          <div class="relative">
             <span
               class="line absolute top-0 left-0 inline-block h-full w-2 bg-primary-200"
             />
-            <li class="text-h6">
-              <h3 class="text-brand-200 font-bold text-[2rem]/compressed">
-                Achieved over
-                <span class="text-secondary-500">1,000+ hours </span> of
-                coaching
-              </h3>
-              <p class="mt-2">With more to come!</p>
-            </li>
-          </ul>
+            <ul class="flex flex-col gap-8 pl-10">
+              <li class="text-h6">
+                <h3 class="text-[2rem]/compressed font-bold text-brand-200">
+                  Achieved over
+                  <span class="text-secondary-500">1,000+ hours </span> of
+                  coaching
+                </h3>
+                <p class="mt-2">With more to come!</p>
+              </li>
+            </ul>
+          </div>
         </dd>
-      </div>
+      </dl>
     </div>
   </SectionWrapper>
 </template>

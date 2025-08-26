@@ -41,7 +41,12 @@ const { blogs, pending } = await useBlogList(page);
             <template #illustration>
               <NuxtImg
                 :src="blog.image.url"
+                sizes="100vw sm:272px"
+                width="600"
+                format="webp"
+                height="256"
                 class="h-64 w-full bg-neutral-300 object-cover"
+                :alt="blog.title"
               />
             </template>
             <template #title>
@@ -51,10 +56,12 @@ const { blogs, pending } = await useBlogList(page);
             </template>
             <template #subtitle>{{ getLocalTime(blog.publishedAt) }}</template>
             <template #content>
-              <div
-                v-sanitize-html="stripStyleAttr(blog.content)"
-                class="line-clamp-2 break-words"
-              />
+              <ClientOnly>
+                <div
+                  v-sanitize-html="stripStyleAttr(blog.content)"
+                  class="line-clamp-2 break-words"
+                />
+              </ClientOnly>
             </template>
           </Card>
         </NuxtLink>

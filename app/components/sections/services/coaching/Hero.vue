@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import { SplitText } from "gsap/all";
-
 useGSAP(
-  (gsap) => {
-    const titleSplit = SplitText.create("#coachingHeroSectionTitle", {
-      type: "words",
-    });
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create("#coachingHeroSectionTitle", {
+        type: "words",
+        onSplit: (titleSplit) => {
+          gsap.set(titleSplit.words, {
+            transformOrigin: "bottom",
+          });
 
-    gsap.set(titleSplit.words, {
-      transformOrigin: "bottom",
-    });
-
-    gsap.from(titleSplit.words, {
-      ease: "elastic.out",
-      duration: 1,
-      stagger: 0.2,
-      scaleY: 0,
-      scrollTrigger: {
-        trigger: "#coachingHeroSectionTitle",
-        start: "top bottom",
-      },
-    });
+          gsap.from(titleSplit.words, {
+            ease: "elastic.out",
+            duration: 1,
+            stagger: 0.2,
+            scaleY: 0,
+            scrollTrigger: {
+              trigger: "#coachingHeroSectionTitle",
+              start: "top bottom",
+            },
+          });
+        },
+      });
+    }, self);
 
     gsap.from("p", {
       opacity: 0,

@@ -16,9 +16,7 @@ useGSAP(
 
 useGSAP(
   (gsap) => {
-    const twoCards = Array.from(
-      document.querySelectorAll("#twoCards path"),
-    ) as [HTMLElement, HTMLElement];
+    const twoCards = gsap.utils.toArray("#twoCards path") as [Element, Element];
 
     twoCards.forEach((card) => {
       gsap.set(card, {
@@ -33,7 +31,7 @@ useGSAP(
           ease: "back.inOut",
         },
         scrollTrigger: {
-          trigger: "svg",
+          trigger: "#twoCards",
           start: "top 75%",
         },
       })
@@ -78,9 +76,11 @@ useGSAP(
 
 useGSAP(
   (gsap) => {
-    const threeCards = Array.from(
-      document.querySelectorAll("#threeCards path"),
-    ) as [Element, Element, Element];
+    const threeCards = gsap.utils.toArray("#threeCards path") as [
+      Element,
+      Element,
+      Element,
+    ];
 
     gsap
       .timeline({
@@ -90,7 +90,7 @@ useGSAP(
           opacity: 0,
         },
         scrollTrigger: {
-          trigger: "svg",
+          trigger: "#threeCards",
           start: "top 75%",
         },
       })

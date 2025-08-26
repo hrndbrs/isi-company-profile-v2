@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from "@vueuse/core";
-import { SplitText } from "gsap/all";
 
 const { md, lg } = useBreakpoints(breakpointsTailwind);
 const lottieSize = computed(() => {
@@ -12,33 +11,36 @@ const lottieSize = computed(() => {
 });
 
 useGSAP(
-  (gsap) => {
-    const titleSplit = SplitText.create("#serviceSectionTitle", {
-      type: "lines",
-    });
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".inner-wrapper",
-          start: "top 80%",
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create("#serviceSectionTitle", {
+        type: "lines",
+        onSplit: (titleSplit) => {
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: ".inner-wrapper",
+                start: "top 80%",
+              },
+            })
+            .from(titleSplit.lines, {
+              opacity: 0,
+              stagger: 0.1,
+              y: md.value ? "70%" : undefined,
+              x: md.value ? undefined : "-100%px",
+            })
+            .from(
+              ".service",
+              {
+                opacity: 0,
+                y: "-70%",
+                stagger: 0.1,
+              },
+              "-=0.45",
+            );
         },
-      })
-      .from(titleSplit.lines, {
-        opacity: 0,
-        stagger: 0.1,
-        y: md.value ? "70%" : undefined,
-        x: md.value ? undefined : "-100%px",
-      })
-      .from(
-        ".service",
-        {
-          opacity: 0,
-          y: "-70%",
-          stagger: 0.1,
-        },
-        "-=0.45",
-      );
+      });
+    }, self);
   },
   {
     scope: "#serviceSection",

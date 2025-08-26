@@ -6,10 +6,6 @@ onBeforeMount(() => {
   setCampaignId(route.query[CAMPAIGN_ID_STORAGE_KEY] as string);
 });
 
-onMounted(() => {
-  preventFOUC();
-});
-
 watch(
   () => route.query,
   () => {

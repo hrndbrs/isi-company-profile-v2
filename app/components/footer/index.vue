@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { SplitText } from "gsap/all";
-
-let brandNameSplit: SplitText;
-
-const { ctx } = useGSAP(
-  (gsap) => {
-    ctx.value?.revert();
-    brandNameSplit?.revert();
-
-    brandNameSplit = SplitText.create("#brandName", {
-      type: "lines",
-    });
-
-    ctx.value = gsap.context(() => {
-      gsap.from(brandNameSplit.lines, {
-        opacity: 0,
-        y: "50%",
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: brandNameSplit.lines,
-          start: "top bottom",
+useGSAP(
+  (gsap, self) => {
+    splitText((SplitText) => {
+      SplitText.create("#brandName", {
+        type: "lines",
+        onSplit: (brandNameSplit) => {
+          gsap.from(brandNameSplit.lines, {
+            opacity: 0,
+            y: "50%",
+            stagger: 0.1,
+            scrollTrigger: {
+              trigger: brandNameSplit.lines,
+              start: "top bottom",
+            },
+          });
         },
       });
-    });
+    }, self);
   },
   { scope: "footer" },
 );
@@ -34,7 +28,7 @@ const { ctx } = useGSAP(
       <div
         class="flex flex-col justify-between gap-29 text-brand-200 sm:max-lg:px-20 lg:flex-row lg:items-center"
       >
-        <span id="brandName" class="max-w-2xl text-h1">
+        <span id="brandName" class="max-w-2xl text-h1" role="text">
           Inspirasi Satu
           <span class="font-normal italic"> Indonesia </span>
         </span>

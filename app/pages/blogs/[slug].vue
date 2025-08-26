@@ -16,7 +16,9 @@ const { blog, pending } = await useBlogDetail(params.slug as string);
       <figure>
         <NuxtImg
           :src="blog.data.image.url"
-          class="max-h-96 min-h-96 w-full object-cover"
+          class="h-96 w-full object-cover"
+          width="996"
+          height="384"
           :alt="blog.data.title"
         />
         <figcaption class="sr-only">

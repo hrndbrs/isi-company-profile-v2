@@ -63,6 +63,9 @@ useGSAP(
             :alt="partner.name"
             :key="partner.name"
             sizes="72px sm:116px"
+            format="webp"
+            width="116"
+            height="66"
             class="aspect-video max-w-18 flex-1 shrink-0 object-contain @md:max-w-24"
           />
         </div>
