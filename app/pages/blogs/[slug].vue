@@ -2,6 +2,11 @@
 const { params } = useRoute();
 
 const { blog, pending } = await useBlogDetail(params.slug as string);
+
+useSeoMeta({
+  ogImage: blog.value.data.image.url,
+})
+
 </script>
 
 <template>
@@ -36,10 +41,14 @@ const { blog, pending } = await useBlogDetail(params.slug as string);
               class="line-clamp-1 break-words not-italic"
               itemprop="author"
             >
-              Budi
+              {{ blog.data.author }}
             </address>
-            <time :datetime="blog.data.publishedAt" itemprop="datePublished">
-              {{ blog.data.publishedAt }}
+            <time :datetime="blog.data.createdAt" itemprop="datePublished">
+              {{ new Date(blog.data.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              }) }}
             </time>
           </div>
         </div>
