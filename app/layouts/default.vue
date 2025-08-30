@@ -5,8 +5,8 @@
       <slot />
     </main>
 
-    <template #error>
-      <ErrorView />
+    <template #error="{ error, clearError }">
+      <ErrorView :error="error" :clearError />
     </template>
   </NuxtErrorBoundary>
   <Footer />
