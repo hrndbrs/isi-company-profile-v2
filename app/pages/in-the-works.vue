@@ -5,13 +5,11 @@ const lottieSize = 128;
 <template>
   <SectionWrapper class="py-23">
     <!-- text message -->
-    <div class="flex flex-col gap-3 relative">
-      <h2 class="text-h3 text-error-500 font-bold">ERROR!</h2>
+    <div class="relative flex flex-col gap-3">
+      <h2 class="text-h3 font-bold text-error-500">ERROR!</h2>
       <h1 class="text-h1 font-bold text-error-200">
-        Don’t worry, this page is on the <br class="lg:block hidden" /><em
-          class="font-normal"
-          >work!</em
-        >
+        Don’t worry, this page is in the <br class="hidden lg:block" />
+        <em class="font-normal">works!</em>
       </h1>
       <p class="text-error-500">
         Change is coming soon—stay tuned for something amazing!
@@ -26,7 +24,7 @@ const lottieSize = 128;
     </div>
 
     <NuxtLink to="/">
-      <ButtonWithWave class="w-fit mt-12">Take me home</ButtonWithWave>
+      <ButtonWithWave class="mt-12 w-fit">Take me home</ButtonWithWave>
     </NuxtLink>
   </SectionWrapper>
 </template>

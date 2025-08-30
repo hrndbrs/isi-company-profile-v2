@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import type { NuxtError } from "#app";
-
 const lottieSize = 128;
 
-const {
-  error,
-  global = false,
-  ...props
-} = defineProps<{
-  error: Error;
+const { global = false } = defineProps<{
+  error?: Error;
   global?: boolean;
   clearError?: () => void;
 }>();
 
 async function handleNavigate() {
   if (global) return await clearError({ redirect: "/" });
-  props.clearError?.();
-  await navigateTo("/", { replace: true });
-  props.clearError?.();
   await navigateTo("/", { replace: true });
 }
 </script>

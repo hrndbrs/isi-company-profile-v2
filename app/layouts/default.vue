@@ -1,13 +1,15 @@
 <template>
   <NavigationBar />
+
   <NuxtErrorBoundary>
+    <SocialLinksContainer />
     <main>
       <slot />
     </main>
-
-    <template #error="{ error, clearError }">
-      <ErrorView :error="error" :clearError />
+    <template #error="{ error }">
+      {{ showError(error) }}
     </template>
   </NuxtErrorBoundary>
+
   <Footer />
 </template>

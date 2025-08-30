@@ -26,17 +26,17 @@ const socialLinks = [
 </script>
 
 <template>
-  <nav class="flex flex-col right-8 gap-2.5 fixed top-1/3 z-500">
+  <nav class="fixed top-1/3 right-8 z-1 flex flex-col gap-2.5">
     <NuxtLink
       v-for="item in socialLinks"
       :key="item.icon"
       external
       target="_blank"
       :to="item.url"
-      class="border-brand-500 rounded-full border-2 opacity-32 hover:opacity-100 duration-200"
+      class="rounded-full border-2 border-brand-500 opacity-32 duration-200 hover:opacity-100"
       aria-label="Social links"
     >
-      <Icon :name="item.icon" class="size-8 m-3 text-brand-500" />
+      <Icon :name="item.icon" class="m-3 size-8 text-brand-500" />
       <span class="sr-only">{{ item.label }}</span>
     </NuxtLink>
   </nav>

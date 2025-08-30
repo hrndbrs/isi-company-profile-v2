@@ -3,11 +3,11 @@ const { params } = useRoute();
 
 const { blog, pending } = await useBlogDetail(params.slug as string);
 
-if (blog.value) {
+if (import.meta.server) {
   useSeoMeta({
     ogImage: blog.value.data.image.url,
     twitterImage: blog.value.data.image.url,
-  })
+  });
 
   useSchemaOrg([
     defineWebPage({
@@ -15,11 +15,10 @@ if (blog.value) {
       author: blog.value.data.author,
       datePublished: blog.value.data.createdAt,
       dateModified: blog.value.data.updatedAt,
-      url: `${process.env.NUXT_PUBLIC_SITE_URL}/${blog.value.data.slug}`
+      url: `${process.env.NUXT_PUBLIC_SITE_URL}/${blog.value.data.slug}`,
     }),
-  ])
+  ]);
 }
-
 </script>
 
 <template>
@@ -57,11 +56,13 @@ if (blog.value) {
               {{ blog.data.author }}
             </address>
             <time :datetime="blog.data.createdAt" itemprop="datePublished">
-              {{ new Date(blog.data.createdAt).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              }) }}
+              {{
+                new Date(blog.data.createdAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              }}
             </time>
           </div>
         </div>
@@ -69,27 +70,14 @@ if (blog.value) {
         <div class="prose mt-6" v-sanitize-html="blog.data.content" />
       </article>
 
-      <nav class="mt-6 grid grid-cols-2 py-8" aria-label="Blog post navigation">
-        <div>
-          <NuxtLink to="#" class="text-left" rel="prev">
-            <Icon name="heroicons:chevron-left" />
-            <div>
-              <p>Previous</p>
-              <p class="line-clamp-1 text-h5 break-words">Previous Title</p>
-            </div>
-          </NuxtLink>
-        </div>
-
-        <div>
-          <NuxtLink to="#" rel="next" class="float-right text-right">
-            <div>
-              <p>Next</p>
-              <p class="line-clamp-1 text-h5 break-words">Next Title</p>
-            </div>
-
-            <Icon name="heroicons:chevron-right" />
-          </NuxtLink>
-        </div>
+      <nav class="mt-6 py-8" aria-label="To blog list">
+        <NuxtLink to="/blogs" class="text-left">
+          <Icon name="heroicons:chevron-left" />
+          <div>
+            <p>Go back</p>
+            <p class="line-clamp-1 text-h5 break-words">See All Blogs</p>
+          </div>
+        </NuxtLink>
       </nav>
     </template>
   </SectionWrapper>
