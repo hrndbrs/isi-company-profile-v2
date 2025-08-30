@@ -7,6 +7,16 @@ useSeoMeta({
   ogImage: blog.value.data.image.url,
 })
 
+useSchemaOrg([
+  defineWebPage({
+    name: blog.value.data.title,
+    author: blog.value.data.author,
+    datePublished: blog.value.data.createdAt,
+    dateModified: blog.value.data.updatedAt,
+    url: `${process.env.NUXT_PUBLIC_SITE_URL}/${blog.value.data.slug}`
+  }),
+])
+
 </script>
 
 <template>

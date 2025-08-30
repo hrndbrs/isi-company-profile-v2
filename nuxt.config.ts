@@ -41,12 +41,27 @@ export default defineNuxtConfig({
       robots: 'index, follow',
     }
   },
-  robots: {
-    enabled: prod,
-    sitemap: '/sitemap.xml',
-  },
   sitemap: {
-    enabled: prod,
+    autoLastmod: true,
+    cacheMaxAgeSeconds: 3600,
+    sitemaps: {
+      pages: {
+        includeAppSources: true,
+        exclude: ['/blogs/**'],
+        chunkSize: 1000,
+        defaults: {
+          priority: 0.8,
+          changefreq: 'monthly'
+        }
+      },
+      blogs: {
+        sources: ['/api/__sitemap__/blogs'],
+        defaults: { 
+          priority: 0.7,
+          changefreq: 'weekly'
+        }
+      }
+    }
   },
   schemaOrg: {
     identity: {
