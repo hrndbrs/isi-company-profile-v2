@@ -30,6 +30,7 @@ export default defineNuxtConfig({
       "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
     defaultLocale: "en",
     indexable: true,
+    favicon: "/assets/images/favicon.ico"
   },
   seo: {
     redirectToCanonicalSiteUrl: true,
@@ -136,6 +137,7 @@ export default defineNuxtConfig({
           as: "style",
           onload: "this.onload=null;this.rel='stylesheet'",
         },
+        { rel: "icon", type: "image/x-icon", href: `${process.env.NUXT_PUBLIC_SITE_URL}/assets/images/favicon.ico` },
       ],
     },
   },
