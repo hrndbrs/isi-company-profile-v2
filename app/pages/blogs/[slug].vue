@@ -3,19 +3,22 @@ const { params } = useRoute();
 
 const { blog, pending } = await useBlogDetail(params.slug as string);
 
-useSeoMeta({
-  ogImage: blog.value.data.image.url,
-})
+if (blog.value) {
+  useSeoMeta({
+    ogImage: blog.value.data.image.url,
+    twitterImage: blog.value.data.image.url,
+  })
 
-useSchemaOrg([
-  defineWebPage({
-    name: blog.value.data.title,
-    author: blog.value.data.author,
-    datePublished: blog.value.data.createdAt,
-    dateModified: blog.value.data.updatedAt,
-    url: `${process.env.NUXT_PUBLIC_SITE_URL}/${blog.value.data.slug}`
-  }),
-])
+  useSchemaOrg([
+    defineWebPage({
+      name: blog.value.data.title,
+      author: blog.value.data.author,
+      datePublished: blog.value.data.createdAt,
+      dateModified: blog.value.data.updatedAt,
+      url: `${process.env.NUXT_PUBLIC_SITE_URL}/${blog.value.data.slug}`
+    }),
+  ])
+}
 
 </script>
 

@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     'nuxt-og-image',
+    'nuxt-gtag'
   ],
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL,
@@ -77,6 +78,18 @@ export default defineNuxtConfig({
     },
     strictNuxtContentPaths: true
   },
+  // gtag: {
+  //   id: process.env.NUXT_PUBLIC_GTAG_ID,
+  //   initCommands: [
+  //     ['consent', 'default', {
+  //       ad_user_data: 'granted',
+  //       ad_personalization: 'granted',
+  //       ad_storage: 'granted',
+  //       analytics_storage: 'granted',
+  //       wait_for_update: 500,
+  //     }]
+  //   ]
+  // },
   runtimeConfig: {
     public: {
       apiToken: process.env.STRAPI_TOKEN,
@@ -96,10 +109,6 @@ export default defineNuxtConfig({
         maxAge: 60 * 60 * 24 * 365,
       },
     ],
-  },
-  gtag: {
-    enabled: prod,
-    id: process.env.GTAG_ID,
   },
   image: {
     domains: [prod ? String(process.env.STRAPI_CDN) : "*"],
