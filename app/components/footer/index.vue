@@ -23,7 +23,7 @@ useGSAP(
 </script>
 
 <template>
-  <footer class="relative bg-brand-500 px-5 py-64">
+  <footer class="relative z-2 bg-brand-500 px-5 py-64">
     <div class="container text-h5">
       <div
         class="flex flex-col justify-between gap-29 text-brand-200 sm:max-lg:px-20 lg:flex-row lg:items-center"
