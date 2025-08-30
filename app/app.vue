@@ -10,7 +10,7 @@ watch(
   () => route.query,
   () => {
     setCampaignId(route.query[CAMPAIGN_ID_STORAGE_KEY] as string);
-  },
+  }
 );
 </script>
 
@@ -18,6 +18,7 @@ watch(
   <NuxtLayout>
     <NuxtRouteAnnouncer />
     <NuxtPage />
+    <SharedSocialSidebar />
   </NuxtLayout>
   <LoadingPageIndicator />
 </template>
