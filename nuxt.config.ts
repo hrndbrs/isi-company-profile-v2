@@ -78,18 +78,19 @@ export default defineNuxtConfig({
     },
     strictNuxtContentPaths: true
   },
-  // gtag: {
-  //   id: process.env.NUXT_PUBLIC_GTAG_ID,
-  //   initCommands: [
-  //     ['consent', 'default', {
-  //       ad_user_data: 'granted',
-  //       ad_personalization: 'granted',
-  //       ad_storage: 'granted',
-  //       analytics_storage: 'granted',
-  //       wait_for_update: 500,
-  //     }]
-  //   ]
-  // },
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GTAG_ID,
+    enabled: true,
+    initCommands: [
+      ['consent', 'default', {
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        wait_for_update: 500,
+      }]
+    ]
+  },
   runtimeConfig: {
     public: {
       apiToken: process.env.STRAPI_TOKEN,
