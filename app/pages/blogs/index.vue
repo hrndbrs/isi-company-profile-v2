@@ -6,6 +6,14 @@ const page = computed(() => {
 });
 
 const { blogs, pending } = await useBlogList(page);
+
+watchEffect(async () => {
+  if (pending.value || !blogs.value) return;
+
+  if (blogs.value.data.length < 1) {
+    await navigateTo("/in-the-works");
+  }
+});
 </script>
 
 <template>

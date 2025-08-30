@@ -90,6 +90,7 @@ onClickOutside(mobileLinksContainer, closeMobileContainer, {
             class="float-right block lg:hidden"
             @click="toggleMobileContainer()"
           >
+            <span class="sr-only">Toggle Mobile Menu</span>
             <Icon name="svg:menu-btn" id="menu" class="size-6" />
           </button>
         </div>

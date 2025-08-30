@@ -6,6 +6,14 @@ const page = computed(() => {
 });
 
 const { resources, pending } = await useResourceList(page);
+
+watchEffect(async () => {
+  if (pending.value || !resources.value) return;
+
+  if (resources.value.data.length < 1) {
+    await navigateTo("/in-the-works");
+  }
+});
 </script>
 
 <template>
