@@ -1,5 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
-import { installNuxtSiteConfig, updateSiteConfig } from 'nuxt-site-config/kit'
+import { installNuxtSiteConfig, updateSiteConfig } from "nuxt-site-config/kit";
 
 const prod = process.env.NODE_ENV === "production";
 
@@ -15,32 +15,35 @@ export default defineNuxtConfig({
     "motion-v/nuxt",
     "@radya/nuxt-dompurify",
     "nuxt-gtag",
-    '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
-    'nuxt-og-image',
-    'nuxt-gtag'
+    "@nuxtjs/seo",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+    "nuxt-og-image",
+    "nuxt-gtag",
   ],
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL,
-    name: 'Inspirasi Satu Indonesia – Empowering Change, Inspiring Growth',
-    description: 'Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Established on October 1, 2020, ISI is committed to driving positive change and empowering individuals and organizations. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.',
-    keywords: 'Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises',
-    defaultLocale: 'en',
+    name: "Inspirasi Satu Indonesia – Empowering Change, Inspiring Growth",
+    description:
+      "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Established on October 1, 2020, ISI is committed to driving positive change and empowering individuals and organizations. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.",
+    keywords:
+      "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
+    defaultLocale: "en",
     indexable: true,
   },
   seo: {
     redirectToCanonicalSiteUrl: true,
     meta: {
-      description: 'Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Established on October 1, 2020, ISI is committed to driving positive change and empowering individuals and organizations. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.',
+      description:
+        "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Established on October 1, 2020, ISI is committed to driving positive change and empowering individuals and organizations. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.",
       ogSiteName: process.env.NUXT_PUBLIC_SITE_NAME,
       ogTitle: process.env.NUXT_PUBLIC_SITE_NAME,
-      ogLocale: 'en_US',
-      ogType: 'website',
+      ogLocale: "en_US",
+      ogType: "website",
       ogUrl: process.env.NUXT_PUBLIC_SITE_URL,
       ogImage: `${process.env.NUXT_PUBLIC_SITE_URL}/assets/images/isi-logo.svg`,
-      robots: 'index, follow',
-    }
+      robots: "index, follow",
+    },
   },
   sitemap: {
     autoLastmod: true,
@@ -48,35 +51,35 @@ export default defineNuxtConfig({
     sitemaps: {
       pages: {
         includeAppSources: true,
-        exclude: ['/blogs/**'],
+        exclude: ["/blogs/**"],
         chunkSize: 1000,
         defaults: {
           priority: 0.8,
-          changefreq: 'monthly'
-        }
+          changefreq: "monthly",
+        },
       },
       blogs: {
-        sources: ['/api/__sitemap__/blogs'],
-        defaults: { 
+        sources: ["/api/__sitemap__/blogs"],
+        defaults: {
           priority: 0.7,
-          changefreq: 'weekly'
-        }
-      }
-    }
+          changefreq: "weekly",
+        },
+      },
+    },
   },
   schemaOrg: {
     identity: {
-      type: 'Organization',
-      name: process.env.NUXT_PUBLIC_SITE_NAME || 'Inspirasi Satu Indonesia',
+      type: "Organization",
+      name: process.env.NUXT_PUBLIC_SITE_NAME || "Inspirasi Satu Indonesia",
       url: process.env.NUXT_PUBLIC_SITE_URL,
-      logo: `${process.env.NUXT_PUBLIC_SITE_URL}/assets/images/isi-logo.svg`
-    }
+      logo: `${process.env.NUXT_PUBLIC_SITE_URL}/assets/images/isi-logo.svg`,
+    },
   },
   ogImage: {
     defaults: {
-      component: 'Custom',
+      component: "Custom",
     },
-    strictNuxtContentPaths: true
+    strictNuxtContentPaths: true,
   },
   // gtag: {
   //   id: process.env.NUXT_PUBLIC_GTAG_ID,
@@ -97,7 +100,9 @@ export default defineNuxtConfig({
       whatsapp: process.env.ISI_WHATSAPP_NUMBER,
       discordGroup: process.env.ISI_DISCORD_GROUP,
       dashboardUrl: process.env.ISI_DASHBOARD_URL,
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL
+      linkedIn: process.env.ISI_LINKEDIN_ID,
+      instagram: process.env.ISI_INSTAGRAM_USERNAME,
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
     },
   },
   nitro: {
@@ -113,7 +118,7 @@ export default defineNuxtConfig({
   image: {
     domains: [prod ? String(process.env.STRAPI_CDN) : "*"],
     format: ["webp", "avif"],
-    quality: 80
+    quality: 80,
   },
   routeRules: {
     "/blogs/**": { isr: prod ? 60 * 60 * 24 * 7 : false },
@@ -125,12 +130,12 @@ export default defineNuxtConfig({
       },
       link: [
         {
-          rel: 'preload',
-          href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap',
-          as: 'style',
-          onload: "this.onload=null;this.rel='stylesheet'"
+          rel: "preload",
+          href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+          as: "style",
+          onload: "this.onload=null;this.rel='stylesheet'",
         },
-      ]
+      ],
     },
   },
   fonts: {
@@ -141,7 +146,7 @@ export default defineNuxtConfig({
         preload: true,
         weights: [400, 500, 600, 700],
         styles: ["normal"],
-        subsets: ["italic",],
+        subsets: ["italic"],
         display: "swap",
       },
     ],
@@ -154,6 +159,10 @@ export default defineNuxtConfig({
         prefix: "svg",
         dir: "./app/assets/svg",
       },
+      {
+        prefix: "social",
+        dir: "./app/assets/svg/socials",
+      },
     ],
   },
   vite: {
@@ -162,9 +171,9 @@ export default defineNuxtConfig({
       rollupOptions: {
         output: {
           manualChunks: {
-            'gsap': ['gsap'],
-            'motion': ['motion-v'],
-            'lottie': ['vue3-lottie'],
+            gsap: ["gsap"],
+            motion: ["motion-v"],
+            lottie: ["vue3-lottie"],
           },
         },
       },

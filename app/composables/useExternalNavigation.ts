@@ -9,6 +9,8 @@ export default function useNavigation() {
     dashboard: `${config.public.dashboardUrl}/login`,
     whatsapp: `https://wa.me/${config.public.whatsapp}`,
     discordGroupInvite: `https://discord.gg/${config.public.discordGroup}`,
+    linkedin: `https://www.linkedin.com/company/${config.public.linkedIn}`,
+    instagram: `https://www.instagram.com/${config.public.instagram}`,
   };
 
   async function toDashboard(opts: NavigationOptions = {}) {
