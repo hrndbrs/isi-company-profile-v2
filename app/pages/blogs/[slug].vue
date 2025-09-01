@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import dayjs from 'dayjs'
 const { params } = useRoute();
 
 const { blog, pending } = await useBlogDetail(params.slug as string);
 
+// Debug the publishedAt value
+
 if (import.meta.server) {
+  console.log('publishedAt:', blog.value.data)
   useSeoMeta({
     ogImage: blog.value.data.image.url,
     twitterImage: blog.value.data.image.url,
@@ -55,15 +59,9 @@ if (import.meta.server) {
             >
               {{ blog.data.author }}
             </address>
-            <time :datetime="blog.data.createdAt" itemprop="datePublished">
-              {{
-                new Date(blog.data.createdAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })
-              }}
-            </time>
+            <span :datetime="blog.data.publishedAt" itemprop="datePublished">
+              {{ dayjs(blog.data.publishedAt).format('DD MMMM YYYY') }}
+            </span>
           </div>
         </div>
 

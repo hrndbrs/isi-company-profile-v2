@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import dayjs from 'dayjs'
 import { breakpointsTailwind } from "@vueuse/core";
 
 const { md } = useBreakpoints(breakpointsTailwind);
@@ -99,7 +100,9 @@ const { blogs } = await useBlogLatest();
                   {{ blog.title }}
                 </span>
               </template>
-              <template #subtitle>{{ blog.publishedAt }}</template>
+              <template #subtitle>
+                {{ dayjs(blog.publishedAt).format('DD MMMM YYYY') }}
+              </template>
               <template #content>
                 <ClientOnly>
                   <div v-sanitize-html="stripStyleAttr(blog.content)" />

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import dayjs from 'dayjs'
 const route = useRoute();
 const page = computed(() => {
   const p = route.query.page;
@@ -62,7 +63,9 @@ watchEffect(async () => {
                 {{ blog.title }}
               </span>
             </template>
-            <template #subtitle>{{ getLocalTime(blog.publishedAt) }}</template>
+            <template #subtitle>{{
+              dayjs(blog.publishedAt).format('DD MMMM YYYY')
+            }}</template>
             <template #content>
               <ClientOnly>
                 <div
