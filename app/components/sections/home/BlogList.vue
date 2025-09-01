@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
 import { breakpointsTailwind } from "@vueuse/core";
 
 const { md } = useBreakpoints(breakpointsTailwind);
@@ -101,7 +100,14 @@ const { blogs } = await useBlogLatest();
                 </span>
               </template>
               <template #subtitle>
-                {{ dayjs(blog.publishedAt).format('DD MMMM YYYY') }}
+                <NuxtTime
+                  :datetime="blog.publishedAt"
+                  locale="en-ID"
+                  year="numeric"
+                  month="long"
+                  day="numeric"
+                  itemprop="datePublished"
+                />
               </template>
               <template #content>
                 <ClientOnly>

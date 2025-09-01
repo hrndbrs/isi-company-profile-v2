@@ -7,10 +7,18 @@ export default function useNavigation() {
   const config = useRuntimeConfig();
   const urls = {
     dashboard: `${config.public.dashboardUrl}/login`,
-    whatsapp: `https://wa.me/${config.public.whatsapp}`,
-    discordGroupInvite: `https://discord.gg/${config.public.discordGroup}`,
-    linkedin: `https://www.linkedin.com/company/${config.public.linkedIn}`,
-    instagram: `https://www.instagram.com/${config.public.instagram}`,
+    whatsapp: config.public.whatsapp
+      ? `https://wa.me/${config.public.whatsapp}`
+      : null,
+    discordGroupInvite: config.public.discordGroup
+      ? `https://discord.gg/${config.public.discordGroup}`
+      : null,
+    linkedin: config.public.linkedIn
+      ? `https://www.linkedin.com/company/${config.public.linkedIn}`
+      : null,
+    instagram: config.public.instagram
+      ? `https://www.instagram.com/${config.public.instagram}`
+      : null,
   };
 
   async function toDashboard(opts: NavigationOptions = {}) {
