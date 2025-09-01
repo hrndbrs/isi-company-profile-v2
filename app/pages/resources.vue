@@ -39,7 +39,7 @@ watchEffect(async () => {
     >
       <article
         :key="resource.title"
-        class="inline-block translate-y-8 opacity-0 transition-all duration-200 sm:max-w-68"
+        class="inline-block translate-y-8 transition-all duration-200 sm:max-w-68"
         :aria-labelledby="resource.title"
       >
         <a :href="resource.file.url" target="_blank">
@@ -60,7 +60,16 @@ watchEffect(async () => {
             <template #title>
               {{ resource.title }}
             </template>
-            <template #subtitle>{{ resource.createdAt }}</template>
+            <template #subtitle>
+              <NuxtTime
+                :datetime="resource.createdAt"
+                locale="en-ID"
+                year="numeric"
+                month="long"
+                day="numeric"
+                itemprop="datePublished"
+              />
+            </template>
             <template #content>
               <ClientOnly>
                 <div v-sanitize-html="resource.description" />

@@ -27,7 +27,7 @@ const socialLinks = [
 
 <template>
   <nav class="fixed top-1/3 right-8 z-1 flex flex-col gap-2.5">
-    <template v-for="item in socialLinks" :key="item.icon">
+    <template v-for="item in socialLinks" :key="item.label">
       <NuxtLink
         external
         target="_blank"
