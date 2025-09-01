@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
 const route = useRoute();
 const page = computed(() => {
   const p = route.query.page;
@@ -63,9 +62,16 @@ watchEffect(async () => {
                 {{ blog.title }}
               </span>
             </template>
-            <template #subtitle>{{
-              dayjs(blog.publishedAt).format('DD MMMM YYYY')
-            }}</template>
+            <template #subtitle>
+              <NuxtTime
+                :datetime="blog.publishedAt"
+                locale="en-ID"
+                year="numeric"
+                month="long"
+                day="numeric"
+                itemprop="datePublished"
+              />
+            </template>
             <template #content>
               <ClientOnly>
                 <div

@@ -83,6 +83,9 @@ const opts = computed(() => {
       :to="getPath(p.index)"
       :key="p.index"
       :aria-current="p.active ? 'page' : null"
+      :class="{
+        'pointer-events-none': p.active,
+      }"
     >
       <slot name="link" :active="p.active" :index="p.index">
         <span

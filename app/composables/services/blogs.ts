@@ -7,7 +7,7 @@ export async function useBlogLatest(limit: number = 4) {
     query: {
       "populate[0]": "image",
       "pagination[pageSize]": limit,
-      "sort[0]": "createdAt:desc",
+      "sort[0]": "publishedAt:desc",
     },
   });
 
@@ -21,7 +21,7 @@ export async function useBlogList(page: Ref<number>) {
       "populate[0]": "image",
       "pagination[page]": page,
       "pagination[pageSize]": 8,
-      "sort[0]": "createdAt:desc",
+      "sort[0]": "publishedAt:desc",
     },
   });
 

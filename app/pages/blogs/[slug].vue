@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
 const { params } = useRoute();
 
 const { blog, pending } = await useBlogDetail(params.slug as string);
 
-// Debug the publishedAt value
-
 if (import.meta.server) {
-  console.log('publishedAt:', blog.value.data)
   useSeoMeta({
     ogImage: blog.value.data.image.url,
     twitterImage: blog.value.data.image.url,
@@ -17,7 +13,7 @@ if (import.meta.server) {
     defineWebPage({
       name: blog.value.data.title,
       author: blog.value.data.author,
-      datePublished: blog.value.data.createdAt,
+      datePublished: blog.value.data.publishedAt,
       dateModified: blog.value.data.updatedAt,
       url: `${process.env.NUXT_PUBLIC_SITE_URL}/${blog.value.data.slug}`,
     }),
@@ -59,9 +55,14 @@ if (import.meta.server) {
             >
               {{ blog.data.author }}
             </address>
-            <span :datetime="blog.data.publishedAt" itemprop="datePublished">
-              {{ dayjs(blog.data.publishedAt).format('DD MMMM YYYY') }}
-            </span>
+            <NuxtTime
+              :datetime="blog.data.publishedAt"
+              locale="en-ID"
+              year="numeric"
+              month="long"
+              day="numeric"
+              itemprop="datePublished"
+            />
           </div>
         </div>
 
