@@ -45,17 +45,10 @@ const { blogs } = await useBlogLatest();
 </script>
 
 <template>
-  <SectionWrapper
-    id="blogListSection"
-    class="py-28"
-    aria-labelledby="blogListSectionTitle"
-    :inner-container-props="{
-      class: 'gap-16',
-    }"
-  >
-    <header
-      class="section-title relative items-center justify-between text-brand-200 md:flex"
-    >
+  <SectionWrapper id="blogListSection" class="py-28" aria-labelledby="blogListSectionTitle" :inner-container-props="{
+    class: 'gap-16',
+  }">
+    <header class="section-title relative items-center justify-between text-brand-200 md:flex">
       <div class="max-w-xl max-sm:overflow-clip max-sm:pb-0.5">
         <p class="text-h3 font-semibold">And you can</p>
         <h2 id="blogListSectionTitle" class="text-h1">
@@ -63,36 +56,19 @@ const { blogs } = await useBlogLatest();
         </h2>
       </div>
 
-      <Lottie
-        class="absolute right-3 bottom-0 z-10 max-md:translate-y-5/6 md:static"
-        animation-link="/assets/lotties/pencil.json"
-        :width="lottieSize"
-        :height="lottieSize"
-      />
+      <Lottie class="absolute right-3 bottom-0 z-10 max-md:translate-y-5/6 md:static"
+        animation-link="/assets/lotties/pencil.json" :width="lottieSize" :height="lottieSize" />
     </header>
 
     <div class="relative">
       <div class="card-container flex gap-4 overflow-x-auto">
-        <article
-          v-for="(blog, i) in blogs.data"
-          :key="blog.slug"
-          class="blog-card w-68 transition-all duration-200"
-          :aria-label="blog.title"
-        >
+        <article v-for="(blog, i) in blogs.data" :key="blog.slug"
+          class="blog-card w-68 transition-all duration-200 shrink-0" :aria-label="blog.title">
           <NuxtLink :to="`/blogs/${blog.slug}`">
-            <Card
-              class="transition-color bg-neutral-50 duration-200 hover:bg-primary-500 hover:text-neutral-50"
-            >
+            <Card class="transition-color bg-neutral-50 duration-200 hover:bg-primary-500 hover:text-neutral-50">
               <template #illustration>
-                <NuxtImg
-                  :src="blog.image.url"
-                  sizes="100vw sm:272px"
-                  width="600"
-                  height="256"
-                  format="webp"
-                  class="aspect-square w-full bg-neutral-300 object-cover"
-                  :alt="blog.title"
-                />
+                <NuxtImg :src="blog.image.url" sizes="100vw sm:272px" width="600" height="256" format="webp"
+                  class="aspect-square w-full bg-neutral-300 object-cover" :alt="blog.title" />
               </template>
               <template #title>
                 <span :id="`blog-${i}`">
@@ -100,14 +76,8 @@ const { blogs } = await useBlogLatest();
                 </span>
               </template>
               <template #subtitle>
-                <NuxtTime
-                  :datetime="blog.publishedAt"
-                  locale="en-ID"
-                  year="numeric"
-                  month="long"
-                  day="numeric"
-                  itemprop="datePublished"
-                />
+                <NuxtTime :datetime="blog.publishedAt" locale="en-ID" year="numeric" month="long" day="numeric"
+                  itemprop="datePublished" />
               </template>
               <template #content>
                 <ClientOnly>
@@ -119,10 +89,8 @@ const { blogs } = await useBlogLatest();
         </article>
       </div>
 
-      <nav
-        aria-label="See blog list"
-        class="top-1/2 right-0 z-[2] flex justify-center max-1.5xl:mt-11 max-1.5xl:w-full 1.5xl:absolute 1.5xl:translate-x-1/2 1.5xl:-translate-y-1/2"
-      >
+      <nav aria-label="See blog list"
+        class="top-1/2 right-0 z-[2] flex justify-center max-1.5xl:mt-11 max-1.5xl:w-full 1.5xl:absolute 1.5xl:translate-x-1/2 1.5xl:-translate-y-1/2">
         <NuxtLink id="seeMoreBlogs" to="/blogs">
           <Button class="aspect-square w-36 rounded-full text-h6">
             Find More
@@ -136,7 +104,7 @@ const { blogs } = await useBlogLatest();
 <style scoped>
 @reference "~/assets/css/main.css";
 
-.card-container:has(.blog-card:hover) > :not(.blog-card:hover) {
+.card-container:has(.blog-card:hover)> :not(.blog-card:hover) {
   @apply grayscale-100;
 }
 

@@ -31,7 +31,7 @@ useGSAP(
       <Lottie animation-link="/assets/lotties/sun.json" class="max-w-xs" />
     </div>
 
-    <div class="text-brand-200">
+    <div class="lg:max-w-2xl text-brand-200">
       <h2 class="text-h2">
         Never lose your way! We are here as <br />
         <span class="role-label">
