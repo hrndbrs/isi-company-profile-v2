@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     url: process.env.NUXT_PUBLIC_SITE_URL,
     name: "Inspirasi Satu Indonesia – Empowering Change, Inspiring Growth",
     description:
-      "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Established on October 1, 2020, ISI is committed to driving positive change and empowering individuals and organizations. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.",
+      "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia.",
     keywords:
       "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
     defaultLocale: "en",
@@ -36,7 +36,9 @@ export default defineNuxtConfig({
     redirectToCanonicalSiteUrl: true,
     meta: {
       description:
-        "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Established on October 1, 2020, ISI is committed to driving positive change and empowering individuals and organizations. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.",
+        "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia.",
+      keywords:
+      "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
       ogSiteName: process.env.NUXT_PUBLIC_SITE_NAME,
       ogTitle: process.env.NUXT_PUBLIC_SITE_NAME,
       ogLocale: "en_US",
@@ -95,6 +97,13 @@ export default defineNuxtConfig({
       }]
     ]
   },
+  robots: {
+    allow: '/',
+    sitemap: [
+      `${process.env.NUXT_PUBLIC_SITE_URL}/__sitemap__/pages.xml`,
+      `${process.env.NUXT_PUBLIC_SITE_URL}/__sitemap__/blogs.xml`,
+    ]
+  },
   runtimeConfig: {
     public: {
       apiToken: process.env.STRAPI_TOKEN,
@@ -130,6 +139,8 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en",
       },
+      charset: "utf-8",
+      viewport: 'width=device-width, initial-scale=1',
       link: [
         {
           rel: "preload",
