@@ -1,5 +1,4 @@
 import tailwindcss from "@tailwindcss/vite";
-import { installNuxtSiteConfig, updateSiteConfig } from "nuxt-site-config/kit";
 
 const prod = process.env.NODE_ENV === "production";
 
@@ -28,7 +27,7 @@ export default defineNuxtConfig({
         lang: "en",
       },
       charset: "utf-8",
-      viewport: 'width=device-width, initial-scale=1',
+      viewport: "width=device-width, initial-scale=1",
       link: [
         {
           rel: "preload",
@@ -36,7 +35,11 @@ export default defineNuxtConfig({
           as: "style",
           onload: "this.onload=null;this.rel='stylesheet'",
         },
-        { rel: "icon", type: "image/x-icon", href: `${process.env.NUXT_PUBLIC_SITE_URL}/assets/images/favicon.ico` },
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: `${process.env.NUXT_PUBLIC_SITE_URL}/assets/images/favicon.ico`,
+        },
       ],
     },
   },
@@ -49,7 +52,7 @@ export default defineNuxtConfig({
       "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
     defaultLocale: "en",
     indexable: true,
-    favicon: "/assets/images/favicon.ico"
+    favicon: "/assets/images/favicon.ico",
   },
   seo: {
     redirectToCanonicalSiteUrl: true,
@@ -57,7 +60,7 @@ export default defineNuxtConfig({
       description:
         "Inspirasi Satu Indonesia is a leading coaching, training, and counseling company based in Jakarta, Indonesia. Our mission is to help people discover their purpose, enhance their skills, and transform their lives through comprehensive, customized, and supportive services.",
       keywords:
-      "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
+        "Coaching and training company in Jakarta, Career development coaching Indonesia, Soft skills training Jakarta, Life counseling services Indonesia, Corporate training solutions Jakarta, Resilient Academy Indonesia, Empowering Gen-Z and millennials,Positive change and growth, Professional development coaching ,Leadership and team-building exercises",
       ogSiteName: process.env.NUXT_PUBLIC_SITE_NAME,
       ogTitle: process.env.NUXT_PUBLIC_SITE_NAME,
       ogLocale: "en_US",
@@ -107,25 +110,22 @@ export default defineNuxtConfig({
     id: process.env.NUXT_PUBLIC_GTAG_ID,
     enabled: true,
     initCommands: [
-      ['consent', 'default', {
-        ad_user_data: 'granted',
-        ad_personalization: 'granted',
-        ad_storage: 'granted',
-        analytics_storage: 'granted',
-        wait_for_update: 500,
-      }]
-    ]
+      [
+        "consent",
+        "default",
+        {
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          ad_storage: "granted",
+          analytics_storage: "granted",
+          wait_for_update: 500,
+        },
+      ],
+    ],
   },
   robots: {
-    allow: [
-      '/',
-      '/blogs/*',
-    ],
-    disallow: [
-      '/api/*',
-      '/_nuxt/*',
-      '/_fonts/*',
-    ],
+    allow: ["/", "/blogs/*"],
+    disallow: ["/api/*", "/_nuxt/*", "/_fonts/*"],
     sitemap: [
       `${process.env.NUXT_PUBLIC_SITE_URL}/__sitemap__/pages.xml`,
       `${process.env.NUXT_PUBLIC_SITE_URL}/__sitemap__/blogs.xml`,
