@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     "nuxt-gtag",
   ],
   app: {
+    cdnURL: process.env.STRAPI_CDN,
     head: {
       htmlAttrs: {
         lang: "en",
