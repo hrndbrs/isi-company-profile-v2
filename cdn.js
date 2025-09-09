@@ -23,8 +23,8 @@ const s3Client = new S3Client({
         secretAccessKey: bucketSecretAccessKey,
     },
     requestHandler: new NodeHttpHandler({
-    	connectionTimeout: 10000, // 10 seconds
-    	socketTimeout: 10000,     // 10 seconds
+        connectionTimeout: 10000, // 10 seconds
+        socketTimeout: 10000,     // 10 seconds
   }),
 });
 
@@ -45,32 +45,58 @@ function getAllFiles(dirPath, arrayOfFiles = [], basePath = dirPath) {
     return arrayOfFiles;
 }
 
-const localDirectory = ".nuxt"; // Or ".nuxt" if you want the full structure
-const s3Prefix = "_nuxt"; // Upload under this prefix
-const assetPaths = getAllFiles(localDirectory);
-
-Promise.all(assetPaths.map(async (relativePath) => {
-    const fullPath = path.join(localDirectory, relativePath);
-    const contentType = mime.lookup(fullPath) || 'application/octet-stream';
-
-    const s3Key = path.posix.join(s3Prefix, relativePath); // Use posix for forward slashes
-
-    console.log(`Uploading: ${s3Key}`);
-
-    try {
-        await s3Client.send(new PutObjectCommand({
-            Bucket: bucketName,
-            Key: s3Key,
-            Body: fs.readFileSync(fullPath),
-            ContentType: contentType,
-            ACL: 'public-read', // Optional for public buckets
-        }));
-        console.log(`✅ Uploaded: ${s3Key}`);
-    } catch (err) {
-        console.error(`❌ Error uploading "${s3Key}":`, err);
-        throw err;
+// Upload function for a specific directory
+async function uploadDirectory(localDirectory, s3Prefix) {
+    if (!fs.existsSync(localDirectory)) {
+        console.log(`⚠️  Directory ${localDirectory} does not exist, skipping...`);
+        return;
     }
-})).catch(err => {
-    console.error("🚨 Upload failed:", err);
-    process.exit(1);
-});
+
+    const assetPaths = getAllFiles(localDirectory);
+    
+    if (assetPaths.length === 0) {
+        console.log(`⚠️  No files found in ${localDirectory}, skipping...`);
+        return;
+    }
+
+    console.log(`📁 Uploading ${assetPaths.length} files from ${localDirectory} to ${s3Prefix}/`);
+
+    await Promise.all(assetPaths.map(async (relativePath) => {
+        const fullPath = path.join(localDirectory, relativePath);
+        const contentType = mime.lookup(fullPath) || 'application/octet-stream';
+
+        const s3Key = path.posix.join(s3Prefix, relativePath); // Use posix for forward slashes
+
+        console.log(`Uploading: ${s3Key}`);
+
+        try {
+            await s3Client.send(new PutObjectCommand({
+                Bucket: bucketName,
+                Key: s3Key,
+                Body: fs.readFileSync(fullPath),
+                ContentType: contentType,
+                ACL: 'public-read', // Optional for public buckets
+            }));
+            console.log(`✅ Uploaded: ${s3Key}`);
+        } catch (err) {
+            console.error(`❌ Error uploading "${s3Key}":`, err);
+            throw err;
+        }
+    }));
+}
+
+// Upload directories
+(async () => {
+    try {
+        // Upload _nuxt assets
+        await uploadDirectory(".output/public/_nuxt/", "_nuxt");
+        
+        // Upload fonts
+        await uploadDirectory(".output/public/_fonts/", "_fonts");
+        
+        console.log("🎉 All uploads completed successfully!");
+    } catch (err) {
+        console.error("🚨 Upload failed:", err);
+        process.exit(1);
+    }
+})();
